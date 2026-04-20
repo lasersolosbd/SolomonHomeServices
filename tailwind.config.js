@@ -11,6 +11,7 @@ module.exports = {
         sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
       },
       colors: {
+        // Kept for accents and text, but no longer the main background
         forest: {
           DEFAULT: "#1e3a2f",
           mid: "#2d5a42",
@@ -25,46 +26,37 @@ module.exports = {
           light: "#e2c47a",
         },
         "slate-deep": "#1a2332",
-        "slate-mid": "#2c3e50",
+        // Lighter, warmer neutrals for the high-end feel
         stone: {
-          50: "#f8f5f0",
-          100: "#ede8e0",
-          200: "#ddd7cb",
-          300: "#c8bfb0",
-          400: "#a89880",
-          500: "#8c7a65",
-          600: "#6e5f4e",
-          700: "#564a3c",
+          50: "#faf9f7",
+          100: "#f3f0ea",
+          200: "#e6e1d6",
+          300: "#d5cec0",
           800: "#3d352c",
           900: "#2a2420",
         },
-        cream: "#fdfaf5",
+        cream: "#ffffff",
       },
       backgroundImage: {
-        "mountain-gradient":
-          "linear-gradient(135deg, #1a2332 0%, #1e3a2f 50%, #2c3e50 100%)",
-        "gold-gradient": "linear-gradient(90deg, #c9a84c, #d4a574)",
-        "hero-overlay":
-          "linear-gradient(180deg, rgba(26,35,50,0.75) 0%, rgba(26,35,50,0.4) 50%, rgba(26,35,50,0.85) 100%)",
+        "elegant-gradient": "linear-gradient(to right, #faf9f7, #ffffff)",
+        "gold-accent": "linear-gradient(135deg, #c9a84c 0%, #b8865a 100%)",
       },
       boxShadow: {
-        "gold-glow": "0 0 30px rgba(201, 168, 76, 0.2)",
-        "forest-glow": "0 0 30px rgba(30, 58, 47, 0.3)",
-        "card-hover":
-          "0 20px 60px rgba(26, 35, 50, 0.12), 0 4px 16px rgba(26, 35, 50, 0.08)",
+        "editorial": "0 20px 40px -15px rgba(0,0,0,0.05)",
+        "floating": "0 30px 60px -20px rgba(0,0,0,0.08)",
       },
       animation: {
-        "fade-in-up": "fadeInUp 0.7s ease forwards",
-        "fade-in": "fadeIn 0.5s ease forwards",
+        "fade-in-up": "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "reveal": "reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
       keyframes: {
         fadeInUp: {
-          from: { opacity: "0", transform: "translateY(24px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        fadeIn: {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
+        reveal: {
+          "0%": { clipPath: "inset(100% 0 0 0)" },
+          "100%": { clipPath: "inset(0 0 0 0)" },
         },
       },
     },
