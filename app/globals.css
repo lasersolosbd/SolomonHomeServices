@@ -4,18 +4,9 @@
 
 :root {
   --color-forest: #1e3a2f;
-  --color-forest-mid: #2d5a42;
-  --color-forest-light: #3d7a5a;
-  --color-slate-deep: #1a2332;
-  --color-slate-mid: #2c3e50;
-  --color-timber: #b8865a;
-  --color-timber-light: #d4a574;
   --color-gold: #c9a84c;
-  --color-gold-light: #e2c47a;
-  --color-stone: #f8f5f0;
-  --color-stone-dark: #ede8e0;
-  --color-white: #ffffff;
-  --color-cream: #fdfaf5;
+  --color-stone: #faf9f7;
+  --color-slate-deep: #1a2332;
 
   --font-display: var(--font-playfair), Georgia, serif;
   --font-body: var(--font-dm-sans), system-ui, sans-serif;
@@ -28,66 +19,26 @@
 
   body {
     font-family: var(--font-body);
-    background-color: var(--color-stone);
-    color: var(--color-slate-deep);
+    /* High-end light background */
+    background-color: var(--color-stone); 
+    /* Dark elegant text */
+    color: var(--color-slate-deep); 
+    -webkit-font-smoothing: antialiased;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
+  h1, h2, h3, h4 {
     font-family: var(--font-display);
+    font-weight: 400; /* Lighter font weights look more high-end */
   }
 
   ::selection {
-    background-color: var(--color-timber-light);
-    color: var(--color-slate-deep);
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--color-stone-dark);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-timber);
-    border-radius: 3px;
+    background-color: var(--color-gold);
+    color: #ffffff;
   }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: var(--font-display);
-  }
-
-  .font-sans {
-    font-family: var(--font-body);
-  }
-
   .text-balance {
     text-wrap: balance;
-  }
-
-  .gold-rule {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--color-gold), var(--color-timber-light));
-    display: block;
-  }
-
-  .fade-in-up {
-    animation: fadeInUp 0.7s ease forwards;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 }
