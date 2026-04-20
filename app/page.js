@@ -195,68 +195,6 @@ function HeroSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   IDX LISTINGS SECTION (Tabbed Interface)
-───────────────────────────────────────────────────────────── */
-function IdxSection() {
-  const [activeTab, setActiveTab] = useState('search');
-
-  return (
-    <section id="idx-listings" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-          <div className="max-w-2xl">
-            <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.2em] uppercase block mb-3">
-              Property Portfolio
-            </span>
-            <h2
-              className="text-4xl md:text-5xl text-[#1a2332] leading-tight"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Discover the <i className="text-[#1e3a2f]">Front Range.</i>
-            </h2>
-          </div>
-          
-          {/* Custom Tabs */}
-          <div className="flex bg-stone-50 p-1 rounded-sm border border-stone-200">
-            <button 
-              onClick={() => setActiveTab('search')}
-              className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${
-                activeTab === 'search' ? 'bg-white shadow-sm text-[#1a2332]' : 'text-slate-500 hover:text-[#1a2332]'
-              }`}
-            >
-              MLS Search
-            </button>
-            <button 
-              onClick={() => setActiveTab('featured')}
-              className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${
-                activeTab === 'featured' ? 'bg-white shadow-sm text-[#1a2332]' : 'text-slate-500 hover:text-[#1a2332]'
-              }`}
-            >
-              My Listings
-            </button>
-          </div>
-        </div>
-
-        {/* IDX Container */}
-        <div className="w-full h-[600px] bg-stone-50 rounded-sm shadow-editorial border border-stone-100 overflow-hidden relative">
-          
-          {/* Tab 1: Full MLS Search */}
-          <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-             <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
-          </div>
-
-          {/* Tab 2: User's Own Listings */}
-          <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-             <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────
    STATS BAND
 ───────────────────────────────────────────────────────────── */
 function StatsBand() {
@@ -359,86 +297,62 @@ function SellerValueProps() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   IDX LISTINGS SECTION
+   IDX LISTINGS SECTION (Tabbed Interface)
 ───────────────────────────────────────────────────────────── */
 function IdxSection() {
+  const [activeTab, setActiveTab] = useState('search');
+
   return (
     <section id="idx-listings" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.3em] uppercase block mb-3">
-            Browse Properties
-          </span>
-          <h2
-            className="text-4xl md:text-5xl font-bold text-[#1a2332] leading-tight mb-4"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Homes for Sale on the{" "}
-            <span className="text-[#1e3a2f]">Front Range</span>
-          </h2>
-          <span
-            className="block w-14 h-0.5 mx-auto mb-5"
-            style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }}
-          />
-          <p className="text-stone-600 text-base leading-relaxed">
-            Live MLS listings updated in real time. Whether you're relocating,
-            upsizing, or finding your first Colorado home — the right property
-            is here.
-          </p>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+          <div className="max-w-2xl">
+            <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.2em] uppercase block mb-3">
+              Property Portfolio
+            </span>
+            <h2
+              className="text-4xl md:text-5xl text-[#1a2332] leading-tight"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Discover the <i className="text-[#1e3a2f]">Front Range.</i>
+            </h2>
+          </div>
+          
+          {/* Custom Tabs */}
+          <div className="flex bg-stone-50 p-1 rounded-sm border border-stone-200">
+            <button 
+              onClick={() => setActiveTab('search')}
+              className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${
+                activeTab === 'search' ? 'bg-white shadow-sm text-[#1a2332]' : 'text-slate-500 hover:text-[#1a2332]'
+              }`}
+            >
+              MLS Search
+            </button>
+            <button 
+              onClick={() => setActiveTab('featured')}
+              className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${
+                activeTab === 'featured' ? 'bg-white shadow-sm text-[#1a2332]' : 'text-slate-500 hover:text-[#1a2332]'
+              }`}
+            >
+              My Listings
+            </button>
+          </div>
         </div>
 
         {/* IDX Container */}
-        <div
-          className="rounded-2xl overflow-hidden border border-stone-100"
-          style={{ boxShadow: "0 8px 48px rgba(26,35,50,0.08)" }}
-        >
-          {/* Search bar UI chrome */}
-          <div className="bg-[#1a2332] px-6 py-4 flex items-center gap-4">
-            <div className="flex items-center gap-3 flex-1 bg-white/10 rounded-lg px-4 py-2.5">
-              <Search size={16} className="text-[#c9a84c]" />
-              <span className="text-stone-400 text-sm">
-                Search by city, zip code, or neighborhood...
-              </span>
-            </div>
-            <div className="hidden sm:flex items-center gap-2 text-stone-500 text-xs border border-white/10 rounded-lg px-3 py-2">
-              <Home size={12} className="text-[#c9a84c]" />
-              <span>All Types</span>
-            </div>
-            <div className="hidden sm:flex items-center gap-2 text-stone-500 text-xs border border-white/10 rounded-lg px-3 py-2">
-              <DollarSign size={12} className="text-[#c9a84c]" />
-              <span>Any Price</span>
-            </div>
+        <div className="w-full h-[600px] bg-stone-50 rounded-sm shadow-editorial border border-stone-100 overflow-hidden relative">
+          
+          {/* Tab 1: Full MLS Search */}
+          <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+             <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
           </div>
 
-          {/* ── IDX SCRIPT CONTAINER ── */}
-          {/* PASTE YOUR LOCAL MLS IDX SCRIPT INSIDE THE div BELOW */}
-          {/* Example: <script src="https://your-idx-provider.com/widget.js"></script> */}
-          <div
-            id="idx-script-container"
-            className="bg-stone-50 min-h-[480px] w-full"
-          >
-            {/* YOUR IDX PROVIDER SCRIPT TAG GOES HERE */}
-
-            {/* ── REMOVE THIS PLACEHOLDER BLOCK WHEN YOUR IDX SCRIPT IS ADDED ── */}
-            <div className="flex flex-col items-center justify-center h-full min-h-[480px] opacity-40 select-none pointer-events-none">
-              <Search size={40} className="text-stone-400 mx-auto mb-3" />
-              <p className="text-stone-500 text-sm font-medium">
-                MLS Listing Search
-              </p>
-              <p className="text-stone-400 text-xs mt-1">
-                Your IDX script loads here
-              </p>
-            </div>
-            {/* ── END PLACEHOLDER ── */}
+          {/* Tab 2: User's Own Listings */}
+          <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+             <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
           </div>
-          {/* ── END IDX SCRIPT CONTAINER ── */}
+
         </div>
-
-        <p className="text-center text-stone-400 text-xs mt-4 leading-relaxed max-w-2xl mx-auto">
-          Listing information is deemed reliable but not guaranteed. All
-          properties are subject to prior sale, change, or withdrawal. Data
-          provided by the local MLS via IDX. © MLS. All rights reserved.
-        </p>
       </div>
     </section>
   );
