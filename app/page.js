@@ -97,7 +97,7 @@ const sellerProps = [
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   HERO SECTION
+   HERO SECTION (High-End Editorial)
 ───────────────────────────────────────────────────────────── */
 function HeroSection() {
   const [loaded, setLoaded] = useState(false);
@@ -109,139 +109,148 @@ function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #0d1a14 0%, #1a2332 40%, #1e3a2f 100%)",
-      }}
+      className="relative min-h-screen flex items-center bg-stone-50 overflow-hidden pt-20"
     >
-      {/* Abstract Mountain Silhouette */}
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='xMidYMid slice'%3E%3Cpolygon fill='%231e3a2f' points='0,900 300,300 500,550 700,200 900,480 1100,150 1300,400 1440,250 1440,900'/%3E%3Cpolygon fill='%23162e24' points='0,900 200,500 400,650 600,350 800,580 1000,280 1200,500 1440,350 1440,900'/%3E%3C/svg%3E")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center bottom",
-        }}
-      />
-      {/* Noise Texture */}
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`,
-        }}
-      />
-      {/* Gold accent top line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-0.5"
-        style={{
-          background: "linear-gradient(90deg, transparent, #c9a84c, transparent)",
-        }}
-      />
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        
+        {/* Left Content Area */}
+        <div className="lg:col-span-6 z-20">
+          <div
+            className={`inline-flex items-center gap-3 mb-6 transition-all duration-1000 ${
+              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            <span className="h-px w-12 bg-[#c9a84c]" />
+            <span className="text-slate-500 text-xs font-semibold tracking-[0.2em] uppercase">
+              Colorado Front Range
+            </span>
+          </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center pt-28 pb-20">
-        {/* Eyebrow */}
-        <div
-          className={`inline-flex items-center gap-2 mb-8 transition-all duration-700 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          <span className="h-px w-8 bg-[#c9a84c]" />
-          <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.3em] uppercase">
-            Colorado Front Range · Mark Solomon · REAL Broker, LLC
-          </span>
-          <span className="h-px w-8 bg-[#c9a84c]" />
+          <h1
+            className={`text-5xl md:text-6xl lg:text-7xl text-[#1a2332] leading-[1.1] mb-8 text-balance transition-all duration-1000 delay-200 ${
+              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Experience & Precision in Every <i className="text-[#1e3a2f]">Detail.</i>
+          </h1>
+
+          <p
+            className={`text-lg text-slate-600 max-w-lg leading-relaxed mb-10 transition-all duration-1000 delay-300 ${
+              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            Over two decades of mastery in Colorado real estate. No guesswork, no algorithms—just tactical strategy and relentless negotiation to protect your equity.
+          </p>
+
+          <div
+            className={`flex flex-col sm:flex-row items-center gap-6 transition-all duration-1000 delay-400 ${
+              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            {/* Primary CTA */}
+            <a
+              href="#contact"
+              className="w-full sm:w-auto px-8 py-4 bg-[#1e3a2f] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] transition-colors duration-300 flex items-center justify-center gap-3 group"
+            >
+              Request Strategic Valuation
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </a>
+            {/* Secondary CTA */}
+            <a
+              href="#idx-listings"
+              className="text-[#1a2332] text-sm font-semibold tracking-widest uppercase hover:text-[#c9a84c] transition-colors flex items-center gap-2"
+            >
+              Search Properties
+            </a>
+          </div>
         </div>
 
-        {/* Headline */}
-        <h1
-          className={`text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 transition-all duration-700 delay-100 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          Your Home Is Worth{" "}
-          <span
-            className="block mt-1"
-            style={{
-              background: "linear-gradient(90deg, #c9a84c, #d4a574, #c9a84c)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            More Than You Think.
-          </span>
-        </h1>
-
-        {/* Sub-headline */}
-        <p
-          className={`text-lg md:text-xl text-stone-300 max-w-2xl mx-auto leading-relaxed mb-4 transition-all duration-700 delay-200 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
-          Most sellers leave equity on the table. I don't let that happen.
-          With over 20 years of real estate expertise and the tactical
-          discipline of a Navy Commander, I deliver results that protect your
-          investment — and your timeline.
-        </p>
-
-        <p
-          className={`text-sm text-[#c9a84c] font-medium tracking-wide mb-10 transition-all duration-700 delay-300 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          Military Relocation Specialist · VA Loan Expert · Colorado Front Range
-        </p>
-
-        {/* CTAs */}
-        <div
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-400 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          <a
-            href="#contact"
-            className="group px-8 py-4 rounded-lg font-semibold text-sm tracking-wider uppercase transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex items-center gap-2"
-            style={{
-              background: "linear-gradient(135deg, #c9a84c, #b8965e)",
-              color: "#1a2332",
-              boxShadow: "0 4px 24px rgba(201,168,76,0.3)",
-            }}
-          >
-            Get Your Home's True Value
-            <ArrowRight
-              size={16}
-              className="transition-transform duration-200 group-hover:translate-x-1"
-            />
-          </a>
-          <a
-            href="#idx-listings"
-            className="px-8 py-4 rounded-lg border border-white/20 text-white text-sm font-semibold tracking-wider uppercase hover:bg-white/10 hover:border-white/40 transition-all duration-300"
-          >
-            Browse Listings
-          </a>
-        </div>
-
-        {/* CREC Badge */}
-        <div
-          className={`mt-16 inline-flex items-center gap-3 px-5 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-xs text-stone-400 transition-all duration-700 delay-500 ${
+        {/* Right Image/Visual Area - Offset Design */}
+        <div className={`lg:col-span-6 relative transition-all duration-1000 delay-500 ${
             loaded ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Shield size={14} className="text-[#c9a84c]" />
-          Mark Solomon, REALTOR® · Licensed under REAL Broker, LLC · Equal
-          Housing Opportunity
+          }`}>
+          <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto">
+            {/* Placeholder for a high-end architectural photo of a home */}
+            <div className="absolute inset-0 bg-stone-200 shadow-floating rounded-sm overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000" 
+                  alt="Luxury Colorado Home" 
+                  className="w-full h-full object-cover"
+                />
+            </div>
+            {/* Floating Experience Badge */}
+            <div className="absolute -bottom-8 -left-8 bg-white p-6 shadow-editorial rounded-sm flex items-start gap-4 max-w-[200px]">
+              <Award size={24} className="text-[#c9a84c] shrink-0" />
+              <div>
+                <p className="font-display text-2xl text-[#1a2332] mb-1">20+</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold leading-tight">Years of Excellence</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-        <div
-          className="w-px h-12 animate-pulse"
-          style={{ background: "linear-gradient(180deg, #c9a84c, transparent)" }}
-        />
+/* ─────────────────────────────────────────────────────────────
+   IDX LISTINGS SECTION (Tabbed Interface)
+───────────────────────────────────────────────────────────── */
+function IdxSection() {
+  const [activeTab, setActiveTab] = useState('search');
+
+  return (
+    <section id="idx-listings" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+          <div className="max-w-2xl">
+            <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.2em] uppercase block mb-3">
+              Property Portfolio
+            </span>
+            <h2
+              className="text-4xl md:text-5xl text-[#1a2332] leading-tight"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Discover the <i className="text-[#1e3a2f]">Front Range.</i>
+            </h2>
+          </div>
+          
+          {/* Custom Tabs */}
+          <div className="flex bg-stone-50 p-1 rounded-sm border border-stone-200">
+            <button 
+              onClick={() => setActiveTab('search')}
+              className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${
+                activeTab === 'search' ? 'bg-white shadow-sm text-[#1a2332]' : 'text-slate-500 hover:text-[#1a2332]'
+              }`}
+            >
+              MLS Search
+            </button>
+            <button 
+              onClick={() => setActiveTab('featured')}
+              className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${
+                activeTab === 'featured' ? 'bg-white shadow-sm text-[#1a2332]' : 'text-slate-500 hover:text-[#1a2332]'
+              }`}
+            >
+              My Listings
+            </button>
+          </div>
+        </div>
+
+        {/* IDX Container */}
+        <div className="w-full h-[600px] bg-stone-50 rounded-sm shadow-editorial border border-stone-100 overflow-hidden relative">
+          
+          {/* Tab 1: Full MLS Search */}
+          <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+             <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
+          </div>
+
+          {/* Tab 2: User's Own Listings */}
+          <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+             <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
+          </div>
+
+        </div>
       </div>
     </section>
   );
