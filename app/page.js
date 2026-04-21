@@ -60,13 +60,12 @@ const testimonials = [
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   STATS BAND DATA
+   STATS BAND DATA (3 Pillars)
 ───────────────────────────────────────────────────────────── */
-const stats = [
-  { value: "20+", label: "Years of Experience", icon: Award },
-  { value: "Precision", label: "Military Experience", icon: Shield },
-  { value: "22+", label: "Years Serving Clients", icon: Users },
-  { value: "Expert", label: "Strategic Negotiation", icon: Target },
+const pillars = [
+  { title: "Precision" },
+  { title: "Expert Negotiation" },
+  { title: "Unmatched Market Insight" }
 ];
 
 /* ─────────────────────────────────────────────────────────────
@@ -128,12 +127,12 @@ function HeroSection() {
           </div>
 
           <h1
-            className={`text-5xl md:text-6xl lg:text-7xl text-[#1a2332] leading-[1.1] mb-8 text-balance transition-all duration-1000 delay-200 ${
+            className={`text-5xl md:text-6xl lg:text-7xl text-[#0f172a] leading-[1.1] mb-8 text-balance transition-all duration-1000 delay-200 ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Experience & Precision in Every <i className="text-[#1e3a2f]">Detail.</i>
+            Experience & Precision in Every <i className="text-[#1e293b]">Detail.</i>
           </h1>
 
           <p
@@ -151,14 +150,14 @@ function HeroSection() {
           >
             <a
               href="#contact"
-              className="w-full sm:w-auto px-8 py-4 bg-[#1e3a2f] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] transition-colors duration-300 flex items-center justify-center gap-3 group"
+              className="w-full sm:w-auto px-8 py-4 bg-[#0f172a] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] transition-colors duration-300 flex items-center justify-center gap-3 group"
             >
               Start The Process
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#idx-listings"
-              className="text-[#1a2332] text-sm font-semibold tracking-widest uppercase hover:text-[#c9a84c] transition-colors flex items-center gap-2"
+              className="text-[#0f172a] text-sm font-semibold tracking-widest uppercase hover:text-[#c9a84c] transition-colors flex items-center gap-2"
             >
               Search Properties
             </a>
@@ -179,7 +178,7 @@ function HeroSection() {
             <div className="absolute -bottom-8 -left-8 bg-white p-6 shadow-editorial rounded-sm flex items-start gap-4 max-w-[200px]">
               <Award size={24} className="text-[#c9a84c] shrink-0" />
               <div>
-                <p className="font-display text-2xl text-[#1a2332] mb-1">20+</p>
+                <p className="font-display text-2xl text-[#0f172a] mb-1">20+</p>
                 <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold leading-tight">Years of Excellence</p>
               </div>
             </div>
@@ -191,27 +190,20 @@ function HeroSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   STATS BAND
+   STATS BAND (Navy Background + 3 Pillars)
 ───────────────────────────────────────────────────────────── */
 function StatsBand() {
   return (
-    <section className="bg-[#1a2332] border-y border-white/10 py-10">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map((s) => (
-          <div key={s.label} className="flex flex-col items-center text-center group">
-            <s.icon
-              size={22}
-              className="text-[#c9a84c] mb-2 transition-transform duration-300 group-hover:scale-110"
-            />
-            <span
-              className="text-3xl font-bold text-white"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              {s.value}
-            </span>
-            <span className="text-stone-500 text-xs mt-1 tracking-wide leading-snug max-w-[120px]">
-              {s.label}
-            </span>
+    <section className="bg-[#0f172a] border-y border-white/10 py-8">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-white/10 text-center">
+        {pillars.map((pillar, index) => (
+          <div key={index} className="pt-4 md:pt-0 first:pt-0 flex items-center justify-center">
+            <h3 className="text-white font-bold text-lg md:text-xl tracking-wide uppercase flex items-center gap-3">
+              <svg className="w-5 h-5 text-[#c9a84c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+              {pillar.title}
+            </h3>
           </div>
         ))}
       </div>
@@ -231,11 +223,11 @@ function ValueProps() {
             The Approach
           </span>
           <h2
-            className="text-4xl md:text-5xl font-bold text-[#1a2332] leading-tight mb-4"
+            className="text-4xl md:text-5xl font-bold text-[#0f172a] leading-tight mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             A Different Kind of{" "}
-            <span className="text-[#1e3a2f]">Strategy.</span>
+            <span className="text-[#1e293b]">Strategy.</span>
           </h2>
           <span
             className="block w-14 h-0.5 mb-5"
@@ -249,34 +241,34 @@ function ValueProps() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Sellers Column */}
           <div className="space-y-6">
-            <h3 className="text-xl font-display text-[#1a2332] border-b border-stone-200 pb-3 mb-6">For Sellers</h3>
+            <h3 className="text-xl font-display text-[#0f172a] border-b border-stone-200 pb-3 mb-6">For Sellers</h3>
             {sellerProps.map((prop) => (
               <div key={prop.title} className="bg-white rounded-xl p-8 shadow-sm border border-stone-100 hover:border-[#c9a84c]/30 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#1e3a2f]/5">
-                    <prop.icon size={20} className="text-[#1e3a2f]" />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#0f172a]/5">
+                    <prop.icon size={20} className="text-[#0f172a]" />
                   </div>
-                  <h4 className="text-lg font-bold text-[#1a2332] font-display">{prop.title}</h4>
+                  <h4 className="text-lg font-bold text-[#0f172a] font-display">{prop.title}</h4>
                 </div>
                 <p className="text-stone-600 text-sm leading-relaxed">{prop.desc}</p>
-                <a href="#contact" className="inline-block mt-4 text-xs font-bold uppercase tracking-wider text-[#c9a84c] hover:text-[#1e3a2f] transition-colors">Request Valuation →</a>
+                <a href="#contact" className="inline-block mt-4 text-xs font-bold uppercase tracking-wider text-[#c9a84c] hover:text-[#0f172a] transition-colors">Request Valuation →</a>
               </div>
             ))}
           </div>
 
           {/* Buyers Column */}
           <div className="space-y-6">
-             <h3 className="text-xl font-display text-[#1a2332] border-b border-stone-200 pb-3 mb-6">For Buyers</h3>
+             <h3 className="text-xl font-display text-[#0f172a] border-b border-stone-200 pb-3 mb-6">For Buyers</h3>
             {buyerProps.map((prop) => (
               <div key={prop.title} className="bg-white rounded-xl p-8 shadow-sm border border-stone-100 hover:border-[#c9a84c]/30 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#1e3a2f]/5">
-                    <prop.icon size={20} className="text-[#1e3a2f]" />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#0f172a]/5">
+                    <prop.icon size={20} className="text-[#0f172a]" />
                   </div>
-                  <h4 className="text-lg font-bold text-[#1a2332] font-display">{prop.title}</h4>
+                  <h4 className="text-lg font-bold text-[#0f172a] font-display">{prop.title}</h4>
                 </div>
                 <p className="text-stone-600 text-sm leading-relaxed">{prop.desc}</p>
-                <a href="#contact" className="inline-block mt-4 text-xs font-bold uppercase tracking-wider text-[#c9a84c] hover:text-[#1e3a2f] transition-colors">Start the Search →</a>
+                <a href="#contact" className="inline-block mt-4 text-xs font-bold uppercase tracking-wider text-[#c9a84c] hover:text-[#0f172a] transition-colors">Start the Search →</a>
               </div>
             ))}
           </div>
@@ -301,10 +293,10 @@ function IdxSection() {
               Property Portfolio
             </span>
             <h2
-              className="text-4xl md:text-5xl text-[#1a2332] leading-tight"
+              className="text-4xl md:text-5xl text-[#0f172a] leading-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Discover the <i className="text-[#1e3a2f]">Front Range.</i>
+              Discover the <i className="text-[#1e293b]">Front Range.</i>
             </h2>
           </div>
           
@@ -312,7 +304,7 @@ function IdxSection() {
             <button 
               onClick={() => setActiveTab('search')}
               className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${
-                activeTab === 'search' ? 'bg-white shadow-sm text-[#1a2332]' : 'text-slate-500 hover:text-[#1a2332]'
+                activeTab === 'search' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'
               }`}
             >
               MLS Search
@@ -320,7 +312,7 @@ function IdxSection() {
             <button 
               onClick={() => setActiveTab('featured')}
               className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${
-                activeTab === 'featured' ? 'bg-white shadow-sm text-[#1a2332]' : 'text-slate-500 hover:text-[#1a2332]'
+                activeTab === 'featured' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'
               }`}
             >
               My Listings
@@ -342,12 +334,11 @@ function IdxSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   ABOUT MARK SECTION (Light Background Edition)
+   ABOUT MARK SECTION (Navy Card + Square Image + Humor)
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
     <section id="about" className="py-24 relative overflow-hidden bg-white">
-      {/* Light Luxury Background Image */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -363,7 +354,7 @@ function AboutSection() {
           {/* Left — Visual card */}
           <div className="relative">
             <div
-              className="rounded-xl overflow-hidden bg-[#1e3a2f] border border-stone-200 p-10 relative"
+              className="rounded-xl overflow-hidden bg-[#0f172a] border border-stone-200 p-8 md:p-10 relative"
               style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}
             >
               <div
@@ -371,9 +362,9 @@ function AboutSection() {
                 style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }}
               />
               
-              {/* Headshot added here */}
-              <div className="mb-8 w-32 h-32 rounded-full overflow-hidden border-2 border-[#c9a84c]">
-                <img src="/mark-headshot.jpg" alt="Mark Solomon" className="w-full h-full object-cover" />
+              {/* Square Headshot with border radius */}
+              <div className="mb-8 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden border-2 border-[#c9a84c] shadow-inner relative">
+                <img src="/mark-headshot.jpg" alt="Commander Mark Solomon" className="w-full h-full object-cover object-top" />
               </div>
 
               {/* Credential badges */}
@@ -400,7 +391,7 @@ function AboutSection() {
                   className="text-2xl font-bold text-white leading-snug mb-6"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
-                  "The process of selling or buying a home should be precise, streamlined, and—above all—enjoyable. With 20+ years of experience and a background in real estate coaching and teaching classes on negotiation, I will provide you with a masterclass level of service and a clear path home."
+                  "The process of selling or buying a home should be precise, streamlined, and—above all—enjoyable. With 20+ years of experience and a background in real estate coaching, I will provide you with a masterclass level of service and a clear path home."
                 </p>
               </blockquote>
               <p className="text-[#c9a84c] text-sm font-semibold">
@@ -409,13 +400,13 @@ function AboutSection() {
             </div>
           </div>
 
-          {/* Right — Narrative */}
+          {/* Right — Narrative (Humor injected!) */}
           <div>
             <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.3em] uppercase block mb-3">
               About Mark
             </span>
             <h2
-              className="text-4xl md:text-5xl font-bold text-[#1a2332] leading-tight mb-5"
+              className="text-4xl md:text-5xl font-bold text-[#0f172a] leading-tight mb-5"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Masterclass Level of
@@ -438,19 +429,22 @@ function AboutSection() {
 
             <div className="space-y-5 text-stone-600 text-sm leading-relaxed">
               <p>
-                Mark Solomon arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.
+                With over two decades of real estate mastery, Mark has negotiated deals so tight they squeak. He brings precision, relentless advocacy, and a caffeine-fueled passion to every single transaction. When he isn’t closing complex deals or teaching others how to dominate the market, he’s likely thinking about closing deals—or trying to convince his family that "comparative market analysis" is a perfectly normal dinner table topic.
               </p>
               <p>
-                Today, after over two decades of military experience, he holds the rank of Commander (O-5) in the United States Navy Reserves — a distinction earned through a combat deployment to Iraq and deployments to other parts of the world. His two sons also joined the military. Service isn't just a value in the Solomon household — it's the baseline.
+                Commander Mark Solomon, United States Navy Reserve, arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.
               </p>
               <p>
-                In real estate, Mark channels that same standard. Licensed in real estate for over 20 years, experiencing various markets has sharpened his instincts for pricing, negotiation, and market timing into something approaching clairvoyance — though he'd say it's just preparation meeting opportunity. (Repeatedly. For two decades.)
+                Today, after over two decades of military experience — including a combat deployment to Iraq — he continues his service in the military. His two sons also joined the military. Service isn't just a value in the Solomon household; it's the baseline expectation. (Also, there's no getting out of it at this point.)
               </p>
               <p>
-                His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.
+                In real estate, Mark channels that same standard. Licensed for over 20 years, he's survived enough market cycles to know that "timing the market" usually just means "being ready when everyone else panics." His instincts for pricing and negotiation come from repetition, pattern recognition, and a healthy disrespect for conventional wisdom.
               </p>
               <p>
-                He is married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, required the exact same negotiation skills he brings to real estate. He credits her entirely.
+                His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), a 501(c)(3) charity, Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.
+              </p>
+              <p>
+                He's been married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, requires the exact same negotiation skills he brings to real estate. Possibly more. He credits her entirely for the outcome and acknowledges that she wins every negotiation at home.
               </p>
             </div>
 
@@ -459,7 +453,7 @@ function AboutSection() {
                 href="https://www.vcp.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-stone-100 text-[#1a2332] text-sm font-semibold tracking-wider uppercase hover:bg-stone-200 transition-all duration-300 border border-stone-200"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-stone-100 text-[#0f172a] text-sm font-semibold tracking-wider uppercase hover:bg-stone-200 transition-all duration-300 border border-stone-200"
               >
                 Learn About VCP
                 <Users size={14} />
@@ -473,7 +467,7 @@ function AboutSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   TESTIMONIALS SECTION
+   TESTIMONIALS SECTION (With min-h applied to stop jumping!)
 ───────────────────────────────────────────────────────────── */
 function TestimonialsSection() {
   const [active, setActive] = useState(0);
@@ -483,7 +477,7 @@ function TestimonialsSection() {
   const next = () => setActive((a) => (a + 1) % total);
 
   useEffect(() => {
-    const interval = setInterval(next, 9000); // Slower interval for longer reviews
+    const interval = setInterval(next, 9000); 
     return () => clearInterval(interval);
   }, []);
 
@@ -507,7 +501,7 @@ function TestimonialsSection() {
           Client Stories
         </span>
         <h2
-          className="text-4xl md:text-5xl font-bold text-[#1a2332] mb-4"
+          className="text-4xl md:text-5xl font-bold text-[#0f172a] mb-4"
           style={{ fontFamily: "var(--font-display)" }}
         >
           Results That Speak.
@@ -517,9 +511,10 @@ function TestimonialsSection() {
           style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }}
         />
 
+        {/* The Fix: min-h-[380px] added below so the page never jumps */}
         <div
           key={active}
-          className="bg-white rounded-2xl p-10 md:p-14 shadow-editorial border border-stone-100"
+          className="bg-white rounded-2xl p-10 md:p-14 shadow-editorial border border-stone-100 min-h-[380px] md:min-h-[300px] flex flex-col justify-center items-center"
           style={{ animation: "fadeInUp 0.5s ease forwards" }}
         >
           <div className="flex justify-center gap-1 mb-6">
@@ -572,7 +567,7 @@ function TestimonialsSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   CONTACT / GHL FORM SECTION (Tabbed)
+   CONTACT / GHL FORM SECTION (Navy Buttons applied)
 ───────────────────────────────────────────────────────────── */
 function ContactSection() {
   const [formType, setFormType] = useState('seller'); 
@@ -656,10 +651,10 @@ function ContactSection() {
               Let's Connect
             </span>
             <h2
-              className="text-4xl md:text-5xl font-bold text-[#1a2332] leading-tight mb-5"
+              className="text-4xl md:text-5xl font-bold text-[#0f172a] leading-tight mb-5"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Start The <span className="text-[#1e3a2f]">Conversation.</span>
+              Start The <span className="text-[#1e293b]">Conversation.</span>
             </h2>
             <span
               className="block w-14 h-0.5 mb-7"
@@ -677,14 +672,14 @@ function ContactSection() {
                 "Expert negotiation to protect your equity and investment",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <CheckCircle size={18} className="text-[#1e3a2f] shrink-0 mt-0.5" />
+                  <CheckCircle size={18} className="text-[#0f172a] shrink-0 mt-0.5" />
                   <span className="text-stone-600 text-sm">{item}</span>
                 </div>
               ))}
             </div>
 
             <div className="mt-10 p-6 bg-stone-50 border border-stone-200 rounded-xl space-y-3">
-              <p className="text-[#1a2332] font-semibold text-sm font-display">
+              <p className="text-[#0f172a] font-semibold text-sm font-display">
                 Prefer to reach out directly?
               </p>
               <a href="tel:+18168535467" className="flex items-center gap-3 text-stone-600 hover:text-[#c9a84c] text-sm transition-colors">
@@ -705,10 +700,10 @@ function ContactSection() {
           <div>
             {submitted ? (
               <div className="bg-white rounded-2xl p-12 text-center shadow-editorial border border-stone-100 flex flex-col items-center justify-center min-h-[500px]">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-[#1e3a2f]/10">
-                  <CheckCircle size={32} className="text-[#1e3a2f]" />
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-[#0f172a]/10">
+                  <CheckCircle size={32} className="text-[#0f172a]" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a2332] mb-3 font-display">
+                <h3 className="text-2xl font-bold text-[#0f172a] mb-3 font-display">
                   Message Received.
                 </h3>
                 <p className="text-stone-500 text-sm leading-relaxed max-w-xs">
@@ -721,20 +716,20 @@ function ContactSection() {
                 <div className="flex border-b border-stone-100">
                   <button 
                     onClick={() => setFormType('seller')}
-                    className={`flex-1 py-4 text-sm font-semibold tracking-wider uppercase transition-colors ${formType === 'seller' ? 'bg-[#1e3a2f] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}
+                    className={`flex-1 py-4 text-sm font-semibold tracking-wider uppercase transition-colors ${formType === 'seller' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}
                   >
                     I'm Selling
                   </button>
                   <button 
                     onClick={() => setFormType('buyer')}
-                    className={`flex-1 py-4 text-sm font-semibold tracking-wider uppercase transition-colors ${formType === 'buyer' ? 'bg-[#1e3a2f] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}
+                    className={`flex-1 py-4 text-sm font-semibold tracking-wider uppercase transition-colors ${formType === 'buyer' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}
                   >
                     I'm Buying
                   </button>
                 </div>
 
                 <form onSubmit={handleSubmit} noValidate className="p-8 md:p-10">
-                  <h3 className="text-xl font-bold text-[#1a2332] mb-6 font-display">
+                  <h3 className="text-xl font-bold text-[#0f172a] mb-6 font-display">
                     {formType === 'seller' ? "Request a Free Home Valuation" : "Start Your Home Search"}
                   </h3>
 
@@ -787,7 +782,7 @@ function ContactSection() {
                     <label className="flex items-start gap-3 cursor-pointer group">
                       <div className="relative mt-0.5 shrink-0">
                         <input type="checkbox" name="smsConsent" checked={form.smsConsent} onChange={handleChange} className="sr-only" />
-                        <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${form.smsConsent ? "bg-[#1e3a2f] border-[#1e3a2f]" : "bg-white border-stone-300"}`} onClick={() => setForm((f) => ({ ...f, smsConsent: !f.smsConsent }))}>
+                        <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${form.smsConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`} onClick={() => setForm((f) => ({ ...f, smsConsent: !f.smsConsent }))}>
                           {form.smsConsent && (
                             <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
                           )}
@@ -799,7 +794,7 @@ function ContactSection() {
                     </label>
                   </div>
 
-                  <button type="submit" disabled={loading} className="w-full py-4 rounded-lg font-semibold text-sm tracking-wider uppercase flex items-center justify-center gap-2 bg-[#c9a84c] text-[#1a2332] hover:bg-[#b8965e] transition-colors duration-300 disabled:opacity-60">
+                  <button type="submit" disabled={loading} className="w-full py-4 rounded-lg font-semibold text-sm tracking-wider uppercase flex items-center justify-center gap-2 bg-[#c9a84c] text-[#0f172a] hover:bg-[#b8965e] transition-colors duration-300 disabled:opacity-60">
                     {loading ? "Sending..." : (formType === 'seller' ? "Get My Free Valuation" : "Let's Get Started")}
                   </button>
                 </form>
