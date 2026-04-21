@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mountain, Phone, Mail, MapPin, Shield } from "lucide-react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear(); // Will output 2026
 
   return (
     <footer className="bg-[#0f172a] text-stone-400">
@@ -102,7 +102,8 @@ export default function Footer() {
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-600 mb-8">
             <div className="flex items-center gap-3">
-              <span className="border border-stone-600 px-2 py-1 rounded text-stone-500 text-xs font-bold tracking-widest">EHO</span>
+              {/* Image with invert class to turn the black/white logo into white/transparent for the dark background */}
+              <img src="/equal-housing-opportunity-logo.png" alt="Equal Housing Opportunity" className="h-10 object-contain invert mix-blend-screen opacity-70" />
               <span>Equal Housing Opportunity</span>
             </div>
             <p className="text-center">
