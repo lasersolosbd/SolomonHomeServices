@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#111b28] text-stone-400">
+    <footer className="bg-[#0f172a] text-stone-400">
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* Brand Column with Co-Branding Rules */}
         <div className="lg:col-span-2">
@@ -28,7 +28,7 @@ export default function Footer() {
             {/* Separator Line per Real Broker Rules */}
             <div className="w-px h-10 bg-white/20"></div>
 
-            {/* Real Broker Logo - Updated File Name */}
+            {/* Real Broker Logo */}
             <div className="flex items-center">
               <img 
                 src="/real-broker-logo-light.png" 
@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* CREC Compliance Bar */}
+      {/* CREC Compliance Bar & Disclaimer */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="bg-white/5 border border-[#c9a84c]/20 rounded-lg px-5 py-5 mb-5 space-y-3">
@@ -100,7 +100,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-600">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-600 mb-8">
             <div className="flex items-center gap-3">
               <span className="border border-stone-600 px-2 py-1 rounded text-stone-500 text-xs font-bold tracking-widest">EHO</span>
               <span>Equal Housing Opportunity</span>
@@ -109,6 +109,17 @@ export default function Footer() {
               © {currentYear} Solomon Home Services. All rights reserved.
             </p>
           </div>
+
+          {/* THE DoD DISCLAIMER */}
+          <div className="pt-8 border-t border-white/10 text-[10px] leading-[1.6] text-stone-500 text-center max-w-4xl mx-auto">
+            <p className="mb-2">
+              This site has no affiliation with the Department of Defense, the Department of the Navy, or any other branch of the U.S. military. The views, products, and services expressed here are solely those of the author. The DoD does not endorse this website, Mark Solomon or this real estate business.
+            </p>
+            <p>
+              ...But they should. Batteries not included. Void where prohibited. Your mileage may vary. Past performance is not indicative of future results. No sailors were harmed in the making of this business. The Navy reserves the right to take credit for his operational discipline while accepting no responsibility for the jokes.
+            </p>
+          </div>
+
         </div>
       </div>
     </footer>
