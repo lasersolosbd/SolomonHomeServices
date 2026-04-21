@@ -240,7 +240,7 @@ function ValueProps() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   IDX LISTINGS SECTION (Click-to-Load Fix applied)
+   IDX LISTINGS SECTION 
 ───────────────────────────────────────────────────────────── */
 function IdxSection() {
   const [activeTab, setActiveTab] = useState('search');
@@ -280,7 +280,6 @@ function IdxSection() {
         </p>
 
         <div className="w-full h-[600px] bg-stone-50 rounded-sm shadow-editorial border border-stone-100 overflow-hidden relative flex items-center justify-center">
-          
           {!iframeLoaded ? (
             <div className="text-center p-8 z-20 flex flex-col items-center bg-white border border-stone-200 rounded-xl shadow-sm max-w-lg">
               <Search size={48} className="text-[#c9a84c] mb-4" />
@@ -298,14 +297,13 @@ function IdxSection() {
           ) : (
             <>
               <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                 <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
+                 <iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
               </div>
               <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                 <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
+                 <iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
               </div>
             </>
           )}
-
         </div>
 
         <div className="mt-12 text-center">
@@ -320,7 +318,7 @@ function IdxSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   ABOUT MARK SECTION (Zoom Removed, Standard Cover applied)
+   ABOUT MARK SECTION
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
@@ -329,12 +327,10 @@ function AboutSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          {/* Left — Visual card */}
           <div className="relative">
             <div className="rounded-xl overflow-hidden bg-[#0f172a] border border-stone-200 p-8 md:p-10 relative" style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
               <div className="absolute top-0 left-0 w-24 h-1 rounded-br-sm" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
               
-              {/* Headshot: Zoom class completely removed. Reverted to standard cover to respect your manual crop. */}
               <div className="mb-8 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden border-2 border-[#c9a84c] shadow-inner relative">
                 <img src="/Mark-headshot.JPG" alt="Commander Mark Solomon" className="w-full h-full object-cover object-center" />
               </div>
@@ -364,7 +360,6 @@ function AboutSection() {
                 </p>
                 <img src="/nar_membershipmark_white.png" alt="REALTOR® membership mark" className="h-12 w-auto shrink-0 mb-[-6px]" />
               </div>
-
             </div>
           </div>
 
@@ -467,8 +462,10 @@ function TestimonialsSection() {
 function ContactSection() {
   const [formType, setFormType] = useState('seller'); 
   
+  // Add state for separated address fields
   const [form, setForm] = useState({
-    firstName: "", lastName: "", email: "", phone: "", address: "",
+    firstName: "", lastName: "", email: "", phone: "",
+    address: "", city: "", state: "", zip: "",
     timeframe: "", movingTo: "", workingWithAgent: "",
     rentOrOwn: "", buyTimeframe: "", firstTimeBuyer: "", lastBought: "",
     message: "", smsConsent: false,
@@ -487,7 +484,10 @@ function ContactSection() {
     if (!form.smsConsent) e.smsConsent = "SMS consent is required to submit.";
 
     if (formType === 'seller') {
-      if (!form.address.trim()) e.address = "Property address is required.";
+      if (!form.address.trim()) e.address = "Required.";
+      if (!form.city.trim()) e.city = "Required.";
+      if (!form.state.trim()) e.state = "Required.";
+      if (!form.zip.trim()) e.zip = "Required.";
       if (!form.timeframe.trim()) e.timeframe = "Timeframe is required.";
       if (!form.movingTo.trim()) e.movingTo = "Required.";
       if (!form.workingWithAgent) e.workingWithAgent = "Required.";
@@ -515,20 +515,19 @@ function ContactSection() {
     }
     setLoading(true);
     try {
+      // FORCE WEBHOOK: The safety switch has been removed.
       const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/rumk9zv94kRQ5xe7zqjO/webhook-trigger/cd4d26aa-594c-4d13-93a5-94f0cfab018c";
-      if (GHL_WEBHOOK_URL !== "https://services.leadconnectorhq.com/hooks/rumk9zv94kRQ5xe7zqjO/webhook-trigger/cd4d26aa-594c-4d13-93a5-94f0cfab018c") {
-        await fetch(GHL_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...form,
-            service_type: formType,
-            source: "Solomon Home Services Website",
-          }),
-        });
-      } else {
-        await new Promise((r) => setTimeout(r, 1200));
-      }
+      
+      await fetch(GHL_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          service_type: formType,
+          source: "Solomon Home Services Website",
+        }),
+      });
+      
       setSubmitted(true);
     } catch (err) {
       console.error("Form submission error:", err);
@@ -614,13 +613,29 @@ function ContactSection() {
                     <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={inputClass("phone")} />
                   </div>
 
-                  {/* SELLER FIELDS */}
+                  {/* SELLER FIELDS - Expanded Address */}
                   {formType === 'seller' && (
                     <>
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Property Address <span className="text-red-500 ml-1">{errors.address || "*"}</span></label>
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Street Address <span className="text-red-500 ml-1">{errors.address || "*"}</span></label>
                         <input type="text" name="address" value={form.address} onChange={handleChange} className={inputClass("address")} />
                       </div>
+                      
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        <div className="col-span-1">
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">City <span className="text-red-500 ml-1">{errors.city || "*"}</span></label>
+                          <input type="text" name="city" value={form.city} onChange={handleChange} className={inputClass("city")} />
+                        </div>
+                        <div className="col-span-1">
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">State <span className="text-red-500 ml-1">{errors.state || "*"}</span></label>
+                          <input type="text" name="state" value={form.state} onChange={handleChange} className={inputClass("state")} />
+                        </div>
+                        <div className="col-span-1">
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Zip <span className="text-red-500 ml-1">{errors.zip || "*"}</span></label>
+                          <input type="text" name="zip" value={form.zip} onChange={handleChange} className={inputClass("zip")} />
+                        </div>
+                      </div>
+
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
                            <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Timeframe <span className="text-red-500 ml-1">{errors.timeframe || "*"}</span></label>
@@ -686,7 +701,6 @@ function ContactSection() {
                     <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Please tell me the best way I can be of assistance." className={`${inputClass("message")} resize-none`} />
                   </div>
 
-                  {/* SMS FIX: Removed onClick from inner div to prevent double-firing */}
                   <div className={`mb-6 p-4 rounded-xl border ${errors.smsConsent ? "border-red-400 bg-red-50" : "border-stone-200 bg-stone-50"}`}>
                     <label className="flex items-start gap-3 cursor-pointer group">
                       <div className="relative mt-0.5 shrink-0">
