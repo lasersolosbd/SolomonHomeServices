@@ -516,8 +516,8 @@ function ContactSection() {
     }
     setLoading(true);
     try {
-      const GHL_WEBHOOK_URL = "YOUR_GHL_WEBHOOK_URL_HERE";
-      if (GHL_WEBHOOK_URL !== "YOUR_GHL_WEBHOOK_URL_HERE") {
+      const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/rumk9zv94kRQ5xe7zqjO/webhook-trigger/cd4d26aa-594c-4d13-93a5-94f0cfab018c";
+      if (GHL_WEBHOOK_URL !== "https://services.leadconnectorhq.com/hooks/rumk9zv94kRQ5xe7zqjO/webhook-trigger/cd4d26aa-594c-4d13-93a5-94f0cfab018c") {
         await fetch(GHL_WEBHOOK_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
