@@ -10,18 +10,15 @@ import {
   ChevronLeft,
   ChevronRight,
   Award,
-  Home,
   Users,
-  Heart,
   CheckCircle,
   Phone,
   Mail,
   MapPin,
   Send,
-  Search,
-  DollarSign,
   Target,
-  Medal,
+  Key,
+  Map
 } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────────────
@@ -29,75 +26,80 @@ import {
 ───────────────────────────────────────────────────────────── */
 const testimonials = [
   {
-    name: "Sarah & James T.",
-    location: "Longmont, CO",
     stars: 5,
-    text: "Mark sold our home in 9 days — $22,000 over asking price. His military background comes through in everything: disciplined strategy, zero wasted moves, and a negotiation style that made the other side blink first. We're convinced he could negotiate a cease-fire if needed.",
+    text: "I lived in the Southeast region and had an investment property in Kansas City... I told him my concern that I needed the property sold before wintertime. Well, before the end of October he was able to find an investor. I can't thank him enough for going above and beyond. He treats me like a very important client even though my property was just a small house. I assure you he is one of a kind. If I have to rate Mark on a scale of 1 to 10... I would give him an 11.",
   },
   {
-    name: "Lt. Col. David R. (Ret.)",
-    location: "Fort Collins, CO",
     stars: 5,
-    text: "PCS moves are chaos by definition. Mark made ours feel like a precision operation. He understood our timeline, knew the VA loan process cold, and found us a home before I even finished clearing my last duty station. This is the agent you want if you're military.",
+    text: "Mark, Amanda, Chasity, and the entire Solomon team are first rate. I can be a difficult customer at times and they quickly and skillfully answered all my questions and handled any issues. Mark is calm and reasoned, but he's not a pushover. He is a strong and savvy advocate for his clients. Buying or selling, you'll be taken care of by these guys.",
   },
   {
-    name: "Monica & Paul S.",
-    location: "Broomfield, CO",
     stars: 5,
-    text: "We interviewed four agents. Mark was the only one who came with a written market strategy and an actual plan to maximize our sale price — not just a number pulled from thin air. We netted more than we expected and closed on our timeline. Exceptional.",
+    text: "My wife and I worked with Mark to sell our prior house, and to purchase our new home. We really can’t say enough good things about Mark. Mark is knowledgeable, personable, endlessly patient, and incredibly generous with his time. Buying a home in this market is challenging and stressful but working with Mark made it as painless and straightforward as possible.",
   },
   {
-    name: "The Nguyen Family",
-    location: "Loveland, CO",
     stars: 5,
-    text: "As first-generation homeowners, we were nervous about every step. Mark was patient, educational, and never made us feel rushed. He explained everything clearly, protected our interests fiercely, and celebrated with us at closing like it was his own win. Highly recommend.",
+    text: "This is the second time we have used Mark for our Real Estate needs. Great to work with, very responsive and excellent knowledge of the business. Mark listed, showed and received an offer on the house within 2 days. Very pleased to work with him.",
   },
   {
-    name: "Capt. Renée M.",
-    location: "Colorado Springs, CO",
     stars: 5,
-    text: "Mark got our home under contract in 4 days during a market that scared other sellers. His pricing strategy was surgical. He knew exactly where to position us and exactly how to handle competing dynamics. Former Navy, but his real estate game is next-level.",
+    text: "Mark went above and beyond to get us into the right home! Always responsive to phone calls, requests to see yet another house, and putting up with my entire huge family tagging along. Very positive experience all the way around!",
+  },
+  {
+    stars: 5,
+    text: "Very knowledgeable and honest. Cared more about my family's needs, than making money off of the sale. Helped us with any and all questions we had, so we never felt like we were being left in the dark.",
+  },
+  {
+    stars: 5,
+    text: "Mark is the best realtor in KC. His team is professional and the process of buying our first home was so easy! You hear stories of how much work it is to buy a home, but we didn’t experience any problems thanks to Mark and his team! Everyone was easy to work with and they made it FUN!",
+  },
+  {
+    stars: 5,
+    text: "As first time home buyers, we were very glad to have such a patient professional! We had a wonderful experience with Mark, he explained everything very thoroughly and answered our endless questions.",
   },
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   STATS
+   STATS BAND DATA
 ───────────────────────────────────────────────────────────── */
 const stats = [
   { value: "20+", label: "Years of Experience", icon: Award },
-  { value: "$1.5M", label: "Raised for VCP Veterans Housing", icon: Heart },
-  { value: "22+", label: "Years Serving Colorado Families", icon: Home },
-  { value: "O-5", label: "Commander, U.S. Navy Reserves", icon: Medal },
+  { value: "Precision", label: "Military Experience", icon: Shield },
+  { value: "22+", label: "Years Serving Clients", icon: Users },
+  { value: "Expert", label: "Strategic Negotiation", icon: Target },
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   SELLER VALUE PROPS
+   VALUE PROPS (BUYERS & SELLERS)
 ───────────────────────────────────────────────────────────── */
 const sellerProps = [
   {
     icon: TrendingUp,
     title: "Tactical Pricing Strategy",
-    desc: "Every listing is priced with military precision — not wishful thinking. We analyze the micro-market, position you competitively, and go to market with a plan designed to attract the strongest offers.",
+    desc: "Every listing is priced with precision. We analyze the micro-market, position you competitively, and go to market with a plan designed to attract the strongest offers.",
   },
   {
     icon: Target,
     title: "Maximum Market Exposure",
-    desc: "Your home reaches buyers across the MLS, premium real estate portals, targeted social campaigns, and a curated network of pre-qualified buyers — because the right buyer may not be looking where everyone else is advertising.",
+    desc: "Your home reaches buyers across the MLS, premium portals, and targeted campaigns — because the right buyer may not be looking where everyone else is advertising.",
+  },
+];
+
+const buyerProps = [
+  {
+    icon: Key,
+    title: "Strategic Acquisitions",
+    desc: "We don't just 'look at houses.' We hunt for the right property, analyzing value, neighborhood trends, and future equity potential to ensure a smart investment.",
   },
   {
-    icon: DollarSign,
-    title: "Elite Negotiation",
-    desc: "Two decades of high-stakes experience — in real estate and in service — means I don't flinch when things get complex. I negotiate your equity like it's a mission objective. Because it is.",
-  },
-  {
-    icon: Shield,
-    title: "Military Relocation Expertise",
-    desc: "PCS orders don't wait for perfect market timing. I know VA loans, DOD timelines, and what it means to move a family on short notice. We make it work — and we make it profitable.",
+    icon: Map,
+    title: "Relocation & PCS Expertise",
+    desc: "Moving across the country or handling a short-notice PCS? I know timelines, VA loan nuances, and how to execute a seamless transition from afar.",
   },
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   HERO SECTION (High-End Editorial)
+   HERO SECTION
 ───────────────────────────────────────────────────────────── */
 function HeroSection() {
   const [loaded, setLoaded] = useState(false);
@@ -113,7 +115,6 @@ function HeroSection() {
     >
       <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         
-        {/* Left Content Area */}
         <div className="lg:col-span-6 z-20">
           <div
             className={`inline-flex items-center gap-3 mb-6 transition-all duration-1000 ${
@@ -140,7 +141,7 @@ function HeroSection() {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            Over two decades of mastery in Colorado real estate. No guesswork, no algorithms—just tactical strategy and relentless negotiation to protect your equity.
+            Over two decades of mastery in real estate. No guesswork, no algorithms (maybe a little bit of AI - since everyone is doing it) - just tactical strategy and relentless negotiation to make selling or buying a great experience.
           </p>
 
           <div
@@ -148,15 +149,13 @@ function HeroSection() {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            {/* Primary CTA */}
             <a
               href="#contact"
               className="w-full sm:w-auto px-8 py-4 bg-[#1e3a2f] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] transition-colors duration-300 flex items-center justify-center gap-3 group"
             >
-              Request Strategic Valuation
+              Start The Process
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </a>
-            {/* Secondary CTA */}
             <a
               href="#idx-listings"
               className="text-[#1a2332] text-sm font-semibold tracking-widest uppercase hover:text-[#c9a84c] transition-colors flex items-center gap-2"
@@ -166,12 +165,10 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Right Image/Visual Area - Offset Design */}
         <div className={`lg:col-span-6 relative transition-all duration-1000 delay-500 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}>
           <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto">
-            {/* Placeholder for a high-end architectural photo of a home */}
             <div className="absolute inset-0 bg-stone-200 shadow-floating rounded-sm overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000" 
@@ -179,7 +176,6 @@ function HeroSection() {
                   className="w-full h-full object-cover"
                 />
             </div>
-            {/* Floating Experience Badge */}
             <div className="absolute -bottom-8 -left-8 bg-white p-6 shadow-editorial rounded-sm flex items-start gap-4 max-w-[200px]">
               <Award size={24} className="text-[#c9a84c] shrink-0" />
               <div>
@@ -200,7 +196,7 @@ function HeroSection() {
 function StatsBand() {
   return (
     <section className="bg-[#1a2332] border-y border-white/10 py-10">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((s) => (
           <div key={s.label} className="flex flex-col items-center text-center group">
             <s.icon
@@ -224,15 +220,15 @@ function StatsBand() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SELLER VALUE PROPS
+   SELLER & BUYER VALUE PROPS
 ───────────────────────────────────────────────────────────── */
-function SellerValueProps() {
+function ValueProps() {
   return (
-    <section id="sellers" className="py-24 bg-[#f8f5f0]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="strategy" className="py-24 bg-[#f8f5f0]">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-2xl mb-16">
           <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.3em] uppercase block mb-3">
-            For Sellers
+            The Approach
           </span>
           <h2
             className="text-4xl md:text-5xl font-bold text-[#1a2332] leading-tight mb-4"
@@ -246,50 +242,44 @@ function SellerValueProps() {
             style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }}
           />
           <p className="text-stone-600 text-base leading-relaxed">
-            Selling your home isn't a transaction — it's one of the largest
-            financial decisions you'll make. I bring the same strategic
-            discipline that governs military operations to every listing: clear
-            objectives, precise execution, and an unwillingness to accept
-            anything less than the best possible outcome for you.
+            Buying or selling real estate isn't a simple transaction — it's one of the largest financial decisions you'll make. I bring clear objectives, precise execution, and an unwillingness to accept anything less than the best possible outcome for you.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {sellerProps.map((prop) => (
-            <div
-              key={prop.title}
-              className="bg-white rounded-2xl p-8 border border-stone-100 hover:border-[#c9a84c]/30 hover:shadow-xl transition-all duration-300 group"
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
-                style={{ background: "rgba(30,58,47,0.08)" }}
-              >
-                <prop.icon size={22} className="text-[#1e3a2f]" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Sellers Column */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-display text-[#1a2332] border-b border-stone-200 pb-3 mb-6">For Sellers</h3>
+            {sellerProps.map((prop) => (
+              <div key={prop.title} className="bg-white rounded-xl p-8 shadow-sm border border-stone-100 hover:border-[#c9a84c]/30 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#1e3a2f]/5">
+                    <prop.icon size={20} className="text-[#1e3a2f]" />
+                  </div>
+                  <h4 className="text-lg font-bold text-[#1a2332] font-display">{prop.title}</h4>
+                </div>
+                <p className="text-stone-600 text-sm leading-relaxed">{prop.desc}</p>
+                <a href="#contact" className="inline-block mt-4 text-xs font-bold uppercase tracking-wider text-[#c9a84c] hover:text-[#1e3a2f] transition-colors">Request Valuation →</a>
               </div>
-              <h3
-                className="text-xl font-bold text-[#1a2332] mb-3"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {prop.title}
-              </h3>
-              <p className="text-stone-600 text-sm leading-relaxed">{prop.desc}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="mt-12 text-center">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-            style={{
-              background: "linear-gradient(135deg, #1e3a2f, #2d5a42)",
-              color: "#fff",
-              boxShadow: "0 4px 20px rgba(30,58,47,0.25)",
-            }}
-          >
-            Start Your Selling Strategy
-            <ArrowRight size={16} />
-          </a>
+          {/* Buyers Column */}
+          <div className="space-y-6">
+             <h3 className="text-xl font-display text-[#1a2332] border-b border-stone-200 pb-3 mb-6">For Buyers</h3>
+            {buyerProps.map((prop) => (
+              <div key={prop.title} className="bg-white rounded-xl p-8 shadow-sm border border-stone-100 hover:border-[#c9a84c]/30 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#1e3a2f]/5">
+                    <prop.icon size={20} className="text-[#1e3a2f]" />
+                  </div>
+                  <h4 className="text-lg font-bold text-[#1a2332] font-display">{prop.title}</h4>
+                </div>
+                <p className="text-stone-600 text-sm leading-relaxed">{prop.desc}</p>
+                <a href="#contact" className="inline-block mt-4 text-xs font-bold uppercase tracking-wider text-[#c9a84c] hover:text-[#1e3a2f] transition-colors">Start the Search →</a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -318,7 +308,6 @@ function IdxSection() {
             </h2>
           </div>
           
-          {/* Custom Tabs */}
           <div className="flex bg-stone-50 p-1 rounded-sm border border-stone-200">
             <button 
               onClick={() => setActiveTab('search')}
@@ -339,19 +328,13 @@ function IdxSection() {
           </div>
         </div>
 
-        {/* IDX Container */}
         <div className="w-full h-[600px] bg-stone-50 rounded-sm shadow-editorial border border-stone-100 overflow-hidden relative">
-          
-          {/* Tab 1: Full MLS Search */}
           <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
              <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
           </div>
-
-          {/* Tab 2: User's Own Listings */}
           <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
              <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
           </div>
-
         </div>
       </div>
     </section>
@@ -359,38 +342,46 @@ function IdxSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   ABOUT MARK SECTION
+   ABOUT MARK SECTION (Light Background Edition)
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-[#1a2332] relative overflow-hidden">
+    <section id="about" className="py-24 relative overflow-hidden bg-white">
+      {/* Light Luxury Background Image */}
       <div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='xMidYMid slice'%3E%3Cpolygon fill='%231e3a2f' opacity='0.6' points='0,900 400,400 700,700 1000,300 1440,600 1440,900'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("https://images.unsplash.com/photo-1613490908592-5d97f2677118?auto=format&fit=crop&q=80&w=2000")`,
           backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
           {/* Left — Visual card */}
           <div className="relative">
             <div
-              className="rounded-2xl overflow-hidden bg-[#1e3a2f] border border-white/10 p-10 relative"
-              style={{ boxShadow: "0 24px 80px rgba(0,0,0,0.4)" }}
+              className="rounded-xl overflow-hidden bg-[#1e3a2f] border border-stone-200 p-10 relative"
+              style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}
             >
               <div
                 className="absolute top-0 left-0 w-24 h-1 rounded-br-sm"
                 style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }}
               />
+              
+              {/* Headshot added here */}
+              <div className="mb-8 w-32 h-32 rounded-full overflow-hidden border-2 border-[#c9a84c]">
+                <img src="/mark-headshot.jpg" alt="Mark Solomon" className="w-full h-full object-cover" />
+              </div>
+
               {/* Credential badges */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {[
-                  { icon: Medal, label: "CDR, U.S. Navy Reserves" },
-                  { icon: Shield, label: "Iraq · Djibouti Veteran" },
-                  { icon: Award, label: "20+ Years Real Estate" },
-                  { icon: Users, label: "VCP Co-Founder" },
+                  { icon: Shield, label: "Iraq Veteran" },
+                  { icon: Award, label: "20+ Years Real Estate Experience" },
+                  { icon: Users, label: "Charity Co-Founder" },
                 ].map((badge) => (
                   <div
                     key={badge.label}
@@ -404,49 +395,17 @@ function AboutSection() {
                 ))}
               </div>
 
-              <blockquote className="mb-6">
+              <blockquote>
                 <p
-                  className="text-2xl font-bold text-white leading-snug"
+                  className="text-2xl font-bold text-white leading-snug mb-6"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
-                  "Real estate is a negotiation. And I've negotiated in rooms
-                  where the stakes were considerably higher than a closing table."
+                  "The process of selling or buying a home should be precise, streamlined, and—above all—enjoyable. With 20+ years of experience and a background in real estate coaching and teaching classes on negotiation, I will provide you with a masterclass level of service and a clear path home."
                 </p>
               </blockquote>
               <p className="text-[#c9a84c] text-sm font-semibold">
-                — Mark Solomon, CDR USN (Reserve)
+                — Mark Solomon, REALTOR®
               </p>
-              <p className="text-stone-500 text-xs mt-1">
-                REALTOR® · REAL Broker, LLC · Colorado
-              </p>
-
-              <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-3 gap-4 text-center">
-                {[
-                  { val: "$1.5M", sub: "Raised for VCP" },
-                  { val: "22+", sub: "Married to Chasity" },
-                  { val: "U.S.", sub: "Citizen since 1995" },
-                ].map((item) => (
-                  <div key={item.sub}>
-                    <div
-                      className="text-2xl font-bold text-[#c9a84c]"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      {item.val}
-                    </div>
-                    <div className="text-stone-500 text-xs mt-0.5 leading-snug">
-                      {item.sub}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Floating VCP badge */}
-            <div className="absolute -bottom-5 -right-5 bg-[#c9a84c] rounded-xl px-4 py-3 text-[#1a2332] shadow-xl">
-              <p className="font-bold text-xs uppercase tracking-wider">
-                VCP Co-Founder
-              </p>
-              <p className="text-[10px] mt-0.5 opacity-75">Housing Homeless Veterans</p>
             </div>
           </div>
 
@@ -456,20 +415,20 @@ function AboutSection() {
               About Mark
             </span>
             <h2
-              className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5"
+              className="text-4xl md:text-5xl font-bold text-[#1a2332] leading-tight mb-5"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Built Different.
+              Masterclass Level of
               <span
                 className="block"
                 style={{
-                  background: "linear-gradient(90deg, #c9a84c, #d4a574)",
+                  background: "linear-gradient(90deg, #c9a84c, #b8865a)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}
               >
-                For Good Reason.
+                Service.
               </span>
             </h2>
             <span
@@ -477,69 +436,30 @@ function AboutSection() {
               style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }}
             />
 
-            <div className="space-y-5 text-stone-300 text-sm leading-relaxed">
+            <div className="space-y-5 text-stone-600 text-sm leading-relaxed">
               <p>
-                Mark Solomon arrived in the United States as an immigrant with
-                something most people spend a lifetime trying to earn: a genuine
-                appreciation for what this country offers. He became a U.S.
-                citizen in 1995 and hasn't wasted a day since.
+                Mark Solomon arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.
               </p>
               <p>
-                Today, he holds the rank of Commander (O-5) in the United States
-                Navy Reserves — a distinction earned through deployments to{" "}
-                <strong className="text-stone-200">Iraq</strong> and{" "}
-                <strong className="text-stone-200">Djibouti, Africa</strong>, and
-                more than two decades of military service. His two sons currently
-                serve in the Navy and are training for Air Force Special Forces.
-                Service isn't just a value in the Solomon household — it's the
-                baseline.
+                Today, after over two decades of military experience, he holds the rank of Commander (O-5) in the United States Navy Reserves — a distinction earned through a combat deployment to Iraq and deployments to other parts of the world. His two sons also joined the military. Service isn't just a value in the Solomon household — it's the baseline.
               </p>
               <p>
-                In real estate, Mark channels that same standard. Over 20 years
-                in the Colorado market have sharpened his instincts for pricing,
-                negotiation, and market timing into something approaching
-                clairvoyance — though he'd say it's just preparation meeting
-                opportunity. (Repeatedly. For two decades.)
+                In real estate, Mark channels that same standard. Licensed in real estate for over 20 years, experiencing various markets has sharpened his instincts for pricing, negotiation, and market timing into something approaching clairvoyance — though he'd say it's just preparation meeting opportunity. (Repeatedly. For two decades.)
               </p>
               <p>
-                His work extends well beyond the closing table. As a co-founder
-                of the{" "}
-                <strong className="text-stone-200">
-                  Veterans Community Project (VCP)
-                </strong>
-                , Mark helped raise{" "}
-                <strong className="text-[#c9a84c]">$1.5 million</strong>{" "}
-                specifically to house homeless veterans across Colorado — because
-                the people who defended this country's neighborhoods deserve to
-                live in one.
+                His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.
               </p>
               <p>
-                He is married to his wife,{" "}
-                <strong className="text-stone-200">Chasity</strong>, for over 22
-                years — a partnership that, by all available evidence, required
-                the exact same negotiation skills he brings to real estate. He
-                credits her entirely.
+                He is married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, required the exact same negotiation skills he brings to real estate. He credits her entirely.
               </p>
             </div>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                style={{
-                  background: "linear-gradient(135deg, #c9a84c, #b8965e)",
-                  color: "#1a2332",
-                  boxShadow: "0 4px 20px rgba(201,168,76,0.3)",
-                }}
-              >
-                Work With Mark
-                <ArrowRight size={14} />
-              </a>
-              <a
-                href="https://vcpkc.org"
+                href="https://www.vcp.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg border border-white/20 text-white text-sm font-semibold tracking-wider uppercase hover:bg-white/10 hover:border-white/40 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-stone-100 text-[#1a2332] text-sm font-semibold tracking-wider uppercase hover:bg-stone-200 transition-all duration-300 border border-stone-200"
               >
                 Learn About VCP
                 <Users size={14} />
@@ -563,22 +483,20 @@ function TestimonialsSection() {
   const next = () => setActive((a) => (a + 1) % total);
 
   useEffect(() => {
-    const interval = setInterval(next, 7000);
+    const interval = setInterval(next, 9000); // Slower interval for longer reviews
     return () => clearInterval(interval);
   }, []);
 
   const t = testimonials[active];
 
   return (
-    <section id="reviews" className="py-24 bg-[#f8f5f0] relative overflow-hidden">
-      {/* Decorative large quote mark */}
+    <section id="reviews" className="py-24 bg-stone-50 relative overflow-hidden">
       <div
-        className="absolute top-8 left-8 text-[#1e3a2f] select-none pointer-events-none"
+        className="absolute top-8 left-8 text-stone-200 select-none pointer-events-none"
         style={{
           fontFamily: "var(--font-display)",
           fontSize: "20rem",
           lineHeight: 1,
-          opacity: 0.04,
         }}
       >
         "
@@ -601,7 +519,7 @@ function TestimonialsSection() {
 
         <div
           key={active}
-          className="bg-white rounded-2xl p-10 md:p-14 shadow-xl border border-stone-100"
+          className="bg-white rounded-2xl p-10 md:p-14 shadow-editorial border border-stone-100"
           style={{ animation: "fadeInUp 0.5s ease forwards" }}
         >
           <div className="flex justify-center gap-1 mb-6">
@@ -610,18 +528,11 @@ function TestimonialsSection() {
             ))}
           </div>
           <p
-            className="text-stone-700 text-lg md:text-xl leading-relaxed mb-8 italic"
+            className="text-stone-700 text-lg md:text-xl leading-relaxed italic"
             style={{ fontFamily: "var(--font-display)" }}
           >
             "{t.text}"
           </p>
-          <div className="flex flex-col items-center gap-1">
-            <p className="font-bold text-[#1a2332] text-sm tracking-wide">{t.name}</p>
-            <p className="text-stone-400 text-xs flex items-center gap-1">
-              <MapPin size={11} />
-              {t.location}
-            </p>
-          </div>
         </div>
 
         {/* Controls */}
@@ -633,7 +544,7 @@ function TestimonialsSection() {
           >
             <ChevronLeft size={16} />
           </button>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap justify-center">
             {testimonials.map((_, i) => (
               <button
                 key={i}
@@ -661,16 +572,17 @@ function TestimonialsSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   CONTACT / GHL FORM SECTION
+   CONTACT / GHL FORM SECTION (Tabbed)
 ───────────────────────────────────────────────────────────── */
 function ContactSection() {
+  const [formType, setFormType] = useState('seller'); 
+  
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
     address: "",
-    serviceType: "",
     message: "",
     smsConsent: false,
   });
@@ -685,7 +597,6 @@ function ContactSection() {
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email))
       e.email = "A valid email is required.";
     if (!form.phone.trim()) e.phone = "Phone number is required.";
-    if (!form.serviceType) e.serviceType = "Please select a service type.";
     if (!form.smsConsent)
       e.smsConsent = "SMS consent is required to submit this form.";
     return e;
@@ -706,29 +617,18 @@ function ContactSection() {
     }
     setLoading(true);
     try {
-      // ── GHL WEBHOOK ENDPOINT ──
-      // Replace the URL below with your GoHighLevel webhook URL.
-      // Example: https://services.leadconnectorhq.com/hooks/YOUR-HOOK-ID/webhook-trigger
       const GHL_WEBHOOK_URL = "YOUR_GHL_WEBHOOK_URL_HERE";
-
       if (GHL_WEBHOOK_URL !== "YOUR_GHL_WEBHOOK_URL_HERE") {
         await fetch(GHL_WEBHOOK_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            first_name: form.firstName,
-            last_name: form.lastName,
-            email: form.email,
-            phone: form.phone,
-            address: form.address,
-            service_type: form.serviceType,
-            message: form.message,
-            sms_consent: form.smsConsent,
+            ...form,
+            service_type: formType,
             source: "Solomon Home Services Website",
           }),
         });
       } else {
-        // Simulated delay until webhook is configured
         await new Promise((r) => setTimeout(r, 1200));
       }
       setSubmitted(true);
@@ -747,23 +647,10 @@ function ContactSection() {
     }`;
 
   return (
-    <section
-      id="contact"
-      className="py-24 relative overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #f8f5f0 0%, #ede8e0 100%)" }}
-    >
-      <div
-        className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10 blur-3xl pointer-events-none"
-        style={{ background: "#c9a84c" }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-96 h-96 rounded-full opacity-8 blur-3xl pointer-events-none"
-        style={{ background: "#1e3a2f" }}
-      />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
+    <section id="contact" className="py-24 relative overflow-hidden bg-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left — Copy */}
+          
           <div className="lg:pt-4">
             <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.3em] uppercase block mb-3">
               Let's Connect
@@ -772,26 +659,22 @@ function ContactSection() {
               className="text-4xl md:text-5xl font-bold text-[#1a2332] leading-tight mb-5"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Get Your Home's{" "}
-              <span className="text-[#1e3a2f]">True Value.</span>
+              Start The <span className="text-[#1e3a2f]">Conversation.</span>
             </h2>
             <span
               className="block w-14 h-0.5 mb-7"
               style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }}
             />
             <p className="text-stone-600 text-base leading-relaxed mb-8">
-              No pressure. No algorithms. Just an honest assessment of your
-              home's value in today's market — backed by 20+ years of Front
-              Range experience and the kind of precision that comes from a
-              career spent not leaving things to chance.
+              No pressure. Just an honest assessment of your home's value or your buying potential in today's market — backed by 20+ years of experience and the kind of precision that comes from a career spent not leaving things to chance.
             </p>
 
             <div className="space-y-4">
               {[
-                "Complimentary Comparative Market Analysis (CMA)",
-                "Custom selling strategy for your home and timeline",
-                "Straight talk — no fluff, no overselling, no surprises",
-                "Military relocation support available (VA loans welcome)",
+                "Complimentary Comparative Market Analysis (CMA) for sellers",
+                "Strategic buyer education and clear path home",
+                "Custom selling or acquisition strategy for your timeline",
+                "Expert negotiation to protect your equity and investment",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <CheckCircle size={18} className="text-[#1e3a2f] shrink-0 mt-0.5" />
@@ -800,25 +683,15 @@ function ContactSection() {
               ))}
             </div>
 
-            {/* Direct contact info — real data */}
-            <div className="mt-10 p-6 bg-[#1a2332] rounded-2xl space-y-3">
-              <p
-                className="text-white font-semibold text-sm"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
+            <div className="mt-10 p-6 bg-stone-50 border border-stone-200 rounded-xl space-y-3">
+              <p className="text-[#1a2332] font-semibold text-sm font-display">
                 Prefer to reach out directly?
               </p>
-              <a
-                href="tel:+18168535467"
-                className="flex items-center gap-3 text-stone-300 hover:text-[#c9a84c] text-sm transition-colors"
-              >
+              <a href="tel:+18168535467" className="flex items-center gap-3 text-stone-600 hover:text-[#c9a84c] text-sm transition-colors">
                 <Phone size={15} className="text-[#c9a84c]" />
                 (816) 853-5467
               </a>
-              <a
-                href="mailto:mark@solomonhomeservices.com"
-                className="flex items-center gap-3 text-stone-300 hover:text-[#c9a84c] text-sm transition-colors"
-              >
+              <a href="mailto:mark@solomonhomeservices.com" className="flex items-center gap-3 text-stone-600 hover:text-[#c9a84c] text-sm transition-colors">
                 <Mail size={15} className="text-[#c9a84c]" />
                 mark@solomonhomeservices.com
               </a>
@@ -829,284 +702,108 @@ function ContactSection() {
             </div>
           </div>
 
-          {/* Right — Form */}
           <div>
             {submitted ? (
-              <div className="bg-white rounded-2xl p-12 text-center shadow-xl border border-stone-100 flex flex-col items-center justify-center min-h-[500px]">
-                <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-                  style={{ background: "rgba(30,58,47,0.1)" }}
-                >
+              <div className="bg-white rounded-2xl p-12 text-center shadow-editorial border border-stone-100 flex flex-col items-center justify-center min-h-[500px]">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-[#1e3a2f]/10">
                   <CheckCircle size={32} className="text-[#1e3a2f]" />
                 </div>
-                <h3
-                  className="text-2xl font-bold text-[#1a2332] mb-3"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
+                <h3 className="text-2xl font-bold text-[#1a2332] mb-3 font-display">
                   Message Received.
                 </h3>
                 <p className="text-stone-500 text-sm leading-relaxed max-w-xs">
                   Mark will be in touch within 24 hours. In the meantime, feel
                   free to browse current listings above.
                 </p>
-                <a
-                  href="#idx-listings"
-                  className="mt-8 inline-flex items-center gap-2 text-[#1e3a2f] text-sm font-semibold hover:text-[#c9a84c] transition-colors"
-                >
-                  Browse Listings <ArrowRight size={14} />
-                </a>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                noValidate
-                className="bg-white rounded-2xl p-8 md:p-10 shadow-xl border border-stone-100"
-              >
-                <h3
-                  className="text-xl font-bold text-[#1a2332] mb-6"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  Request a Free Home Valuation
-                </h3>
-
-                {/* Name row */}
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
-                      First Name <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={form.firstName}
-                      onChange={handleChange}
-                      placeholder="Mark"
-                      className={inputClass("firstName")}
-                      autoComplete="given-name"
-                    />
-                    {errors.firstName && (
-                      <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
-                      Last Name <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={form.lastName}
-                      onChange={handleChange}
-                      placeholder="Solomon"
-                      className={inputClass("lastName")}
-                      autoComplete="family-name"
-                    />
-                    {errors.lastName && (
-                      <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className="mb-4">
-                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
-                    Email Address <span className="text-red-400">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="you@example.com"
-                    className={inputClass("email")}
-                    autoComplete="email"
-                  />
-                  {errors.email && (
-                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                  )}
-                </div>
-
-                {/* Phone */}
-                <div className="mb-4">
-                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
-                    Phone Number <span className="text-red-400">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    placeholder="(816) 555-0100"
-                    className={inputClass("phone")}
-                    autoComplete="tel"
-                  />
-                  {errors.phone && (
-                    <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
-                  )}
-                </div>
-
-                {/* Property Address */}
-                <div className="mb-4">
-                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
-                    Property Address{" "}
-                    <span className="text-stone-400 font-normal normal-case">(optional)</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="address"
-                    value={form.address}
-                    onChange={handleChange}
-                    placeholder="123 Front Range Way, Longmont, CO"
-                    className={inputClass("address")}
-                    autoComplete="street-address"
-                  />
-                </div>
-
-                {/* Service Type */}
-                <div className="mb-4">
-                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
-                    I'm Looking To… <span className="text-red-400">*</span>
-                  </label>
-                  <select
-                    name="serviceType"
-                    value={form.serviceType}
-                    onChange={handleChange}
-                    className={`${inputClass("serviceType")} cursor-pointer`}
+              <div className="bg-white rounded-2xl shadow-editorial border border-stone-100 overflow-hidden">
+                <div className="flex border-b border-stone-100">
+                  <button 
+                    onClick={() => setFormType('seller')}
+                    className={`flex-1 py-4 text-sm font-semibold tracking-wider uppercase transition-colors ${formType === 'seller' ? 'bg-[#1e3a2f] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}
                   >
-                    <option value="">Select a service…</option>
-                    <option value="sell">Sell My Home</option>
-                    <option value="buy">Buy a Home</option>
-                    <option value="sell-buy">Sell &amp; Buy</option>
-                    <option value="military">Military Relocation (PCS)</option>
-                    <option value="value">Get a Home Valuation</option>
-                    <option value="other">Other / Just Exploring</option>
-                  </select>
-                  {errors.serviceType && (
-                    <p className="text-red-500 text-xs mt-1">{errors.serviceType}</p>
-                  )}
+                    I'm Selling
+                  </button>
+                  <button 
+                    onClick={() => setFormType('buyer')}
+                    className={`flex-1 py-4 text-sm font-semibold tracking-wider uppercase transition-colors ${formType === 'buyer' ? 'bg-[#1e3a2f] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}
+                  >
+                    I'm Buying
+                  </button>
                 </div>
 
-                {/* Message */}
-                <div className="mb-6">
-                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
-                    Message{" "}
-                    <span className="text-stone-400 font-normal normal-case">(optional)</span>
-                  </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    rows={3}
-                    placeholder="Tell me a bit about your situation, timeline, or any questions you have…"
-                    className={`${inputClass("message")} resize-none`}
-                  />
-                </div>
+                <form onSubmit={handleSubmit} noValidate className="p-8 md:p-10">
+                  <h3 className="text-xl font-bold text-[#1a2332] mb-6 font-display">
+                    {formType === 'seller' ? "Request a Free Home Valuation" : "Start Your Home Search"}
+                  </h3>
 
-                {/* ── A2P 10DLC SMS CONSENT — REQUIRED ── */}
-                <div
-                  className={`mb-6 p-4 rounded-xl border ${
-                    errors.smsConsent
-                      ? "border-red-300 bg-red-50"
-                      : "border-stone-200 bg-stone-50"
-                  }`}
-                >
-                  <label className="flex items-start gap-3 cursor-pointer group">
-                    <div className="relative mt-0.5 shrink-0">
-                      <input
-                        type="checkbox"
-                        name="smsConsent"
-                        checked={form.smsConsent}
-                        onChange={handleChange}
-                        className="sr-only"
-                      />
-                      <div
-                        className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${
-                          form.smsConsent
-                            ? "bg-[#1e3a2f] border-[#1e3a2f]"
-                            : "bg-white border-stone-300 group-hover:border-[#1e3a2f]"
-                        }`}
-                        onClick={() =>
-                          setForm((f) => ({ ...f, smsConsent: !f.smsConsent }))
-                        }
-                      >
-                        {form.smsConsent && (
-                          <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                            <path
-                              d="M1 4L3.5 6.5L9 1"
-                              stroke="white"
-                              strokeWidth="1.8"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        )}
-                      </div>
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+                        First Name <span className="text-red-400">*</span>
+                      </label>
+                      <input type="text" name="firstName" value={form.firstName} onChange={handleChange} className={inputClass("firstName")} />
                     </div>
-                    <span className="text-xs text-stone-600 leading-relaxed">
-                      <span className="font-semibold text-slate-700">
-                        SMS Consent (Required):
-                      </span>{" "}
-                      By providing your phone number, you agree to receive text
-                      messages from Solomon Home Services regarding your inquiry.
-                      Reply STOP to opt-out. Message/data rates apply.
-                    </span>
-                  </label>
-                  {errors.smsConsent && (
-                    <p className="text-red-500 text-xs mt-2 ml-8">
-                      {errors.smsConsent}
-                    </p>
-                  )}
-                </div>
-                {/* ── END SMS CONSENT ── */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+                        Last Name <span className="text-red-400">*</span>
+                      </label>
+                      <input type="text" name="lastName" value={form.lastName} onChange={handleChange} className={inputClass("lastName")} />
+                    </div>
+                  </div>
 
-                {/* Submit */}
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-4 rounded-lg font-semibold text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 hover:-translate-y-px hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
-                  style={{
-                    background: loading
-                      ? "#8c7a65"
-                      : "linear-gradient(135deg, #1e3a2f, #2d5a42)",
-                    color: "#fff",
-                    boxShadow: loading ? "none" : "0 4px 20px rgba(30,58,47,0.3)",
-                  }}
-                >
-                  {loading ? (
-                    <>
-                      <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="3" strokeOpacity="0.3" />
-                        <path d="M12 2a10 10 0 0 1 10 10" stroke="white" strokeWidth="3" strokeLinecap="round" />
-                      </svg>
-                      Sending…
-                    </>
-                  ) : (
-                    <>
-                      Get My Free Home Valuation
-                      <Send size={14} />
-                    </>
-                  )}
-                </button>
+                  <div className="mb-4">
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+                      Email Address <span className="text-red-400">*</span>
+                    </label>
+                    <input type="email" name="email" value={form.email} onChange={handleChange} className={inputClass("email")} />
+                  </div>
 
-                {/* Privacy / Terms */}
-                <p className="text-center text-xs text-stone-400 mt-4 leading-relaxed">
-                  By submitting, you agree to our{" "}
-                  <Link
-                    href="/privacy"
-                    className="text-[#1e3a2f] font-medium underline hover:text-[#c9a84c] transition-colors"
-                  >
-                    Privacy Policy
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="/terms"
-                    className="text-[#1e3a2f] font-medium underline hover:text-[#c9a84c] transition-colors"
-                  >
-                    Terms of Service
-                  </Link>
-                  .
-                </p>
-              </form>
+                  <div className="mb-4">
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+                      Phone Number <span className="text-red-400">*</span>
+                    </label>
+                    <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={inputClass("phone")} />
+                  </div>
+
+                  {formType === 'seller' && (
+                    <div className="mb-4">
+                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+                        Property Address
+                      </label>
+                      <input type="text" name="address" value={form.address} onChange={handleChange} placeholder="To be valued..." className={inputClass("address")} />
+                    </div>
+                  )}
+
+                  <div className="mb-6">
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+                      Message <span className="text-stone-400 font-normal normal-case">(optional)</span>
+                    </label>
+                    <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Tell me a bit about your situation..." className={`${inputClass("message")} resize-none`} />
+                  </div>
+
+                  <div className={`mb-6 p-4 rounded-xl border ${errors.smsConsent ? "border-red-300 bg-red-50" : "border-stone-200 bg-stone-50"}`}>
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <div className="relative mt-0.5 shrink-0">
+                        <input type="checkbox" name="smsConsent" checked={form.smsConsent} onChange={handleChange} className="sr-only" />
+                        <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${form.smsConsent ? "bg-[#1e3a2f] border-[#1e3a2f]" : "bg-white border-stone-300"}`} onClick={() => setForm((f) => ({ ...f, smsConsent: !f.smsConsent }))}>
+                          {form.smsConsent && (
+                            <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                          )}
+                        </div>
+                      </div>
+                      <span className="text-xs text-stone-600 leading-relaxed">
+                        <span className="font-semibold text-slate-700">SMS Consent (Required):</span> By providing your phone number, you agree to receive text messages regarding your inquiry. Reply STOP to opt-out. Msg/data rates apply.
+                      </span>
+                    </label>
+                  </div>
+
+                  <button type="submit" disabled={loading} className="w-full py-4 rounded-lg font-semibold text-sm tracking-wider uppercase flex items-center justify-center gap-2 bg-[#c9a84c] text-[#1a2332] hover:bg-[#b8965e] transition-colors duration-300 disabled:opacity-60">
+                    {loading ? "Sending..." : (formType === 'seller' ? "Get My Free Valuation" : "Let's Get Started")}
+                  </button>
+                </form>
+              </div>
             )}
           </div>
         </div>
@@ -1115,15 +812,12 @@ function ContactSection() {
   );
 }
 
-/* ─────────────────────────────────────────────────────────────
-   HOME PAGE — COMPOSED
-───────────────────────────────────────────────────────────── */
 export default function HomePage() {
   return (
     <>
       <HeroSection />
       <StatsBand />
-      <SellerValueProps />
+      <ValueProps />
       <IdxSection />
       <AboutSection />
       <TestimonialsSection />
