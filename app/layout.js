@@ -18,15 +18,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: "Solomon Home Services | Colorado Front Range Real Estate",
+  title: "Mark Solomon | Real Estate Expert | Colorado Front Range",
   description:
-    "Mark Solomon, REALTOR® — REAL Broker, LLC. Expert real estate services across the Colorado Front Range. Specializing in maximizing home value for sellers and seamless military relocations.",
+    "Mark Solomon is a Real Estate Broker with over 20 years of experience serving the Colorado Front Range. Expect tactical strategy, relentless negotiation, and a clear path home.",
   keywords:
-    "Colorado real estate, Front Range homes, sell your home, military relocation, REALTOR, Mark Solomon, REAL Broker LLC",
+    "Colorado Real Estate, Front Range Realtor, Mark Solomon, Military Relocation, Real Broker LLC, sell your home, Colorado Springs, Fort Collins, Denver",
   openGraph: {
-    title: "Solomon Home Services | Colorado Front Range Real Estate",
+    title: "Mark Solomon | Real Estate Expert | Colorado Front Range",
     description:
-      "Mark Solomon, REALTOR® — Expert real estate services across the Colorado Front Range.",
+      "Mark Solomon is a Real Estate Broker with over 20 years of experience serving the Colorado Front Range. Expect tactical strategy and relentless negotiation.",
     type: "website",
   },
 };
