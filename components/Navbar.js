@@ -95,7 +95,7 @@ export default function Navbar() {
             href="/#contact"
             className="ml-4 px-5 py-2.5 bg-[#c9a84c] hover:bg-[#b8965e] text-[#0f172a] text-sm font-semibold tracking-wider uppercase rounded transition-all duration-200 hover:shadow-lg hover:shadow-[#c9a84c]/25 hover:-translate-y-px"
           >
-            Get Your Value
+            Get Your House Value
           </Link>
         </div>
 
