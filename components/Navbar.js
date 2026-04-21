@@ -25,7 +25,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#1a2332]/95 backdrop-blur-md shadow-2xl shadow-black/20 py-3"
+          ? "bg-[#0f172a]/95 backdrop-blur-md shadow-2xl shadow-black/20 py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -43,7 +43,7 @@ export default function Navbar() {
             <div className="flex flex-col leading-none">
               <span
                 className={`text-lg font-semibold tracking-wide transition-colors duration-300 ${
-                  scrolled ? "text-white" : "text-[#1a2332]"
+                  scrolled ? "text-white" : "text-[#0f172a]"
                 }`}
                 style={{ fontFamily: "var(--font-display)" }}
               >
@@ -77,7 +77,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-sm font-medium tracking-widest uppercase transition-colors duration-200 relative group ${
-                scrolled ? "text-stone-200 hover:text-[#c9a84c]" : "text-slate-600 hover:text-[#1a2332]"
+                scrolled ? "text-stone-200 hover:text-[#c9a84c]" : "text-slate-600 hover:text-[#0f172a]"
               }`}
             >
               {link.label}
@@ -86,7 +86,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/#contact"
-            className="ml-4 px-5 py-2.5 bg-[#c9a84c] hover:bg-[#b8965e] text-[#1a2332] text-sm font-semibold tracking-wider uppercase rounded transition-all duration-200 hover:shadow-lg hover:shadow-[#c9a84c]/25 hover:-translate-y-px"
+            className="ml-4 px-5 py-2.5 bg-[#c9a84c] hover:bg-[#b8965e] text-[#0f172a] text-sm font-semibold tracking-wider uppercase rounded transition-all duration-200 hover:shadow-lg hover:shadow-[#c9a84c]/25 hover:-translate-y-px"
           >
             Get Your Value
           </Link>
@@ -96,7 +96,7 @@ export default function Navbar() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`md:hidden transition-colors ${
-             scrolled ? "text-white hover:text-[#c9a84c]" : "text-[#1a2332] hover:text-[#c9a84c]"
+             scrolled ? "text-white hover:text-[#c9a84c]" : "text-[#0f172a] hover:text-[#c9a84c]"
           }`}
           aria-label="Toggle menu"
         >
@@ -110,7 +110,7 @@ export default function Navbar() {
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-[#1a2332]/98 backdrop-blur-md border-t border-white/10 px-6 py-6 flex flex-col gap-5">
+        <div className="bg-[#0f172a]/98 backdrop-blur-md border-t border-white/10 px-6 py-6 flex flex-col gap-5">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -124,7 +124,7 @@ export default function Navbar() {
           <Link
             href="/#contact"
             onClick={() => setIsOpen(false)}
-            className="mt-2 px-5 py-3 bg-[#c9a84c] hover:bg-[#b8965e] text-[#1a2332] text-sm font-semibold tracking-wider uppercase rounded text-center transition-colors duration-200"
+            className="mt-2 px-5 py-3 bg-[#c9a84c] hover:bg-[#b8965e] text-[#0f172a] text-sm font-semibold tracking-wider uppercase rounded text-center transition-colors duration-200"
           >
             Get Your Home's Value
           </Link>
