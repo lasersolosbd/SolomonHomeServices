@@ -618,4 +618,112 @@ function ContactSection() {
                   {/* SELLER FIELDS */}
                   {formType === 'seller' && (
                     <>
-                      <div className="
+                      <div className="mb-4">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Property Address <span className="text-red-500 ml-1">{errors.address || "*"}</span></label>
+                        <input type="text" name="address" value={form.address} onChange={handleChange} className={inputClass("address")} />
+                      </div>
+                      <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Timeframe <span className="text-red-500 ml-1">{errors.timeframe || "*"}</span></label>
+                           <input type="text" name="timeframe" value={form.timeframe} onChange={handleChange} placeholder="e.g. ASAP, 3 months" className={inputClass("timeframe")} />
+                        </div>
+                        <div>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Moving To <span className="text-red-500 ml-1">{errors.movingTo || "*"}</span></label>
+                           <input type="text" name="movingTo" value={form.movingTo} onChange={handleChange} placeholder="City, State" className={inputClass("movingTo")} />
+                        </div>
+                      </div>
+                      <div className="mb-4">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Are you currently working with an Agent? <span className="text-red-500 ml-1">{errors.workingWithAgent || "*"}</span></label>
+                        <div className="flex gap-4 mt-2">
+                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="yes" checked={form.workingWithAgent === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
+                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="no" checked={form.workingWithAgent === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* BUYER FIELDS */}
+                  {formType === 'buyer' && (
+                    <>
+                      <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Current Residence <span className="text-red-500 ml-1">{errors.rentOrOwn || "*"}</span></label>
+                           <select name="rentOrOwn" value={form.rentOrOwn} onChange={handleChange} className={inputClass("rentOrOwn")}>
+                             <option value="">Select...</option><option value="rent">Rent</option><option value="own">Own</option>
+                           </select>
+                        </div>
+                        <div>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Move Timeframe <span className="text-red-500 ml-1">{errors.buyTimeframe || "*"}</span></label>
+                           <input type="text" name="buyTimeframe" value={form.buyTimeframe} onChange={handleChange} placeholder="e.g. ASAP, 6 months" className={inputClass("buyTimeframe")} />
+                        </div>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First time home purchase? <span className="text-red-500 ml-1">{errors.firstTimeBuyer || "*"}</span></label>
+                        <div className="flex gap-4 mt-2">
+                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="yes" checked={form.firstTimeBuyer === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
+                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="no" checked={form.firstTimeBuyer === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
+                        </div>
+                      </div>
+
+                      {form.firstTimeBuyer === "no" && (
+                        <div className="mb-4">
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Last time you bought/sold? <span className="text-red-500 ml-1">{errors.lastBought || "*"}</span></label>
+                          <select name="lastBought" value={form.lastBought} onChange={handleChange} className={inputClass("lastBought")}>
+                             <option value="">Select...</option>
+                             <option value="0-3">0-3 years ago</option>
+                             <option value="4-6">4-6 years ago</option>
+                             <option value="7+">7+ years ago</option>
+                          </select>
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  <div className="mb-6 mt-4">
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+                      Message <span className="text-stone-400 font-normal normal-case">(optional)</span>
+                    </label>
+                    <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Please tell me the best way I can be of assistance." className={`${inputClass("message")} resize-none`} />
+                  </div>
+
+                  <div className={`mb-6 p-4 rounded-xl border ${errors.smsConsent ? "border-red-400 bg-red-50" : "border-stone-200 bg-stone-50"}`}>
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <div className="relative mt-0.5 shrink-0">
+                        <input type="checkbox" name="smsConsent" checked={form.smsConsent} onChange={handleChange} className="sr-only" />
+                        <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${form.smsConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`} onClick={() => setForm((f) => ({ ...f, smsConsent: !f.smsConsent }))}>
+                          {form.smsConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
+                        </div>
+                      </div>
+                      <span className="text-xs text-stone-600 leading-relaxed">
+                        <span className="font-semibold text-slate-700">SMS Consent (Required):</span> By providing your phone number, you agree to receive text messages regarding your inquiry. Reply STOP to opt-out. Msg/data rates apply.
+                      </span>
+                    </label>
+                  </div>
+
+                  <button type="submit" disabled={loading} className="w-full py-4 rounded-lg font-semibold text-sm tracking-wider uppercase flex items-center justify-center gap-2 bg-[#c9a84c] text-[#0f172a] hover:bg-[#b8965e] transition-colors duration-300 disabled:opacity-60">
+                    {loading ? "Sending..." : (formType === 'seller' ? "Get My Free Valuation" : "Let's Get Started")}
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <>
+      <HeroSection />
+      <StatsBand />
+      <ValueProps />
+      <IdxSection />
+      <AboutSection />
+      <TestimonialsSection />
+      <ContactSection />
+    </>
+  );
+}
