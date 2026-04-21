@@ -241,7 +241,7 @@ function ValueProps() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   IDX LISTINGS SECTION (Disclaimer Removed)
+   IDX LISTINGS SECTION (Tabbed Interface)
 ───────────────────────────────────────────────────────────── */
 function IdxSection() {
   const [activeTab, setActiveTab] = useState('search');
@@ -301,7 +301,7 @@ function IdxSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   ABOUT MARK SECTION
+   ABOUT MARK SECTION (Headshot Zoomed + REALTOR Badges/Logos)
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
@@ -309,26 +309,53 @@ function AboutSection() {
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1613490908592-5d97f2677118?auto=format&fit=crop&q=80&w=2000")`, backgroundSize: "cover", backgroundPosition: "center" }} />
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Left — Visual card */}
           <div className="relative">
             <div className="rounded-xl overflow-hidden bg-[#0f172a] border border-stone-200 p-8 md:p-10 relative" style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
               <div className="absolute top-0 left-0 w-24 h-1 rounded-br-sm" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
+              
+              {/* User update 1: Headshot Zoom (scale + origin-top within the frame) */}
               <div className="mb-8 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden border-2 border-[#c9a84c] shadow-inner relative">
-                <img src="/Mark-headshot.JPG" alt="Commander Mark Solomon" className="w-full h-full object-cover object-top" />
+                <img src="/Mark-headshot.JPG" alt="Commander Mark Solomon" className="w-full h-full object-cover scale-125 origin-top" />
               </div>
+
+              {/* Credential badges */}
               <div className="flex flex-wrap gap-3 mb-8">
-                {[{ icon: Shield, label: "Iraq Veteran" }, { icon: Award, label: "20+ Years Real Estate Experience" }, { icon: Users, label: "Charity Co-Founder" }].map((badge) => (
-                  <div key={badge.label} className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 bg-white/5">
+                {[
+                  { icon: Shield, label: "Iraq Veteran" },
+                  // User update 2: Proper trademark REALTOR text
+                  { icon: Award, label: "20+ Years as a REALTOR®" }, 
+                  { icon: Users, label: "Charity Co-Founder" },
+                ].map((badge) => (
+                  <div
+                    key={badge.label}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 bg-white/5"
+                  >
                     <badge.icon size={12} className="text-[#c9a84c]" />
                     <span className="text-stone-300 text-xs font-medium">{badge.label}</span>
                   </div>
                 ))}
               </div>
+
               <blockquote>
                 <p className="text-2xl font-bold text-white leading-snug mb-6" style={{ fontFamily: "var(--font-display)" }}>
                   "The process of selling or buying a home should be precise, streamlined, and—above all—enjoyable. With 20+ years of experience and a background in real estate coaching, I will provide you with a masterclass level of service and a clear path home."
                 </p>
               </blockquote>
-              <p className="text-[#c9a84c] text-sm font-semibold">— Mark Solomon, REALTOR®</p>
+
+              {/* User update 3: NAR REALTOR Logo (Mandatory placement rule with context) */}
+              <div className="flex items-end justify-between gap-6 pt-6 mt-6 border-t border-white/10">
+                <p className="text-[#c9a84c] text-sm font-semibold shrink">
+                  — Mark Solomon, REALTOR®
+                </p>
+                <img 
+                  src="/nar_membershipmark_white.png" 
+                  alt="REALTOR® membership mark" 
+                  className="h-12 w-auto shrink-0 mb-[-6px]" // mb-[-6px] aligns the bottom properly
+                />
+              </div>
+
             </div>
           </div>
 
@@ -368,7 +395,7 @@ function AboutSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   TESTIMONIALS SECTION
+   TESTIMONIALS SECTION (Min-H heavily increased to prevent jumps)
 ───────────────────────────────────────────────────────────── */
 function TestimonialsSection() {
   const [active, setActive] = useState(0);
@@ -397,6 +424,7 @@ function TestimonialsSection() {
         </h2>
         <span className="block w-14 h-0.5 mx-auto mb-16" style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }} />
 
+        {/* FIX: min-h locks the section height to handle the longest review without jumping */}
         <div key={active} className="bg-white rounded-2xl p-8 md:p-14 shadow-editorial border border-stone-100 min-h-[550px] md:min-h-[400px] flex flex-col justify-center items-center" style={{ animation: "fadeInUp 0.5s ease forwards" }}>
           <div className="flex justify-center gap-1 mb-6">
             {Array.from({ length: t.stars }).map((_, i) => (
@@ -408,16 +436,17 @@ function TestimonialsSection() {
           </p>
         </div>
 
+        {/* Testimonial Controls */}
         <div className="flex items-center justify-center gap-6 mt-8">
-          <button onClick={prev} className="w-10 h-10 rounded-full border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200">
+          <button onClick={prev} className="w-10 h-10 rounded-full border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200" aria-label="Previous story">
             <ChevronLeft size={16} />
           </button>
           <div className="flex gap-2 flex-wrap justify-center">
             {testimonials.map((_, i) => (
-              <button key={i} onClick={() => setActive(i)} className={`rounded-full transition-all duration-300 ${i === active ? "w-6 h-2 bg-[#c9a84c]" : "w-2 h-2 bg-stone-300 hover:bg-stone-400"}`} />
+              <button key={i} onClick={() => setActive(i)} className={`rounded-full transition-all duration-300 ${i === active ? "w-6 h-2 bg-[#c9a84c]" : "w-2 h-2 bg-stone-300 hover:bg-stone-400"}`} aria-label={`Story ${i+1}`}/>
             ))}
           </div>
-          <button onClick={next} className="w-10 h-10 rounded-full border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200">
+          <button onClick={next} className="w-10 h-10 rounded-full border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200" aria-label="Next story">
             <ChevronRight size={16} />
           </button>
         </div>
@@ -427,7 +456,7 @@ function TestimonialsSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   CONTACT / GHL FORM SECTION (Asterisks fixed)
+   CONTACT / GHL FORM SECTION
 ───────────────────────────────────────────────────────────── */
 function ContactSection() {
   const [formType, setFormType] = useState('seller'); 
@@ -558,25 +587,25 @@ function ContactSection() {
                     {formType === 'seller' ? "Request a Free Home Valuation" : "Start Your Home Search"}
                   </h3>
 
-                  {/* STANDARD FIELDS - Justify removed to fix asterisks */}
+                  {/* STANDARD FIELDS */}
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First Name <span className="text-red-400 ml-1">{errors.firstName || "*"}</span></label>
+                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">First Name <span className="text-red-400">{errors.firstName || "*"}</span></label>
                       <input type="text" name="firstName" value={form.firstName} onChange={handleChange} className={inputClass("firstName")} />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Last Name <span className="text-red-400 ml-1">{errors.lastName || "*"}</span></label>
+                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Last Name <span className="text-red-400">{errors.lastName || "*"}</span></label>
                       <input type="text" name="lastName" value={form.lastName} onChange={handleChange} className={inputClass("lastName")} />
                     </div>
                   </div>
 
                   <div className="mb-4">
-                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Email Address <span className="text-red-400 ml-1">{errors.email || "*"}</span></label>
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Email Address <span className="text-red-400">{errors.email || "*"}</span></label>
                     <input type="email" name="email" value={form.email} onChange={handleChange} className={inputClass("email")} />
                   </div>
 
                   <div className="mb-4">
-                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Phone Number <span className="text-red-400 ml-1">{errors.phone || "*"}</span></label>
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Phone Number <span className="text-red-400">{errors.phone || "*"}</span></label>
                     <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={inputClass("phone")} />
                   </div>
 
@@ -584,22 +613,22 @@ function ContactSection() {
                   {formType === 'seller' && (
                     <>
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Property Address <span className="text-red-400 ml-1">{errors.address || "*"}</span></label>
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Property Address <span className="text-red-400">{errors.address || "*"}</span></label>
                         <input type="text" name="address" value={form.address} onChange={handleChange} className={inputClass("address")} />
                       </div>
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Timeframe <span className="text-red-400 ml-1">{errors.timeframe || "*"}</span></label>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Timeframe <span className="text-red-400">{errors.timeframe || "*"}</span></label>
                            <input type="text" name="timeframe" value={form.timeframe} onChange={handleChange} placeholder="e.g. ASAP, 3 months" className={inputClass("timeframe")} />
                         </div>
                         <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Moving To <span className="text-red-400 ml-1">{errors.movingTo || "*"}</span></label>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Moving To <span className="text-red-400">{errors.movingTo || "*"}</span></label>
                            <input type="text" name="movingTo" value={form.movingTo} onChange={handleChange} placeholder="City, State" className={inputClass("movingTo")} />
                         </div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Are you currently working with an Agent? <span className="text-red-400 ml-1">{errors.workingWithAgent || "*"}</span></label>
-                        <div className="flex gap-4 mt-2">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Are you currently working with an Agent? <span className="text-red-400">{errors.workingWithAgent || "*"}</span></label>
+                        <div className="flex gap-4">
                           <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="yes" checked={form.workingWithAgent === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
                           <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="no" checked={form.workingWithAgent === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
                         </div>
@@ -612,20 +641,20 @@ function ContactSection() {
                     <>
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Current Residence <span className="text-red-400 ml-1">{errors.rentOrOwn || "*"}</span></label>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Current Residence <span className="text-red-400">{errors.rentOrOwn || "*"}</span></label>
                            <select name="rentOrOwn" value={form.rentOrOwn} onChange={handleChange} className={inputClass("rentOrOwn")}>
                              <option value="">Select...</option><option value="rent">Rent</option><option value="own">Own</option>
                            </select>
                         </div>
                         <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Move Timeframe <span className="text-red-400 ml-1">{errors.buyTimeframe || "*"}</span></label>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Move Timeframe <span className="text-red-400">{errors.buyTimeframe || "*"}</span></label>
                            <input type="text" name="buyTimeframe" value={form.buyTimeframe} onChange={handleChange} placeholder="e.g. ASAP, 6 months" className={inputClass("buyTimeframe")} />
                         </div>
                       </div>
                       
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First time home purchase? <span className="text-red-400 ml-1">{errors.firstTimeBuyer || "*"}</span></label>
-                        <div className="flex gap-4 mt-2">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">First time home purchase? <span className="text-red-400">{errors.firstTimeBuyer || "*"}</span></label>
+                        <div className="flex gap-4">
                           <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="yes" checked={form.firstTimeBuyer === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
                           <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="no" checked={form.firstTimeBuyer === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
                         </div>
@@ -633,7 +662,7 @@ function ContactSection() {
 
                       {form.firstTimeBuyer === "no" && (
                         <div className="mb-4">
-                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Last time you bought/sold? <span className="text-red-400 ml-1">{errors.lastBought || "*"}</span></label>
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Last time you bought/sold? <span className="text-red-400">{errors.lastBought || "*"}</span></label>
                           <select name="lastBought" value={form.lastBought} onChange={handleChange} className={inputClass("lastBought")}>
                              <option value="">Select...</option>
                              <option value="0-3">0-3 years ago</option>
@@ -652,12 +681,14 @@ function ContactSection() {
                     <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Please tell me the best way I can be of assistance." className={`${inputClass("message")} resize-none`} />
                   </div>
 
-                  <div className={`mb-6 p-4 rounded-xl border ${errors.smsConsent ? "border-red-400 bg-red-50" : "border-stone-200 bg-stone-50"}`}>
+                  <div className={`mb-6 p-4 rounded-xl border ${errors.smsConsent ? "border-red-300 bg-red-50" : "border-stone-200 bg-stone-50"}`}>
                     <label className="flex items-start gap-3 cursor-pointer group">
                       <div className="relative mt-0.5 shrink-0">
                         <input type="checkbox" name="smsConsent" checked={form.smsConsent} onChange={handleChange} className="sr-only" />
                         <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${form.smsConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`} onClick={() => setForm((f) => ({ ...f, smsConsent: !f.smsConsent }))}>
-                          {form.smsConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
+                          {form.smsConsent && (
+                            <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                          )}
                         </div>
                       </div>
                       <span className="text-xs text-stone-600 leading-relaxed">
