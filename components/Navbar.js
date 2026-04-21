@@ -2,17 +2,24 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Mountain } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check on mount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // If we are not on the home page, force the dark navigation style
+  const isHome = pathname === "/";
+  const forceDarkNav = !isHome || scrolled;
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -24,7 +31,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+        forceDarkNav
           ? "bg-[#0f172a]/95 backdrop-blur-md shadow-2xl shadow-black/20 py-3"
           : "bg-transparent py-5"
       }`}
@@ -43,7 +50,7 @@ export default function Navbar() {
             <div className="flex flex-col leading-none">
               <span
                 className={`text-lg font-semibold tracking-wide transition-colors duration-300 ${
-                  scrolled ? "text-white" : "text-[#0f172a]"
+                  forceDarkNav ? "text-white" : "text-[#0f172a]"
                 }`}
                 style={{ fontFamily: "var(--font-display)" }}
               >
@@ -58,13 +65,13 @@ export default function Navbar() {
           {/* 2. Co-Branding Divider Line */}
           <div 
             className={`w-px h-8 transition-colors duration-300 ${
-              scrolled ? "bg-white/20" : "bg-stone-300"
+              forceDarkNav ? "bg-white/20" : "bg-stone-300"
             }`}
           ></div>
 
-          {/* 3. Real Broker Logo (Swaps on Scroll) */}
+          {/* 3. Real Broker Logo (Swaps based on forced dark nav or scroll) */}
           <img 
-            src={scrolled ? "/real-broker-logo-light.png" : "/real-broker-logo-dark.png"} 
+            src={forceDarkNav ? "/real-broker-logo-light.png" : "/real-broker-logo-dark.png"} 
             alt="Real Broker, LLC" 
             className="h-6 w-auto object-contain transition-opacity duration-300"
           />
@@ -77,7 +84,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-sm font-medium tracking-widest uppercase transition-colors duration-200 relative group ${
-                scrolled ? "text-stone-200 hover:text-[#c9a84c]" : "text-slate-600 hover:text-[#0f172a]"
+                forceDarkNav ? "text-stone-200 hover:text-[#c9a84c]" : "text-slate-600 hover:text-[#0f172a]"
               }`}
             >
               {link.label}
@@ -96,7 +103,7 @@ export default function Navbar() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`md:hidden transition-colors ${
-             scrolled ? "text-white hover:text-[#c9a84c]" : "text-[#0f172a] hover:text-[#c9a84c]"
+             forceDarkNav ? "text-white hover:text-[#c9a84c]" : "text-[#0f172a] hover:text-[#c9a84c]"
           }`}
           aria-label="Toggle menu"
         >
