@@ -18,7 +18,8 @@ import {
   Send,
   Target,
   Key,
-  Map
+  Map,
+  Search
 } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────────────
@@ -240,10 +241,11 @@ function ValueProps() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   IDX LISTINGS SECTION (Lazy Loading Fixed)
+   IDX LISTINGS SECTION (Click-to-Load Fix applied)
 ───────────────────────────────────────────────────────────── */
 function IdxSection() {
   const [activeTab, setActiveTab] = useState('search');
+  const [iframeLoaded, setIframeLoaded] = useState(false);
 
   return (
     <section id="idx-listings" className="py-24 bg-white">
@@ -278,14 +280,33 @@ function IdxSection() {
           Note: If no properties appear in "My Listings", inventory is currently sold out. Please use "MLS Search".
         </p>
 
-        <div className="w-full h-[600px] bg-stone-50 rounded-sm shadow-editorial border border-stone-100 overflow-hidden relative">
-          <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-             {/* LOADING="LAZY" PREVENTS THE AUTO-SCROLLING ISSUE ON PAGE LOAD */}
-             <iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
-          </div>
-          <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-             <iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
-          </div>
+        <div className="w-full h-[600px] bg-stone-50 rounded-sm shadow-editorial border border-stone-100 overflow-hidden relative flex items-center justify-center">
+          
+          {!iframeLoaded ? (
+            <div className="text-center p-8 z-20 flex flex-col items-center bg-white border border-stone-200 rounded-xl shadow-sm max-w-lg">
+              <Search size={48} className="text-[#c9a84c] mb-4" />
+              <h3 className="text-2xl font-bold text-[#0f172a] mb-3" style={{ fontFamily: "var(--font-display)" }}>Live MLS Connection</h3>
+              <p className="text-stone-500 mb-8 leading-relaxed">
+                Connect directly to the REcolorado live database to explore current active properties across the Front Range.
+              </p>
+              <button 
+                onClick={() => setIframeLoaded(true)}
+                className="px-8 py-3.5 bg-[#0f172a] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] transition-colors rounded-lg flex items-center gap-2"
+              >
+                Load Live Database <ArrowRight size={16} />
+              </button>
+            </div>
+          ) : (
+            <>
+              <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                 <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
+              </div>
+              <div className={`absolute inset-0 transition-opacity duration-500 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                 <iframe src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
+              </div>
+            </>
+          )}
+
         </div>
 
         <div className="mt-12 text-center">
@@ -300,7 +321,7 @@ function IdxSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   ABOUT MARK SECTION (Headshot shift and zoom applied)
+   ABOUT MARK SECTION (Zoom Removed, Standard Cover applied)
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
@@ -314,9 +335,9 @@ function AboutSection() {
             <div className="rounded-xl overflow-hidden bg-[#0f172a] border border-stone-200 p-8 md:p-10 relative" style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
               <div className="absolute top-0 left-0 w-24 h-1 rounded-br-sm" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
               
-              {/* Headshot: Zoomed 135% and focus shifted slightly left (40%) to eliminate dead space on the right */}
+              {/* Headshot: Zoom class completely removed. Reverted to standard cover to respect your manual crop. */}
               <div className="mb-8 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden border-2 border-[#c9a84c] shadow-inner relative">
-                <img src="/Mark-headshot.JPG" alt="Commander Mark Solomon" className="w-full h-full object-cover scale-[1.35] object-[40%_10%]" />
+                <img src="/Mark-headshot.JPG" alt="Commander Mark Solomon" className="w-full h-full object-cover object-center" />
               </div>
 
               <div className="flex flex-wrap gap-3 mb-8">
@@ -442,7 +463,7 @@ function TestimonialsSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   CONTACT / GHL FORM SECTION (Asterisks Tightened)
+   CONTACT / GHL FORM SECTION
 ───────────────────────────────────────────────────────────── */
 function ContactSection() {
   const [formType, setFormType] = useState('seller'); 
@@ -573,7 +594,6 @@ function ContactSection() {
                     {formType === 'seller' ? "Request a Free Home Valuation" : "Start Your Home Search"}
                   </h3>
 
-                  {/* LABELS FIXED: justify-between completely removed so asterisks sit next to text */}
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
                       <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First Name <span className="text-red-500 ml-1">{errors.firstName || "*"}</span></label>
@@ -598,112 +618,4 @@ function ContactSection() {
                   {/* SELLER FIELDS */}
                   {formType === 'seller' && (
                     <>
-                      <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Property Address <span className="text-red-500 ml-1">{errors.address || "*"}</span></label>
-                        <input type="text" name="address" value={form.address} onChange={handleChange} className={inputClass("address")} />
-                      </div>
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Timeframe <span className="text-red-500 ml-1">{errors.timeframe || "*"}</span></label>
-                           <input type="text" name="timeframe" value={form.timeframe} onChange={handleChange} placeholder="e.g. ASAP, 3 months" className={inputClass("timeframe")} />
-                        </div>
-                        <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Moving To <span className="text-red-500 ml-1">{errors.movingTo || "*"}</span></label>
-                           <input type="text" name="movingTo" value={form.movingTo} onChange={handleChange} placeholder="City, State" className={inputClass("movingTo")} />
-                        </div>
-                      </div>
-                      <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Are you currently working with an Agent? <span className="text-red-500 ml-1">{errors.workingWithAgent || "*"}</span></label>
-                        <div className="flex gap-4 mt-2">
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="yes" checked={form.workingWithAgent === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="no" checked={form.workingWithAgent === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  {/* BUYER FIELDS */}
-                  {formType === 'buyer' && (
-                    <>
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Current Residence <span className="text-red-500 ml-1">{errors.rentOrOwn || "*"}</span></label>
-                           <select name="rentOrOwn" value={form.rentOrOwn} onChange={handleChange} className={inputClass("rentOrOwn")}>
-                             <option value="">Select...</option><option value="rent">Rent</option><option value="own">Own</option>
-                           </select>
-                        </div>
-                        <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Move Timeframe <span className="text-red-500 ml-1">{errors.buyTimeframe || "*"}</span></label>
-                           <input type="text" name="buyTimeframe" value={form.buyTimeframe} onChange={handleChange} placeholder="e.g. ASAP, 6 months" className={inputClass("buyTimeframe")} />
-                        </div>
-                      </div>
-                      
-                      <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First time home purchase? <span className="text-red-500 ml-1">{errors.firstTimeBuyer || "*"}</span></label>
-                        <div className="flex gap-4 mt-2">
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="yes" checked={form.firstTimeBuyer === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="no" checked={form.firstTimeBuyer === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
-                        </div>
-                      </div>
-
-                      {form.firstTimeBuyer === "no" && (
-                        <div className="mb-4">
-                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Last time you bought/sold? <span className="text-red-500 ml-1">{errors.lastBought || "*"}</span></label>
-                          <select name="lastBought" value={form.lastBought} onChange={handleChange} className={inputClass("lastBought")}>
-                             <option value="">Select...</option>
-                             <option value="0-3">0-3 years ago</option>
-                             <option value="4-6">4-6 years ago</option>
-                             <option value="7+">7+ years ago</option>
-                          </select>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  <div className="mb-6 mt-4">
-                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
-                      Message <span className="text-stone-400 font-normal normal-case">(optional)</span>
-                    </label>
-                    <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Please tell me the best way I can be of assistance." className={`${inputClass("message")} resize-none`} />
-                  </div>
-
-                  <div className={`mb-6 p-4 rounded-xl border ${errors.smsConsent ? "border-red-400 bg-red-50" : "border-stone-200 bg-stone-50"}`}>
-                    <label className="flex items-start gap-3 cursor-pointer group">
-                      <div className="relative mt-0.5 shrink-0">
-                        <input type="checkbox" name="smsConsent" checked={form.smsConsent} onChange={handleChange} className="sr-only" />
-                        <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${form.smsConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`} onClick={() => setForm((f) => ({ ...f, smsConsent: !f.smsConsent }))}>
-                          {form.smsConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
-                        </div>
-                      </div>
-                      <span className="text-xs text-stone-600 leading-relaxed">
-                        <span className="font-semibold text-slate-700">SMS Consent (Required):</span> By providing your phone number, you agree to receive text messages regarding your inquiry. Reply STOP to opt-out. Msg/data rates apply.
-                      </span>
-                    </label>
-                  </div>
-
-                  <button type="submit" disabled={loading} className="w-full py-4 rounded-lg font-semibold text-sm tracking-wider uppercase flex items-center justify-center gap-2 bg-[#c9a84c] text-[#0f172a] hover:bg-[#b8965e] transition-colors duration-300 disabled:opacity-60">
-                    {loading ? "Sending..." : (formType === 'seller' ? "Get My Free Valuation" : "Let's Get Started")}
-                  </button>
-                </form>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export default function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <StatsBand />
-      <ValueProps />
-      <IdxSection />
-      <AboutSection />
-      <TestimonialsSection />
-      <ContactSection />
-    </>
-  );
-}
+                      <div className="
