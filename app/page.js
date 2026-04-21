@@ -241,7 +241,7 @@ function ValueProps() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   IDX LISTINGS SECTION (With legal boilerplate)
+   IDX LISTINGS SECTION (Disclaimer Removed)
 ───────────────────────────────────────────────────────────── */
 function IdxSection() {
   const [activeTab, setActiveTab] = useState('search');
@@ -295,25 +295,6 @@ function IdxSection() {
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </a>
         </div>
-
-        {/* RECOLORADO COMPLIANCE BOILERPLATE */}
-        <div className="mt-16 p-6 bg-stone-50 border border-stone-200 rounded-lg text-[10px] text-stone-500 leading-relaxed space-y-4 max-w-5xl mx-auto">
-          <p>
-            <strong>IDX DISCLAIMER.</strong> “The content relating to real estate for sale in this Web site comes in part from the Internet Data eXchange (“IDX”) program of METROLIST, INC., DBA RECOLORADO® Real estate listings held by brokers other than Real Broker, LLC DBA Real are marked with the IDX Logo. This information is being provided for the consumers’ personal, non‐commercial use and may not be used for any other purpose. All information subject to change and should be independently verified.”
-          </p>
-          <p>
-            This publication is designed to provide information with regard to the subject matter covered. It is displayed with the understanding that the publisher and authors are not engaged in rendering real estate, legal, accounting, tax, or other professional services and that the publisher and authors are not offering such advice in this publication. If real estate, legal, or other expert assistance is required, the services of a competent, professional person should be sought.
-          </p>
-          <p>
-            The information contained in this publication is subject to change without notice. METROLIST, INC., DBA RECOLORADO MAKES NO WARRANTY OF ANY KIND WITH REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. METROLIST, INC., DBA RECOLORADO SHALL NOT BE LIABLE FOR ERRORS CONTAINED HEREIN OR FOR ANY DAMAGES IN CONNECTION WITH THE FURNISHING, PERFORMANCE, OR USE OF THIS MATERIAL.
-          </p>
-          <p>
-            <strong>PUBLISHER’S NOTICE:</strong> All real estate advertised herein is subject to the Federal Fair Housing Act and the Colorado Fair Housing Act, which Acts make it illegal to make or publish any advertisement that indicates any preference, limitation, or discrimination based on race, color, religion, sex, handicap, familial status, or national origin. METROLIST, INC., DBA RECOLORADO will not knowingly accept any advertising for real estate that is in violation of the law. All persons are hereby informed that all dwellings advertised are available on an equal opportunity basis.
-          </p>
-          <p>
-            © 2026 METROLIST, INC., DBA RECOLORADO® – All Rights Reserved. 6455 S. Yosemite St., Suite 300, Greenwood Village, CO 80111 USA. ALL RIGHTS RESERVED WORLDWIDE. No part of this publication may be reproduced, adapted, translated, stored in a retrieval system or transmitted in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the prior written permission of the publisher. The information contained herein including but not limited to all text, photographs, digital images, virtual tours, may be seeded and monitored for protection and tracking.
-          </p>
-        </div>
       </div>
     </section>
   );
@@ -332,7 +313,7 @@ function AboutSection() {
             <div className="rounded-xl overflow-hidden bg-[#0f172a] border border-stone-200 p-8 md:p-10 relative" style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
               <div className="absolute top-0 left-0 w-24 h-1 rounded-br-sm" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
               <div className="mb-8 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden border-2 border-[#c9a84c] shadow-inner relative">
-                <img src="/mark-headshot.jpg" alt="Commander Mark Solomon" className="w-full h-full object-cover object-top" />
+                <img src="/Mark-headshot.JPG" alt="Commander Mark Solomon" className="w-full h-full object-cover object-top" />
               </div>
               <div className="flex flex-wrap gap-3 mb-8">
                 {[{ icon: Shield, label: "Iraq Veteran" }, { icon: Award, label: "20+ Years Real Estate Experience" }, { icon: Users, label: "Charity Co-Founder" }].map((badge) => (
@@ -387,7 +368,7 @@ function AboutSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   TESTIMONIALS SECTION (Min-H heavily increased to prevent jumps)
+   TESTIMONIALS SECTION
 ───────────────────────────────────────────────────────────── */
 function TestimonialsSection() {
   const [active, setActive] = useState(0);
@@ -416,7 +397,6 @@ function TestimonialsSection() {
         </h2>
         <span className="block w-14 h-0.5 mx-auto mb-16" style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }} />
 
-        {/* FIX: min-h-[500px] on desktop and [550px] on mobile to fit the longest review perfectly! */}
         <div key={active} className="bg-white rounded-2xl p-8 md:p-14 shadow-editorial border border-stone-100 min-h-[550px] md:min-h-[400px] flex flex-col justify-center items-center" style={{ animation: "fadeInUp 0.5s ease forwards" }}>
           <div className="flex justify-center gap-1 mb-6">
             {Array.from({ length: t.stars }).map((_, i) => (
@@ -447,7 +427,7 @@ function TestimonialsSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   CONTACT / GHL FORM SECTION (Expanded forms & strict validation)
+   CONTACT / GHL FORM SECTION (Asterisks fixed)
 ───────────────────────────────────────────────────────────── */
 function ContactSection() {
   const [formType, setFormType] = useState('seller'); 
@@ -578,25 +558,25 @@ function ContactSection() {
                     {formType === 'seller' ? "Request a Free Home Valuation" : "Start Your Home Search"}
                   </h3>
 
-                  {/* STANDARD FIELDS */}
+                  {/* STANDARD FIELDS - Justify removed to fix asterisks */}
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">First Name <span className="text-red-400">{errors.firstName || "*"}</span></label>
+                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First Name <span className="text-red-400 ml-1">{errors.firstName || "*"}</span></label>
                       <input type="text" name="firstName" value={form.firstName} onChange={handleChange} className={inputClass("firstName")} />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Last Name <span className="text-red-400">{errors.lastName || "*"}</span></label>
+                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Last Name <span className="text-red-400 ml-1">{errors.lastName || "*"}</span></label>
                       <input type="text" name="lastName" value={form.lastName} onChange={handleChange} className={inputClass("lastName")} />
                     </div>
                   </div>
 
                   <div className="mb-4">
-                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Email Address <span className="text-red-400">{errors.email || "*"}</span></label>
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Email Address <span className="text-red-400 ml-1">{errors.email || "*"}</span></label>
                     <input type="email" name="email" value={form.email} onChange={handleChange} className={inputClass("email")} />
                   </div>
 
                   <div className="mb-4">
-                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Phone Number <span className="text-red-400">{errors.phone || "*"}</span></label>
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Phone Number <span className="text-red-400 ml-1">{errors.phone || "*"}</span></label>
                     <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={inputClass("phone")} />
                   </div>
 
@@ -604,22 +584,22 @@ function ContactSection() {
                   {formType === 'seller' && (
                     <>
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Property Address <span className="text-red-400">{errors.address || "*"}</span></label>
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Property Address <span className="text-red-400 ml-1">{errors.address || "*"}</span></label>
                         <input type="text" name="address" value={form.address} onChange={handleChange} className={inputClass("address")} />
                       </div>
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Timeframe <span className="text-red-400">{errors.timeframe || "*"}</span></label>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Timeframe <span className="text-red-400 ml-1">{errors.timeframe || "*"}</span></label>
                            <input type="text" name="timeframe" value={form.timeframe} onChange={handleChange} placeholder="e.g. ASAP, 3 months" className={inputClass("timeframe")} />
                         </div>
                         <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Moving To <span className="text-red-400">{errors.movingTo || "*"}</span></label>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Moving To <span className="text-red-400 ml-1">{errors.movingTo || "*"}</span></label>
                            <input type="text" name="movingTo" value={form.movingTo} onChange={handleChange} placeholder="City, State" className={inputClass("movingTo")} />
                         </div>
                       </div>
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Are you currently working with an Agent? <span className="text-red-400">{errors.workingWithAgent || "*"}</span></label>
-                        <div className="flex gap-4">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Are you currently working with an Agent? <span className="text-red-400 ml-1">{errors.workingWithAgent || "*"}</span></label>
+                        <div className="flex gap-4 mt-2">
                           <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="yes" checked={form.workingWithAgent === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
                           <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="no" checked={form.workingWithAgent === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
                         </div>
@@ -632,20 +612,20 @@ function ContactSection() {
                     <>
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Current Residence <span className="text-red-400">{errors.rentOrOwn || "*"}</span></label>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Current Residence <span className="text-red-400 ml-1">{errors.rentOrOwn || "*"}</span></label>
                            <select name="rentOrOwn" value={form.rentOrOwn} onChange={handleChange} className={inputClass("rentOrOwn")}>
                              <option value="">Select...</option><option value="rent">Rent</option><option value="own">Own</option>
                            </select>
                         </div>
                         <div>
-                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Move Timeframe <span className="text-red-400">{errors.buyTimeframe || "*"}</span></label>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Move Timeframe <span className="text-red-400 ml-1">{errors.buyTimeframe || "*"}</span></label>
                            <input type="text" name="buyTimeframe" value={form.buyTimeframe} onChange={handleChange} placeholder="e.g. ASAP, 6 months" className={inputClass("buyTimeframe")} />
                         </div>
                       </div>
                       
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">First time home purchase? <span className="text-red-400">{errors.firstTimeBuyer || "*"}</span></label>
-                        <div className="flex gap-4">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First time home purchase? <span className="text-red-400 ml-1">{errors.firstTimeBuyer || "*"}</span></label>
+                        <div className="flex gap-4 mt-2">
                           <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="yes" checked={form.firstTimeBuyer === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
                           <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="no" checked={form.firstTimeBuyer === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
                         </div>
@@ -653,7 +633,7 @@ function ContactSection() {
 
                       {form.firstTimeBuyer === "no" && (
                         <div className="mb-4">
-                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 flex justify-between">Last time you bought/sold? <span className="text-red-400">{errors.lastBought || "*"}</span></label>
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Last time you bought/sold? <span className="text-red-400 ml-1">{errors.lastBought || "*"}</span></label>
                           <select name="lastBought" value={form.lastBought} onChange={handleChange} className={inputClass("lastBought")}>
                              <option value="">Select...</option>
                              <option value="0-3">0-3 years ago</option>
