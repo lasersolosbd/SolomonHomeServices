@@ -16,9 +16,9 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/sellers", label: "Sellers" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+    { href: "/#strategy", label: "Strategy" },
+    { href: "/#about", label: "About" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   return (
@@ -30,25 +30,45 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <Mountain
-            size={28}
-            className="text-[#c9a84c] transition-transform duration-300 group-hover:scale-110"
-            strokeWidth={1.5}
+        
+        {/* CO-BRANDED LOGO SECTION */}
+        <div className="flex items-center gap-4">
+          {/* 1. Your Brand */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <Mountain
+              size={28}
+              className="text-[#c9a84c] transition-transform duration-300 group-hover:scale-110"
+              strokeWidth={1.5}
+            />
+            <div className="flex flex-col leading-none">
+              <span
+                className={`text-lg font-semibold tracking-wide transition-colors duration-300 ${
+                  scrolled ? "text-white" : "text-[#1a2332]"
+                }`}
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Solomon
+              </span>
+              <span className="text-[#c9a84c] text-[10px] tracking-[0.2em] uppercase font-medium">
+                Home Services
+              </span>
+            </div>
+          </Link>
+
+          {/* 2. Co-Branding Divider Line */}
+          <div 
+            className={`w-px h-8 transition-colors duration-300 ${
+              scrolled ? "bg-white/20" : "bg-stone-300"
+            }`}
+          ></div>
+
+          {/* 3. Real Broker Logo (Swaps on Scroll) */}
+          <img 
+            src={scrolled ? "/real-broker-logo-light.png" : "/real-broker-logo-dark.png"} 
+            alt="Real Broker, LLC" 
+            className="h-6 w-auto object-contain transition-opacity duration-300"
           />
-          <div className="flex flex-col leading-none">
-            <span
-              className="font-display text-white text-lg font-semibold tracking-wide"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Solomon
-            </span>
-            <span className="text-[#c9a84c] text-xs font-sans tracking-[0.2em] uppercase font-medium">
-              Home Services
-            </span>
-          </div>
-        </Link>
+        </div>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -56,7 +76,9 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-stone-200 hover:text-[#c9a84c] text-sm font-medium tracking-widest uppercase transition-colors duration-200 relative group"
+              className={`text-sm font-medium tracking-widest uppercase transition-colors duration-200 relative group ${
+                scrolled ? "text-stone-200 hover:text-[#c9a84c]" : "text-slate-600 hover:text-[#1a2332]"
+              }`}
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#c9a84c] transition-all duration-300 group-hover:w-full" />
@@ -73,7 +95,9 @@ export default function Navbar() {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white hover:text-[#c9a84c] transition-colors"
+          className={`md:hidden transition-colors ${
+             scrolled ? "text-white hover:text-[#c9a84c]" : "text-[#1a2332] hover:text-[#c9a84c]"
+          }`}
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
