@@ -152,26 +152,26 @@ export default function TermsOfService() {
     },
     {
       id: "sms-terms",
-      title: "6. SMS / Text Message Communications",
+      title: "6. Communications: SMS, Voice & AI",
       content: (
         <>
           <p>
             By providing your mobile phone number and expressly consenting to
-            SMS communications through our contact form or other opt-in
-            mechanisms, you agree to the following SMS Terms of Service:
+            communications through our contact form or other opt-in mechanisms, 
+            you agree to the following terms regarding SMS and voice communications:
           </p>
           <h4 className="font-semibold text-slate-800 mt-4 mb-2">Program Description:</h4>
           <p>
-            Solomon Home Services may send you SMS text messages related to your
+            Solomon Home Services may send you SMS text messages and voice calls related to your
             real estate inquiry, including property information, market updates,
             appointment reminders, home valuation follow-ups, and related
-            communications. Message frequency varies.
+            communications. Voice calls may include automated, pre-recorded, or AI voice assistant communications. Message frequency varies.
           </p>
           <h4 className="font-semibold text-slate-800 mt-4 mb-2">Consent Requirements:</h4>
           <p>
-            Your consent to receive SMS messages is not a condition of purchase
+            Your consent to receive SMS messages and/or automated voice calls is not a condition of purchase
             or receipt of real estate services. You may receive services from us
-            without agreeing to receive text messages.
+            without agreeing to receive text messages or automated calls.
           </p>
           <h4 className="font-semibold text-slate-800 mt-4 mb-2">Opt-Out:</h4>
           <p>
@@ -179,7 +179,8 @@ export default function TermsOfService() {
             <strong>STOP</strong> to any text message you receive from us. After
             opting out, you will receive one final confirmation message and no
             further text messages will be sent. Reply <strong>HELP</strong> for
-            assistance or contact us directly.
+            assistance. You may opt out of future calls by requesting to be placed 
+            on our do-not-call list during any call or by contacting us directly.
           </p>
           <h4 className="font-semibold text-slate-800 mt-4 mb-2">Charges:</h4>
           <p>
@@ -189,14 +190,13 @@ export default function TermsOfService() {
           </p>
           <div className="mt-4 p-5 bg-[#1e3a2f]/8 border-l-4 border-[#c9a84c] rounded-r-lg">
             <p className="font-bold text-slate-800 mb-2 text-sm uppercase tracking-wide">
-              A2P 10DLC Compliance Statement
+              A2P 10DLC & TCPA Compliance Statement
             </p>
             <p className="text-stone-600 text-sm">
               Our SMS program operates in compliance with A2P 10DLC regulations
               as required by U.S. wireless carriers and the CTIA Messaging
-              Principles and Best Practices. Our messaging campaigns are
-              registered with the appropriate campaign registry to ensure
-              compliant, non-spam delivery.
+              Principles and Best Practices. Our voice communications comply with 
+              FCC and TCPA guidelines regarding automated and AI-assisted calling.
             </p>
           </div>
         </>
