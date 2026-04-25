@@ -1,6 +1,6 @@
 import { Playfair_Display, DM_Sans } from "next/font/google";
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
