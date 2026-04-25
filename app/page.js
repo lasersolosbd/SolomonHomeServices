@@ -1,398 +1,284 @@
 "use client";
 
-import { Shield, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  TrendingUp,
+  Shield,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+  Award,
+  Users,
+  CheckCircle,
+  Phone,
+  Mail,
+  MapPin,
+  Target,
+  Key,
+  Map,
+  Search
+} from "lucide-react";
 
-export default function PrivacyPolicy() {
-  const lastUpdated = new Date().toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+/* ─────────────────────────────────────────────────────────────
+   TESTIMONIALS DATA
+───────────────────────────────────────────────────────────── */
+const testimonials = [
+  {
+    stars: 5,
+    text: "I lived in the Southeast region and had an investment property in Kansas City... I told him my concern that I needed the property sold before wintertime. Well, before the end of October he was able to find an investor. I can't thank him enough for going above and beyond. He treats me like a very important client even though my property was just a small house. I assure you he is one of a kind. If I have to rate Mark on a scale of 1 to 10... I would give him an 11.",
+  },
+  {
+    stars: 5,
+    text: "Mark, Amanda, Chasity, and the entire Solomon team are first rate. I can be a difficult customer at times and they quickly and skillfully answered all my questions and handled any issues. Mark is calm and reasoned, but he's not a pushover. He is a strong and savvy advocate for his clients. Buying or selling, you'll be taken care of by these guys.",
+  },
+  {
+    stars: 5,
+    text: "My wife and I worked with Mark to sell our prior house, and to purchase our new home. We really can’t say enough good things about Mark. Mark is knowledgeable, personable, endlessly patient, and incredibly generous with his time. Buying a home in this market is challenging and stressful but working with Mark made it as painless and straightforward as possible.",
+  },
+  {
+    stars: 5,
+    text: "This is the second time we have used Mark for our Real Estate needs. Great to work with, very responsive and excellent knowledge of the business. Mark listed, showed and received an offer on the house within 2 days. Very pleased to work with him.",
+  },
+  {
+    stars: 5,
+    text: "Mark went above and beyond to get us into the right home! Always responsive to phone calls, requests to see yet another house, and putting up with my entire huge family tagging along. Very positive experience all the way around!",
+  },
+  {
+    stars: 5,
+    text: "Very knowledgeable and honest. Cared more about my family's needs, than making money off of the sale. Helped us with any and all questions we had, so we never felt like we were being left in the dark.",
+  },
+  {
+    stars: 5,
+    text: "Mark is the best realtor in KC. His team is professional and the process of buying our first home was so easy! You hear stories of how much work it is to buy a home, but we didn’t experience any problems thanks to Mark and his team! Everyone was easy to work with and they made it FUN!",
+  },
+  {
+    stars: 5,
+    text: "As first time home buyers, we were very glad to have such a patient professional! We had a wonderful experience with Mark, he explained everything very thoroughly and answered our endless questions.",
+  },
+];
 
-  const sections = [
-    {
-      id: "information-collected",
-      title: "1. Information We Collect",
-      content: (
-        <>
-          <p>
-            Solomon Home Services, operated by Mark Solomon under REAL Broker,
-            LLC, collects information you voluntarily provide and information
-            gathered through your use of our website. Categories of information
-            collected include:
-          </p>
-          <h4 className="font-semibold text-slate-800 mt-4 mb-2">
-            a. Information You Provide Directly
-          </h4>
-          <ul className="list-disc list-inside space-y-1 text-stone-600">
-            <li>Full name, email address, and phone number</li>
-            <li>Property address or areas of interest</li>
-            <li>Real estate inquiry details (buying, selling, relocating)</li>
-            <li>Military affiliation or VA loan interest (if voluntarily disclosed)</li>
-            <li>Messages submitted through our contact forms</li>
-          </ul>
-          <h4 className="font-semibold text-slate-800 mt-4 mb-2">
-            b. Information Collected Automatically
-          </h4>
-          <ul className="list-disc list-inside space-y-1 text-stone-600">
-            <li>IP address and browser type</li>
-            <li>Pages visited and time spent on site</li>
-            <li>Referring website or search engine</li>
-            <li>Device type and operating system</li>
-            <li>Cookies and similar tracking technologies</li>
-          </ul>
-          <h4 className="font-semibold text-slate-800 mt-4 mb-2">
-            c. IDX and MLS Data
-          </h4>
-          <p>
-            Property listings displayed on this website are sourced from the
-            local Multiple Listing Service (MLS) via IDX data feed. This data is
-            provided for personal, non-commercial use by consumers. You
-            acknowledge that MLS data is the intellectual property of the
-            respective MLS and its participating brokerages.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: "how-we-use",
-      title: "2. How We Use Your Information",
-      content: (
-        <>
-          <p>We use the information we collect to:</p>
-          <ul className="list-disc list-inside space-y-1 text-stone-600 mt-3">
-            <li>Respond to your real estate inquiries promptly and professionally</li>
-            <li>Provide home valuations, market reports, and property information</li>
-            <li>Send follow-up communications related to your inquiry</li>
-            <li>Send SMS text messages and voice communications when you have provided explicit consent</li>
-            <li>Improve the functionality and content of our website</li>
-            <li>Comply with Colorado Real Estate Commission (CREC) record-keeping requirements</li>
-            <li>Comply with applicable federal, state, and local laws</li>
-            <li>Prevent fraud and protect the security of our website</li>
-          </ul>
-          <p className="mt-4">
-            We will not use your information for purposes materially different
-            from those described in this Privacy Policy without first providing
-            you notice and, where required by law, obtaining your consent.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: "communications",
-      title: "3. Communications: SMS, Voice & AI Assistants",
-      content: (
-        <>
-          <p>
-            By providing your phone number and checking the consent boxes on our
-            contact form, you expressly consent to receive marketing text messages
-            and phone calls from Solomon Home Services. You acknowledge that these
-            communications may be automated, pre-recorded, or use an AI voice assistant.
-            Consent is not a condition of purchase or a requirement to use our services.
-          </p>
-          <div className="my-4 p-4 bg-[#1e3a2f]/8 border-l-4 border-[#c9a84c] rounded-r-lg">
-            <p className="font-semibold text-slate-800 mb-1">Opt-Out Instructions:</p>
-            <p className="text-stone-600">
-              You can opt out of texts at any time by replying <strong>STOP</strong>.
-              Reply <strong>HELP</strong> for assistance. Message and data rates may apply.
-              You can opt out of future phone calls by requesting to be placed on our
-              do-not-call list during any call or by contacting us directly.
-            </p>
-          </div>
-          <div className="my-4 p-5 bg-amber-50 border border-amber-200 rounded-lg">
-            <p className="font-bold text-slate-800 mb-2 uppercase text-sm tracking-wide">
-              Important — Mobile Data Sharing Policy
-            </p>
-            <p className="text-stone-700 text-sm leading-relaxed">
-              No mobile information will be shared with third parties/affiliates
-              for marketing/promotional purposes. All the above categories
-              exclude text messaging originator opt-in data and consent; this
-              information will not be shared with any third parties.
-            </p>
-          </div>
-          <p>
-            Our SMS messaging program uses a 10DLC (10-Digit Long Code)
-            registered number in compliance with A2P 10DLC regulations
-            established by U.S. mobile carriers and the CTIA. We are committed
-            to responsible messaging practices.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: "sharing",
-      title: "4. Information Sharing and Disclosure",
-      content: (
-        <>
-          <p>
-            Solomon Home Services does not sell, rent, or trade your personal
-            information to unaffiliated third parties for their marketing
-            purposes. We may share your information only in the following
-            circumstances:
-          </p>
-          <h4 className="font-semibold text-slate-800 mt-4 mb-2">a. Service Providers</h4>
-          <p>
-            We may share your information with trusted third-party service
-            providers who assist us in operating our website and conducting our
-            real estate business, including CRM software providers, email
-            marketing platforms, and transaction management systems. These
-            providers are contractually obligated to keep your information
-            confidential and use it only for the purposes we specify.
-          </p>
-          <h4 className="font-semibold text-slate-800 mt-4 mb-2">b. REAL Broker, LLC</h4>
-          <p>
-            As a licensed agent operating under REAL Broker, LLC, certain
-            transaction and client records may be shared with the brokerage as
-            required by Colorado law and CREC regulations for record retention
-            and compliance purposes.
-          </p>
-          <h4 className="font-semibold text-slate-800 mt-4 mb-2">c. Legal Requirements</h4>
-          <p>
-            We may disclose your information if required to do so by law,
-            subpoena, court order, or other legal process, or if we believe in
-            good faith that such disclosure is necessary to protect our rights,
-            protect your safety or the safety of others, or investigate fraud.
-          </p>
-          <h4 className="font-semibold text-slate-800 mt-4 mb-2">d. Business Transfers</h4>
-          <p>
-            In the event of a merger, acquisition, or sale of all or a portion
-            of our business assets, your personal information may be transferred
-            as part of the transaction. We will provide notice before your
-            personal information is transferred and becomes subject to a
-            different privacy policy.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: "cookies",
-      title: "5. Cookies and Tracking Technologies",
-      content: (
-        <>
-          <p>
-            Our website uses cookies and similar tracking technologies to
-            enhance your browsing experience. Cookies are small data files
-            stored on your device that help us recognize returning visitors and
-            understand how our website is used.
-          </p>
-          <ul className="list-disc list-inside space-y-1 text-stone-600 mt-3">
-            <li><strong>Essential Cookies:</strong> Required for the website to function properly</li>
-            <li><strong>Analytics Cookies:</strong> Help us understand website traffic and user behavior (e.g., Google Analytics)</li>
-            <li><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements (only with your consent)</li>
-          </ul>
-          <p className="mt-3">
-            You may disable cookies through your browser settings. Note that
-            disabling certain cookies may affect the functionality of our
-            website, including IDX property search features.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: "data-security",
-      title: "6. Data Security",
-      content: (
-        <p>
-          We implement commercially reasonable technical and organizational
-          security measures to protect your personal information from
-          unauthorized access, disclosure, alteration, or destruction. These
-          measures include SSL/TLS encryption for data in transit, secure
-          hosting infrastructure, and restricted access to personal data. While
-          we strive to use industry-standard security practices, no method of
-          internet transmission or electronic storage is 100% secure. We cannot
-          guarantee absolute security, but we are committed to promptly
-          addressing any data security incidents in accordance with applicable
-          Colorado law, including the Colorado Consumer Protection Act and the
-          Colorado Privacy Act (CPA).
-        </p>
-      ),
-    },
-    {
-      id: "colorado-rights",
-      title: "7. Your Rights Under Colorado Law",
-      content: (
-        <>
-          <p>Under the Colorado Privacy Act (CPA), Colorado residents have the following rights regarding their personal data:</p>
-          <ul className="list-disc list-inside space-y-2 text-stone-600 mt-3">
-            <li><strong>Right to Access:</strong> Know what personal data we have collected about you</li>
-            <li><strong>Right to Correction:</strong> Correct inaccurate personal data</li>
-            <li><strong>Right to Deletion:</strong> Request deletion of your personal data, subject to legal retention requirements</li>
-            <li><strong>Right to Opt-Out:</strong> Opt out of the sale of personal data or targeted advertising (we do not sell personal data)</li>
-            <li><strong>Right to Portability:</strong> Receive a copy of your personal data in a portable format</li>
-            <li><strong>Right to Appeal:</strong> Appeal our decision regarding a privacy request</li>
-          </ul>
-          <p className="mt-4">
-            To exercise any of these rights, please contact us at{" "}
-            <a
-              href="mailto:mark@solomonhomeservices.com"
-              className="text-[#1e3a2f] font-medium hover:text-[#c9a84c] transition-colors"
-            >
-              mark@solomonhomeservices.com
-            </a>
-            . We will respond to verifiable requests within 45 days as required by law.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: "children",
-      title: "8. Children's Privacy",
-      content: (
-        <p>
-          Our website is not directed to children under the age of 13, and we do
-          not knowingly collect personal information from children under 13. If
-          you believe a child under 13 has provided us with personal information,
-          please contact us immediately and we will take steps to delete such
-          information.
-        </p>
-      ),
-    },
-    {
-      id: "third-party-links",
-      title: "9. Third-Party Links",
-      content: (
-        <p>
-          Our website may contain links to third-party websites, including MLS
-          listing portals, mortgage calculators, and community resources. This
-          Privacy Policy does not apply to those third-party websites. We
-          encourage you to review the privacy policies of any third-party sites
-          you visit. Solomon Home Services is not responsible for the privacy
-          practices or content of third-party websites.
-        </p>
-      ),
-    },
-    {
-      id: "fair-housing",
-      title: "10. Fair Housing Compliance",
-      content: (
-        <p>
-          Solomon Home Services is committed to the principles of the Fair
-          Housing Act and the Equal Housing Opportunity laws. We do not
-          discriminate on the basis of race, color, religion, sex, national
-          origin, disability, familial status, or any other characteristic
-          protected by federal, state, or local law. All real estate services
-          are provided in full compliance with Colorado anti-discrimination laws
-          and CREC regulations.
-        </p>
-      ),
-    },
-    {
-      id: "changes",
-      title: "11. Changes to This Privacy Policy",
-      content: (
-        <p>
-          We reserve the right to modify this Privacy Policy at any time.
-          Changes will be effective immediately upon posting to this page with
-          an updated "Last Updated" date. Your continued use of our website
-          following the posting of changes constitutes your acceptance of the
-          updated policy. We encourage you to review this Privacy Policy
-          periodically.
-        </p>
-      ),
-    },
-    {
-      id: "contact",
-      title: "12. Contact Us",
-      content: (
-        <>
-          <p>If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact:</p>
-          <div className="mt-4 p-5 bg-[#1e3a2f]/8 rounded-lg border border-[#1e3a2f]/15">
-            <p className="font-bold text-slate-800">Mark Solomon, REALTOR®</p>
-            <p className="text-stone-600">Solomon Home Services</p>
-            <p className="text-stone-600">Licensed under REAL Broker, LLC</p>
-            <p className="text-stone-600">Colorado Front Range</p>
-            <a
-              href="tel:+18168535467"
-              className="text-[#1e3a2f] font-medium hover:text-[#c9a84c] transition-colors block mt-2"
-            >
-              (816) 853-5467
-            </a>
-            <a
-              href="mailto:mark@solomonhomeservices.com"
-              className="text-[#1e3a2f] font-medium hover:text-[#c9a84c] transition-colors block mt-1"
-            >
-              mark@solomonhomeservices.com
-            </a>
-          </div>
-        </>
-      ),
-    },
-  ];
+/* ─────────────────────────────────────────────────────────────
+   STATS BAND DATA
+───────────────────────────────────────────────────────────── */
+const pillars = [
+  { title: "Precision" },
+  { title: "Expert Negotiation" },
+  { title: "Unmatched Market Insight" }
+];
+
+/* ─────────────────────────────────────────────────────────────
+   VALUE PROPS
+───────────────────────────────────────────────────────────── */
+const sellerProps = [
+  {
+    icon: TrendingUp,
+    title: "Tactical Pricing Strategy",
+    desc: "Every listing is priced with precision. We analyze the micro-market, position you competitively, and go to market with a plan designed to attract the strongest offers.",
+  },
+  {
+    icon: Target,
+    title: "Maximum Market Exposure",
+    desc: "Your home reaches buyers across the MLS, premium portals, and targeted campaigns — because the right buyer may not be looking where everyone else is advertising.",
+  },
+];
+
+const buyerProps = [
+  {
+    icon: Key,
+    title: "Strategic Acquisitions",
+    desc: "We don't just 'look at houses.' We hunt for the right property, analyzing value, neighborhood trends, and future equity potential to ensure a smart investment.",
+  },
+  {
+    icon: Map,
+    title: "Relocation & PCS Expertise",
+    desc: "Moving across the country or handling a short-notice PCS? I know timelines, VA loan nuances, and how to execute a seamless transition from afar.",
+  },
+];
+
+/* ─────────────────────────────────────────────────────────────
+   HERO SECTION
+───────────────────────────────────────────────────────────── */
+function HeroSection() {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      <div className="bg-[#1a2332] pt-32 pb-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-2 text-[#c9a84c] text-xs uppercase tracking-widest font-medium mb-4">
-            <Shield size={14} />
-            <span>Legal</span>
-            <ChevronRight size={12} />
-            <span>Privacy Policy</span>
+    <section id="home" className="relative min-h-screen flex items-center bg-stone-50 overflow-hidden pt-20">
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <div className="lg:col-span-6 z-20">
+          <div className={`inline-flex items-center gap-3 mb-6 transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <span className="h-px w-12 bg-[#c9a84c]" />
+            <span className="text-slate-500 text-xs font-semibold tracking-[0.2em] uppercase">
+              Colorado Front Range
+            </span>
           </div>
-          <h1
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Privacy Policy
+          <h1 className={`text-5xl md:text-6xl lg:text-7xl text-[#0f172a] leading-[1.1] mb-8 text-balance transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-display)" }}>
+            Experience & Precision in Every <i className="text-[#1e293b]">Detail.</i>
           </h1>
-          <p className="text-stone-400 text-sm">
-            Last Updated:{" "}
-            <span className="text-[#c9a84c] font-medium">{lastUpdated}</span>
+          <p className={`text-lg text-slate-600 max-w-lg leading-relaxed mb-10 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            Over two decades of mastery in real estate. No guesswork, no algorithms (maybe a little bit of AI - since everyone is doing it) - just tactical strategy and relentless negotiation to make selling or buying a great experience.
           </p>
-          <p className="text-stone-400 text-sm mt-2">
-            Solomon Home Services · Mark Solomon, REALTOR® · REAL Broker, LLC
-          </p>
+          <div className={`flex flex-col sm:flex-row items-center gap-6 transition-all duration-1000 delay-400 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-[#0f172a] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] transition-colors duration-300 flex items-center justify-center gap-3 group">
+              Start The Process
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </a>
+            <a href="#idx-listings" className="text-[#0f172a] text-sm font-semibold tracking-widest uppercase hover:text-[#c9a84c] transition-colors flex items-center gap-2">
+              Search Properties
+            </a>
+          </div>
         </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 py-16">
-        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-8 mb-8">
-          <p className="text-stone-600 leading-relaxed text-base">
-            Solomon Home Services ("we," "our," or "us"), operated by Mark
-            Solomon as a licensed Colorado real estate broker under{" "}
-            <strong>REAL Broker, LLC</strong>, is committed to protecting your
-            privacy. This Privacy Policy explains how we collect, use, disclose,
-            and protect information about you when you visit our website,
-            interact with our real estate services, or communicate with us via
-            phone, email, or SMS text message.
-          </p>
-          <p className="text-stone-600 leading-relaxed text-base mt-4">
-            By using our website or services, you agree to the practices
-            described in this Privacy Policy. If you do not agree with these
-            practices, please do not use our website or provide us with your
-            personal information.
-          </p>
-        </div>
-
-        <div className="space-y-6">
-          {sections.map((section) => (
-            <div
-              key={section.id}
-              id={section.id}
-              className="bg-white rounded-2xl shadow-sm border border-stone-200 p-8"
-            >
-              <h2
-                className="text-xl font-bold text-[#1a2332] mb-4 pb-3 border-b border-stone-100"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {section.title}
-              </h2>
-              <div className="text-stone-600 leading-relaxed text-sm space-y-3">
-                {section.content}
+        <div className={`lg:col-span-6 relative transition-all duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
+          <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto">
+            <div className="absolute inset-0 bg-stone-200 shadow-floating rounded-sm overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000" alt="Luxury Colorado Home" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute -bottom-8 -left-8 bg-white p-6 shadow-editorial rounded-sm flex items-start gap-4 max-w-[200px]">
+              <Award size={24} className="text-[#c9a84c] shrink-0" />
+              <div>
+                <p className="font-display text-2xl text-[#0f172a] mb-1">20+</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold leading-tight">Years of Excellence</p>
               </div>
             </div>
-          ))}
-        </div>
-
-        <div className="mt-8 p-5 bg-[#1a2332] rounded-xl text-center">
-          <p className="text-stone-400 text-xs leading-relaxed">
-            Mark Solomon is a licensed Colorado real estate broker operating
-            under <strong className="text-stone-200">REAL Broker, LLC</strong>.
-            All services are conducted in compliance with Colorado Real Estate
-            Commission (CREC) regulations and applicable federal law.
-          </p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
+
+/* ─────────────────────────────────────────────────────────────
+   STATS BAND
+───────────────────────────────────────────────────────────── */
+function StatsBand() {
+  return (
+    <section className="bg-[#0f172a] border-y border-white/10 py-8">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-white/10 text-center">
+        {pillars.map((pillar, index) => (
+          <div key={index} className="pt-4 md:pt-0 first:pt-0 flex items-center justify-center">
+            <h3 className="text-white font-bold text-lg md:text-xl tracking-wide uppercase flex items-center gap-3">
+              <svg className="w-5 h-5 text-[#c9a84c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+              {pillar.title}
+            </h3>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SELLER & BUYER VALUE PROPS
+───────────────────────────────────────────────────────────── */
+function ValueProps() {
+  return (
+    <section id="strategy" className="py-24 bg-[#f8f5f0]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-2xl mb-16">
+          <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.3em] uppercase block mb-3">
+            The Approach
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0f172a] leading-tight mb-4" style={{ fontFamily: "var(--font-display)" }}>
+            A Different Kind of <span className="text-[#1e293b]">Strategy.</span>
+          </h2>
+          <span className="block w-14 h-0.5 mb-5" style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }} />
+          <p className="text-stone-600 text-base leading-relaxed">
+            Buying or selling real estate isn't a simple transaction — it's one of the largest financial decisions you'll make. I bring clear objectives, precise execution, and an unwillingness to accept anything less than the best possible outcome for you.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Sellers Column */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-display text-[#0f172a] border-b border-stone-200 pb-3 mb-6">For Sellers</h3>
+            {sellerProps.map((prop) => (
+              <div key={prop.title} className="bg-white rounded-xl p-8 shadow-sm border border-stone-100 hover:border-[#c9a84c]/30 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#0f172a]/5">
+                    <prop.icon size={20} className="text-[#0f172a]" />
+                  </div>
+                  <h4 className="text-lg font-bold text-[#0f172a] font-display">{prop.title}</h4>
+                </div>
+                <p className="text-stone-600 text-sm leading-relaxed">{prop.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Buyers Column */}
+          <div className="space-y-6">
+             <h3 className="text-xl font-display text-[#0f172a] border-b border-stone-200 pb-3 mb-6">For Buyers</h3>
+            {buyerProps.map((prop) => (
+              <div key={prop.title} className="bg-white rounded-xl p-8 shadow-sm border border-stone-100 hover:border-[#c9a84c]/30 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#0f172a]/5">
+                    <prop.icon size={20} className="text-[#0f172a]" />
+                  </div>
+                  <h4 className="text-lg font-bold text-[#0f172a] font-display">{prop.title}</h4>
+                </div>
+                <p className="text-stone-600 text-sm leading-relaxed">{prop.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 text-center">
+          <a href="#contact" className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-[#0f172a] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] transition-all duration-300 group">
+            Start Your Strategy
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   IDX LISTINGS SECTION 
+───────────────────────────────────────────────────────────── */
+function IdxSection() {
+  const [activeTab, setActiveTab] = useState('search');
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+
+  return (
+    <section id="idx-listings" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
+          <div className="max-w-2xl">
+            <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.2em] uppercase block mb-3">
+              Property Portfolio
+            </span>
+            <h2 className="text-4xl md:text-5xl text-[#0f172a] leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+              Discover the <i className="text-[#1e293b]">Front Range.</i>
+            </h2>
+          </div>
+          
+          <div className="flex bg-stone-50 p-1 rounded-sm border border-stone-200">
+            <button 
+              onClick={() => setActiveTab('search')}
+              className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${activeTab === 'search' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}
+            >
+              MLS Search
+            </button>
+            <button 
+              onClick={() => setActiveTab('featured')}
+              className={`px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-all ${activeTab === 'featured' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}
+            >
+              My Listings
+            </button>
+          </div>
+        </div>
+
+        <p className="text-xs text-stone-500 italic mb-4 text-right">
+          Note: If no properties appear in "My Listings", inventory is currently sold out. Please use "MLS Search".
+        </p>
+
+        <div className="w-full h-[600px] bg-stone-50 rounded-sm shadow-editorial border border-stone-100 overflow-hidden relative flex items-center justify-center">
+          {!iframeLoaded ? (
+            <div className="text-center p-8 z-2
