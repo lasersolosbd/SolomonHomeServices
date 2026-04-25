@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
             <li>Respond to your real estate inquiries promptly and professionally</li>
             <li>Provide home valuations, market reports, and property information</li>
             <li>Send follow-up communications related to your inquiry</li>
-            <li>Send SMS text messages when you have provided explicit consent</li>
+            <li>Send SMS text messages and voice communications when you have provided explicit consent</li>
             <li>Improve the functionality and content of our website</li>
             <li>Comply with Colorado Real Estate Commission (CREC) record-keeping requirements</li>
             <li>Comply with applicable federal, state, and local laws</li>
@@ -79,23 +79,24 @@ export default function PrivacyPolicy() {
       ),
     },
     {
-      id: "sms-communications",
-      title: "3. SMS / Text Message Communications",
+      id: "communications",
+      title: "3. Communications: SMS, Voice & AI Assistants",
       content: (
         <>
           <p>
-            By providing your phone number and checking the consent box on our
-            contact form, you expressly consent to receive text messages (SMS)
-            from Solomon Home Services regarding your real estate inquiry,
-            property updates, market information, and related services.
+            By providing your phone number and checking the consent boxes on our
+            contact form, you expressly consent to receive marketing text messages
+            and phone calls from Solomon Home Services. You acknowledge that these
+            communications may be automated, pre-recorded, or use an AI voice assistant.
+            Consent is not a condition of purchase or a requirement to use our services.
           </p>
           <div className="my-4 p-4 bg-[#1e3a2f]/8 border-l-4 border-[#c9a84c] rounded-r-lg">
-            <p className="font-semibold text-slate-800 mb-1">SMS Opt-Out Instructions:</p>
+            <p className="font-semibold text-slate-800 mb-1">Opt-Out Instructions:</p>
             <p className="text-stone-600">
-              Reply <strong>STOP</strong> at any time to unsubscribe from text
-              messages. Reply <strong>HELP</strong> for assistance. Message and
-              data rates may apply. Message frequency varies based on your
-              inquiry and our communications cadence.
+              You can opt out of texts at any time by replying <strong>STOP</strong>.
+              Reply <strong>HELP</strong> for assistance. Message and data rates may apply.
+              You can opt out of future phone calls by requesting to be placed on our
+              do-not-call list during any call or by contacting us directly.
             </p>
           </div>
           <div className="my-4 p-5 bg-amber-50 border border-amber-200 rounded-lg">
