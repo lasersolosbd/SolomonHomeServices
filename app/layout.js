@@ -1,4 +1,6 @@
 import { Playfair_Display, DM_Sans } from "next/font/google";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -38,6 +40,17 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main>{children}</main>
         <Footer />
+        
+        {/* Vercel Analytics */}
+        <Analytics />
+
+        {/* GoHighLevel Chat Widget */}
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="69ed3dc6cbb9f4525936f30f"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
