@@ -86,7 +86,7 @@ export default function Footer() {
       {/* CREC Compliance Bar & Disclaimer */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="bg-white/5 border border-[#c9a84c]/20 rounded-lg px-5 py-5 mb-5 space-y-3">
+          <div className="bg-white/5 border border-[#c9a84c]/20 rounded-lg px-5 py-5 mb-8 space-y-3">
             <p className="text-center text-xs text-stone-400 leading-relaxed">
               <span className="text-[#c9a84c] font-semibold">Brokerage Disclosure:</span>{" "}
               Mark Solomon is a licensed real estate broker (Colorado license #100084304) operating under{" "}
@@ -100,11 +100,17 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-600 mb-8">
-            <div className="flex items-center gap-3">
-              <img src="/equal-housing-opportunity-logo.png" alt="Equal Housing Opportunity" className="h-10 object-contain invert mix-blend-screen opacity-70" />
-              <span>Equal Housing Opportunity</span>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-stone-600 mb-8">
+            
+            {/* REALTOR AND EQUAL HOUSING LOGOS - STACKED */}
+            <div className="flex flex-col items-center md:items-start gap-4">
+              <img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-8 object-contain opacity-80" />
+              <div className="flex items-center gap-3">
+                <img src="/equal-housing-opportunity-logo.png" alt="Equal Housing Opportunity" className="h-8 object-contain invert mix-blend-screen opacity-70" />
+                <span>Equal Housing Opportunity</span>
+              </div>
             </div>
+
             <p className="text-center">
               © {currentYear} Solomon Home Services. All rights reserved.
             </p>
