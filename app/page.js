@@ -441,6 +441,7 @@ function IdxSection() {
     </section>
   );
 }
+
 /* ─────────────────────────────────────────────────────────────
    ABOUT MARK SECTION
 ───────────────────────────────────────────────────────────── */
@@ -717,7 +718,7 @@ function ContactSection() {
     }`;
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-white border-t border-stone-200">
+    <section id="contact" className="py-24 relative overflow-hidden bg-white">
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
@@ -814,7 +815,14 @@ function ContactSection() {
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
                            <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Timeframe <span className="text-red-500 ml-1">{errors.timeframe || "*"}</span></label>
-                           <input type="text" name="timeframe" value={form.timeframe} onChange={handleChange} placeholder="e.g. ASAP, 3 months" className={inputClass("timeframe")} />
+                           <select name="timeframe" value={form.timeframe} onChange={handleChange} className={inputClass("timeframe")}>
+                             <option value="">Select...</option>
+                             <option value="ASAP">ASAP</option>
+                             <option value="1-3 Months">1-3 Months</option>
+                             <option value="4-6 Months">4-6 Months</option>
+                             <option value="7+ Months">7+ Months</option>
+                             <option value="Just Browsing">Just Browsing</option>
+                           </select>
                         </div>
                         <div>
                            <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Moving To <span className="text-red-500 ml-1">{errors.movingTo || "*"}</span></label>
@@ -843,7 +851,14 @@ function ContactSection() {
                         </div>
                         <div>
                            <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Move Timeframe <span className="text-red-500 ml-1">{errors.buyTimeframe || "*"}</span></label>
-                           <input type="text" name="buyTimeframe" value={form.buyTimeframe} onChange={handleChange} placeholder="e.g. ASAP, 6 months" className={inputClass("buyTimeframe")} />
+                           <select name="buyTimeframe" value={form.buyTimeframe} onChange={handleChange} className={inputClass("buyTimeframe")}>
+                             <option value="">Select...</option>
+                             <option value="ASAP">ASAP</option>
+                             <option value="1-3 Months">1-3 Months</option>
+                             <option value="4-6 Months">4-6 Months</option>
+                             <option value="7+ Months">7+ Months</option>
+                             <option value="Just Browsing">Just Browsing</option>
+                           </select>
                         </div>
                       </div>
                       
