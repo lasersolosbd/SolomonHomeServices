@@ -137,7 +137,7 @@ const testimonials = [
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   HERO SECTION — Reverted to Original Sizing
+   HERO SECTION
 ───────────────────────────────────────────────────────────── */
 function HeroSection() {
   const [loaded, setLoaded] = useState(false);
@@ -159,15 +159,15 @@ function HeroSection() {
             </span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl lg:text-7xl text-[#0f172a] leading-[1.1] mb-8 text-balance" style={{ fontFamily: "var(--font-display)" }}>
+          <h1 className={`text-5xl md:text-6xl lg:text-7xl text-[#0f172a] leading-[1.1] mb-8 text-balance transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-display)" }}>
             Experience & Precision in Every <i className="text-[#c9a84c] font-light">Detail.</i>
           </h1>
           
-          <p className="text-lg text-slate-600 max-w-lg leading-relaxed mb-10">
+          <p className={`text-lg text-slate-600 max-w-lg leading-relaxed mb-10 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
             Over two decades of mastery in real estate. No guesswork, no algorithms (maybe a little bit of AI - since everyone is doing it) - just tactical strategy and relentless negotiation to make selling or buying a great experience.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center gap-6">
+          <div className={`flex flex-col sm:flex-row items-center gap-6 transition-all duration-1000 delay-400 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-[#0f172a] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 flex items-center justify-center gap-3 group rounded-sm">
               Start The Process
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -178,7 +178,7 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT: Image Container (Reverted to max-w-md sizing) */}
+        {/* RIGHT: Image Container */}
         <div className={`lg:col-span-6 relative transition-all duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
           <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto mt-12 lg:mt-0">
             
@@ -276,10 +276,7 @@ function ValueProps() {
             <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full border border-[#c9a84c]/20" />
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Sellers · 01</span>
-              <h3
-                className="text-white font-black leading-none mb-6"
-                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,56px)", letterSpacing: "-0.02em" }}
-              >
+              <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,56px)", letterSpacing: "-0.02em" }}>
                 Tactical<br />Pricing<br />Strategy
               </h3>
             </div>
@@ -291,10 +288,7 @@ function ValueProps() {
           <div className="md:col-span-5 bg-[#1a3a2e] px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[300px]">
             <div>
               <span className="text-[#a3c9a8]/80 text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Sellers · 02</span>
-              <h3
-                className="text-white font-black leading-none mb-6"
-                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}
-              >
+              <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}>
                 Maximum<br />Market<br />Exposure
               </h3>
             </div>
@@ -306,10 +300,7 @@ function ValueProps() {
           <div className="md:col-span-5 bg-stone-900 px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[280px]">
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Buyers · 01</span>
-              <h3
-                className="text-white font-black leading-none mb-6"
-                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}
-              >
+              <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}>
                 Strategic<br />Acquisitions
               </h3>
             </div>
@@ -322,10 +313,7 @@ function ValueProps() {
             <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5" style={{ background: "radial-gradient(circle, #c9a84c 0%, transparent 70%)" }} />
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Buyers · 02</span>
-              <h3
-                className="text-white font-black leading-none mb-6"
-                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,56px)", letterSpacing: "-0.02em" }}
-              >
+              <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,56px)", letterSpacing: "-0.02em" }}>
                 Relocation &amp;<br />PCS Expertise
               </h3>
             </div>
@@ -432,83 +420,81 @@ function IdxSection() {
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
-    <section id="about" className="relative bg-white py-24">
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
-          {/* LEFT: Image Section */}
-          <div className="lg:col-span-5">
-            <div className="relative">
-              <div className="bg-[#0f172a] px-8 py-10 relative overflow-hidden rounded-sm">
-                <div className="absolute top-0 left-0 w-24 h-1" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
-                
-                {/* HEADSHOT REFERENCE */}
-                <div className="mb-8 w-32 h-32 md:w-40 md:h-40 overflow-hidden border-2 border-[#c9a84c] rounded-sm">
-                  <img src="/Mark-headshot.JPG" alt="Mark Solomon Headshot" className="w-full h-full object-cover object-center" />
-                </div>
+    <>
+      {/* Visual Section Break */}
+      <div className="w-full h-px bg-stone-200" />
+      <section id="about" className="relative bg-stone-50 py-24 border-t border-white">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            
+            {/* LEFT: Credential Card */}
+            <div className="lg:col-span-5">
+              <div className="relative">
+                <div className="bg-[#0f172a] px-8 py-10 relative overflow-hidden rounded-sm shadow-xl">
+                  <div className="absolute top-0 left-0 w-24 h-1" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
+                  
+                  <div className="mb-8 w-32 h-32 md:w-40 md:h-40 overflow-hidden border-2 border-[#c9a84c] rounded-sm">
+                    <img src="/Mark-headshot.JPG" alt="Mark Solomon Headshot" className="w-full h-full object-cover object-center" />
+                  </div>
 
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {[
-                    { icon: Shield, label: "Iraq Veteran" },
-                    { icon: Award, label: "20+ Yrs REALTOR®" },
-                    { icon: Users, label: "Charity Co-Founder" },
-                  ].map((badge) => (
-                    <div key={badge.label} className="flex items-center gap-2 px-3 py-1.5 border border-white/15 bg-white/5 rounded-sm">
-                      <badge.icon size={11} className="text-[#c9a84c]" />
-                      <span className="text-stone-300 text-[10px] font-semibold uppercase">{badge.label}</span>
-                    </div>
-                  ))}
-                </div>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {[
+                      { icon: Shield, label: "Iraq Veteran" },
+                      { icon: Award, label: "20+ Yrs REALTOR®" },
+                      { icon: Users, label: "Charity Co-Founder" },
+                    ].map((badge) => (
+                      <div key={badge.label} className="flex items-center gap-2 px-3 py-1.5 border border-white/15 bg-white/5 rounded-sm">
+                        <badge.icon size={11} className="text-[#c9a84c]" />
+                        <span className="text-stone-300 text-[10px] font-semibold uppercase">{badge.label}</span>
+                      </div>
+                    ))}
+                  </div>
 
-                <blockquote>
-                  <p className="text-xl font-bold text-white leading-snug mb-6" style={{ fontFamily: "var(--font-display)" }}>
-                    "The process of selling or buying a home should be precise, streamlined, and — above all — enjoyable."
-                  </p>
-                </blockquote>
+                  <blockquote>
+                    <p className="text-xl font-bold text-white leading-snug mb-6" style={{ fontFamily: "var(--font-display)" }}>
+                      "The process of selling or buying a home should be precise, streamlined, and — above all — enjoyable."
+                    </p>
+                  </blockquote>
 
-                <div className="pt-6 border-t border-white/10 flex justify-between items-center">
-                  <p className="text-[#c9a84c] text-xs font-bold tracking-wider">— Mark Solomon</p>
-                  <img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-10 w-auto opacity-80" />
+                  <div className="pt-6 border-t border-white/10 flex justify-between items-center">
+                    <p className="text-[#c9a84c] text-xs font-bold tracking-wider">— Mark Solomon</p>
+                    <img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-10 w-auto opacity-80" />
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* FANCY HOUSE ACCENT */}
-              <div className="mt-8 rounded-sm overflow-hidden shadow-xl border border-stone-100 h-64">
-                <img src="/Fancy-House.jpg" alt="Featured Property" className="w-full h-full object-cover" />
+            {/* RIGHT: Bio copy */}
+            <div className="lg:col-span-7 pt-4">
+              <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-5 text-center lg:text-left">About Mark</span>
+              <h2 className="font-black text-[#0f172a] leading-tight mb-8 text-4xl md:text-5xl text-center lg:text-left" style={{ fontFamily: "var(--font-display)" }}>
+                Masterclass Level of<br />
+                <span className="italic font-light" style={{ color: "#c9a84c" }}>Service.</span>
+              </h2>
+
+              <div className="space-y-6 text-stone-600 text-base leading-relaxed">
+                <p>With over two decades of real estate mastery, Mark has negotiated deals so tight they squeak. He brings precision, relentless advocacy, and a caffeine-fueled passion to every single transaction. When he isn't closing complex deals or teaching others how to dominate the market, he's likely thinking about closing deals — or trying to convince his family that "comparative market analysis" is a perfectly normal dinner table topic.</p>
+                <p>Commander Mark Solomon, United States Navy Reserve, arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.</p>
+                <p>Today, after over two decades of military experience — including a combat deployment to Iraq — he continues his service in the military. His two sons also joined the military. Service isn't just a value in the Solomon household; it's the baseline expectation.</p>
+                <p>In real estate, Mark channels that same standard. Licensed for over 20 years, he's survived enough market cycles to know that "timing the market" usually just means "being ready when everyone else panics." His instincts for pricing and negotiation come from repetition, pattern recognition, and a healthy disrespect for conventional wisdom.</p>
+                <p>His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), a 501(c)(3) charity, Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.</p>
+                <p>He's been married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, requires the exact same negotiation skills he brings to real estate. He credits her entirely for the outcome and acknowledges that she wins every negotiation at home.</p>
+              </div>
+
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 rounded-sm">
+                  Work With Mark <ArrowRight size={13} />
+                </a>
+                <a href="https://www.vcp.org" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-stone-100 text-[#0f172a] text-xs font-bold tracking-[0.2em] uppercase hover:bg-stone-200 transition-colors duration-300 border border-stone-200 rounded-sm">
+                  Learn About VCP <Users size={13} />
+                </a>
               </div>
             </div>
+
           </div>
-
-          {/* RIGHT: Bio copy */}
-          <div className="lg:col-span-7 pt-4">
-            <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-5 text-center lg:text-left">About Mark</span>
-            <h2 className="font-black text-[#0f172a] leading-tight mb-8 text-4xl md:text-5xl text-center lg:text-left" style={{ fontFamily: "var(--font-display)" }}>
-              Masterclass Level of<br />
-              <span className="italic font-light" style={{ color: "#c9a84c" }}>Service.</span>
-            </h2>
-
-            <div className="space-y-6 text-stone-600 text-base leading-relaxed">
-              <p>With over two decades of real estate mastery, Mark has negotiated deals so tight they squeak. He brings precision, relentless advocacy, and a caffeine-fueled passion to every single transaction. When he isn't closing complex deals or teaching others how to dominate the market, he's likely thinking about closing deals — or trying to convince his family that "comparative market analysis" is a perfectly normal dinner table topic.</p>
-              <p>Commander Mark Solomon, United States Navy Reserve, arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.</p>
-              <p>Today, after over two decades of military experience — including a combat deployment to Iraq — he continues his service in the military. His two sons also joined the military. Service isn't just a value in the Solomon household; it's the baseline expectation.</p>
-              <p>In real estate, Mark channels that same standard. Licensed for over 20 years, he's survived enough market cycles to know that "timing the market" usually just means "being ready when everyone else panics." His instincts for pricing and negotiation come from repetition, pattern recognition, and a healthy disrespect for conventional wisdom.</p>
-              <p>His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), a 501(c)(3) charity, Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.</p>
-              <p>He's been married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, requires the exact same negotiation skills he brings to real estate. He credits her entirely for the outcome and acknowledges that she wins every negotiation at home.</p>
-            </div>
-
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 rounded-sm">
-                Work With Mark <ArrowRight size={13} />
-              </a>
-              <a href="https://www.vcp.org" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-stone-100 text-[#0f172a] text-xs font-bold tracking-[0.2em] uppercase hover:bg-stone-200 transition-colors duration-300 border border-stone-200 rounded-sm">
-                Learn About VCP <Users size={13} />
-              </a>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -530,8 +516,8 @@ function TestimonialsSection() {
   const t = testimonials[active];
 
   return (
-    <section id="reviews" className="py-24 bg-stone-50 relative overflow-hidden">
-      <div className="absolute top-8 left-8 text-stone-200 select-none pointer-events-none" style={{ fontFamily: "var(--font-display)", fontSize: "20rem", lineHeight: 1 }}>
+    <section id="reviews" className="py-24 bg-white relative overflow-hidden">
+      <div className="absolute top-8 left-8 text-stone-100 select-none pointer-events-none" style={{ fontFamily: "var(--font-display)", fontSize: "20rem", lineHeight: 1 }}>
         "
       </div>
 
@@ -542,7 +528,7 @@ function TestimonialsSection() {
         </h2>
         <span className="block w-14 h-0.5 mx-auto mb-16" style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }} />
 
-        <div key={active} className="bg-white p-8 md:p-14 border border-stone-100 min-h-[550px] md:min-h-[400px] flex flex-col justify-center items-center rounded-sm" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)", animation: "fadeInUp 0.4s ease forwards" }}>
+        <div key={active} className="bg-[#fcfaf7] p-8 md:p-14 border border-stone-100 min-h-[400px] flex flex-col justify-center items-center rounded-sm" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)", animation: "fadeInUp 0.4s ease forwards" }}>
           <div className="flex justify-center gap-1 mb-6">
             {Array.from({ length: t.stars }).map((_, i) => (
               <Star key={i} size={16} className="text-[#c9a84c]" fill="#c9a84c" />
