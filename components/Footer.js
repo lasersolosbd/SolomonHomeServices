@@ -104,15 +104,19 @@ export default function Footer() {
             
             {/* LOGOS SECTION */}
             <div className="flex flex-col items-center md:items-start gap-4">
-              {/* Realtor R + Text */}
+              {/* Realtor R + Text - Unified horizontal alignment */}
               <div className="flex items-center gap-3">
-                <img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-8 object-contain opacity-80" />
+                <div className="w-8 flex justify-center">
+                  <img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-8 object-contain opacity-80" />
+                </div>
                 <span>Member of the National Association of REALTORS®</span>
               </div>
               
-              {/* Equal Housing + Text */}
+              {/* Equal Housing + Text - Unified horizontal alignment */}
               <div className="flex items-center gap-3">
-                <img src="/equal-housing-opportunity-logo.png" alt="Equal Housing Opportunity" className="h-8 object-contain invert mix-blend-screen opacity-70" />
+                <div className="w-8 flex justify-center">
+                  <img src="/equal-housing-opportunity-logo.png" alt="Equal Housing Opportunity" className="h-8 object-contain invert mix-blend-screen opacity-70" />
+                </div>
                 <span>Equal Housing Opportunity</span>
               </div>
             </div>
