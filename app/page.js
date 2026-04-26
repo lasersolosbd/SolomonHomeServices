@@ -137,88 +137,59 @@ const testimonials = [
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   HERO SECTION — Asymmetric Editorial Layout
+   HERO SECTION
 ───────────────────────────────────────────────────────────── */
 function HeroSection() {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
-    <section id="home" className="relative min-h-screen bg-[#f5f1eb] overflow-hidden pt-20">
-      {/* Large typographic watermark */}
-      <div
-        className="absolute top-0 right-0 text-[#0f172a] select-none pointer-events-none leading-none"
-        style={{ fontSize: "clamp(120px, 18vw, 260px)", opacity: 0.04, fontFamily: "var(--font-display)", lineHeight: 1, right: "-2vw", top: "5vh" }}
-      >
-        SOLOMON
-      </div>
-
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full min-h-screen flex items-center">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-0 items-center relative z-10">
-
-          {/* LEFT: Headline block — left-aligned, overlapping */}
-          <div className="lg:col-span-6 xl:col-span-5 relative z-20 pb-12 lg:pb-0 lg:pr-8">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="h-px w-10 bg-[#c9a84c]" />
-              <span className="text-slate-500 text-[10px] font-bold tracking-[0.3em] uppercase">
-                Colorado Front Range · REALTOR®
-              </span>
-            </div>
-
-            <h1
-              className="text-[clamp(52px,7vw,96px)] text-[#0f172a] leading-[0.95] mb-10 font-black"
-              style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}
-            >
-              Experience<br />
-              &amp; Precision<br />
-              <span className="relative inline-block">
-                in Every
-                <span
-                  className="block absolute -bottom-2 left-0 h-1.5 w-full"
-                  style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574, transparent)" }}
-                />
-              </span>
-              <span className="block mt-2 italic font-light text-[#c9a84c]">Detail.</span>
-            </h1>
-
-            <p className="text-base text-slate-600 max-w-md leading-relaxed mb-12">
-              Over two decades of mastery in real estate. No guesswork — just tactical strategy and relentless negotiation to make selling or buying a great experience.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-start gap-5">
-              <a
-                href="#contact"
-                className="px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-3 group hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300"
-              >
-                Start The Process
-                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-              </a>
-              <a
-                href="#idx-listings"
-                className="text-[#0f172a] text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-2 hover:text-[#c9a84c] transition-colors pt-4 sm:pt-0 self-center"
-              >
-                Search Properties
-              </a>
-            </div>
+    <section id="home" className="relative min-h-screen flex items-center bg-[#f5f1eb] overflow-hidden pt-20">
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <div className="lg:col-span-6 z-20">
+          <div className={`inline-flex items-center gap-3 mb-6 transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <span className="h-px w-12 bg-[#c9a84c]" />
+            <span className="text-slate-500 text-xs font-semibold tracking-[0.2em] uppercase">
+              Colorado Front Range
+            </span>
           </div>
+          <h1 className={`text-5xl md:text-6xl lg:text-7xl text-[#0f172a] leading-[1.1] mb-8 text-balance transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-display)" }}>
+            Experience & Precision in Every <i className="text-[#c9a84c] font-light">Detail.</i>
+          </h1>
+          <p className={`text-lg text-slate-600 max-w-lg leading-relaxed mb-10 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            Over two decades of mastery in real estate. No guesswork, no algorithms (maybe a little bit of AI - since everyone is doing it) - just tactical strategy and relentless negotiation to make selling or buying a great experience.
+          </p>
+          <div className={`flex flex-col sm:flex-row items-center gap-6 transition-all duration-1000 delay-400 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-[#0f172a] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] transition-colors duration-300 flex items-center justify-center gap-3 group">
+              Start The Process
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </a>
+            <a href="#idx-listings" className="text-[#0f172a] text-sm font-semibold tracking-widest uppercase hover:text-[#c9a84c] transition-colors flex items-center gap-2">
+              Search Properties
+            </a>
+          </div>
+        </div>
+        <div className={`lg:col-span-6 relative transition-all duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
+          <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto">
+            {/* The "Michigan" Border accents - Bottom Left */}
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-[#c9a84c]/60 hidden lg:block z-20 pointer-events-none" />
+            <div className="absolute -bottom-10 left-4 text-[#0f172a] text-[10px] font-bold tracking-[0.3em] uppercase hidden lg:block z-20">
+              Colorado Front Range
+            </div>
 
-          {/* RIGHT: Full-bleed image, hero overlaps left text */}
-          <div className="lg:col-span-6 xl:col-span-7 relative">
-            <div
-              className="relative w-full lg:ml-8"
-              style={{ aspectRatio: "4/5" }}
-            >
-              {/* The "Michigan" Border accents - Bottom Left */}
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-[#c9a84c]/60 hidden lg:block z-20 pointer-events-none" />
-              <div className="absolute -bottom-10 left-4 text-[#0f172a] text-[10px] font-bold tracking-[0.3em] uppercase hidden lg:block z-20">
-                Colorado Front Range
-              </div>
-
-              <div className="absolute inset-0 overflow-hidden" style={{ boxShadow: "inset -60px 0 80px rgba(245,241,235,0.5)" }}>
-                <img
-                  src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200"
-                  alt="Luxury Colorado Home — Solomon Home Services"
-                  className="w-full h-full object-cover"
-                />
-                {/* Gradient left-fade so image merges with headline */}
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #f5f1eb 0%, transparent 30%)" }} />
+            <div className="absolute inset-0 shadow-floating rounded-sm overflow-hidden z-10">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000" alt="Luxury Colorado Home" className="w-full h-full object-cover" />
+            </div>
+            
+            {/* Floating award card */}
+            <div className="absolute -bottom-6 -left-6 lg:-left-12 bg-white px-6 py-5 flex items-center gap-4 z-30 shadow-xl rounded-sm">
+              <Award size={24} className="text-[#c9a84c] shrink-0" />
+              <div>
+                <p className="font-display text-2xl text-[#0f172a] mb-1 leading-none">20+</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold leading-tight">Years of Excellence</p>
               </div>
             </div>
           </div>
@@ -349,10 +320,10 @@ function ValueProps() {
 
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12 text-center md:text-left">
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group rounded-sm"
           >
             Start Your Strategy
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -383,29 +354,29 @@ function IdxSection() {
             </h2>
           </div>
 
-          <div className="flex bg-stone-50 p-1 border border-stone-200">
+          <div className="flex bg-stone-50 p-1 border border-stone-200 rounded-sm">
             <button
               onClick={() => setActiveTab('search')}
-              className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all ${activeTab === 'search' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}
+              className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'search' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}
             >
               MLS Search
             </button>
             <button
               onClick={() => setActiveTab('featured')}
-              className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all ${activeTab === 'featured' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}
+              className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'featured' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}
             >
               My Listings
             </button>
           </div>
         </div>
 
-        <p className="text-xs text-stone-500 italic mb-4 text-right">
+        <p className="text-[11px] text-stone-500 italic mb-4 text-right">
           Note: If no properties appear in "My Listings", inventory is currently sold out. Please use "MLS Search".
         </p>
 
-        <div className="w-full h-[600px] bg-stone-50 border border-stone-200 overflow-hidden relative flex items-center justify-center">
+        <div className="w-full h-[600px] bg-stone-50 border border-stone-200 overflow-hidden relative flex items-center justify-center rounded-sm">
           {!iframeLoaded ? (
-            <div className="text-center p-8 z-20 flex flex-col items-center bg-white border border-stone-200 max-w-lg">
+            <div className="text-center p-8 z-20 flex flex-col items-center bg-white border border-stone-200 max-w-lg rounded-sm">
               <Search size={40} className="text-[#c9a84c] mb-4" />
               <h3 className="text-2xl font-black text-[#0f172a] mb-3" style={{ fontFamily: "var(--font-display)" }}>Live MLS Connection</h3>
               <p className="text-stone-500 mb-8 leading-relaxed text-sm">
@@ -413,7 +384,7 @@ function IdxSection() {
               </p>
               <button
                 onClick={() => setIframeLoaded(true)}
-                className="px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors flex items-center gap-2"
+                className="px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors flex items-center gap-2 rounded-sm"
               >
                 Load Live Database <ArrowRight size={14} />
               </button>
@@ -433,7 +404,7 @@ function IdxSection() {
         <div className="mt-12 text-center">
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group rounded-sm"
           >
             Discuss Your Property Needs
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -485,11 +456,11 @@ function AboutSection() {
 
             {/* LEFT: Quote card */}
             <div className="lg:col-span-4">
-              <div className="bg-[#0f172a] px-8 py-10 relative overflow-hidden">
+              <div className="bg-[#0f172a] px-8 py-10 relative overflow-hidden rounded-sm">
                 <div className="absolute top-0 left-0 w-24 h-1" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
 
                 {/* Headshot */}
-                <div className="mb-8 w-32 h-32 md:w-40 md:h-40 overflow-hidden border-2 border-[#c9a84c]">
+                <div className="mb-8 w-32 h-32 md:w-40 md:h-40 overflow-hidden border-2 border-[#c9a84c] rounded-sm">
                   <img src="/Mark-headshot.JPG" alt="Mark Solomon Headshot" className="w-full h-full object-cover object-center" />
                 </div>
 
@@ -500,7 +471,7 @@ function AboutSection() {
                     { icon: Award, label: "20+ Yrs REALTOR®" },
                     { icon: Users, label: "Charity Co-Founder" },
                   ].map((badge) => (
-                    <div key={badge.label} className="flex items-center gap-2 px-3 py-1.5 border border-white/15 bg-white/5">
+                    <div key={badge.label} className="flex items-center gap-2 px-3 py-1.5 border border-white/15 bg-white/5 rounded-sm">
                       <badge.icon size={11} className="text-[#c9a84c]" />
                       <span className="text-stone-300 text-[10px] font-semibold">{badge.label}</span>
                     </div>
@@ -534,7 +505,7 @@ function AboutSection() {
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 rounded-sm"
                 >
                   Work With Mark <ArrowRight size={13} />
                 </a>
@@ -542,7 +513,7 @@ function AboutSection() {
                   href="https://www.vcp.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-stone-100 text-[#0f172a] text-xs font-bold tracking-[0.2em] uppercase hover:bg-stone-200 transition-colors duration-300 border border-stone-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-stone-100 text-[#0f172a] text-xs font-bold tracking-[0.2em] uppercase hover:bg-stone-200 transition-colors duration-300 border border-stone-200 rounded-sm"
                 >
                   Learn About VCP <Users size={13} />
                 </a>
@@ -587,7 +558,7 @@ function TestimonialsSection() {
 
         <div
           key={active}
-          className="bg-white p-8 md:p-14 border border-stone-100 min-h-[550px] md:min-h-[400px] flex flex-col justify-center items-center"
+          className="bg-white p-8 md:p-14 border border-stone-100 min-h-[550px] md:min-h-[400px] flex flex-col justify-center items-center rounded-sm"
           style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)", animation: "fadeInUp 0.4s ease forwards" }}
         >
           <div className="flex justify-center gap-1 mb-6">
@@ -601,7 +572,7 @@ function TestimonialsSection() {
         </div>
 
         <div className="flex items-center justify-center gap-6 mt-8">
-          <button onClick={prev} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200">
+          <button onClick={prev} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200 rounded-full">
             <ChevronLeft size={16} />
           </button>
           <div className="flex gap-2 flex-wrap justify-center">
@@ -609,11 +580,11 @@ function TestimonialsSection() {
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className={`transition-all duration-300 ${i === active ? "w-6 h-2 bg-[#c9a84c]" : "w-2 h-2 bg-stone-300 hover:bg-stone-400"}`}
+                className={`transition-all duration-300 rounded-full ${i === active ? "w-6 h-2 bg-[#c9a84c]" : "w-2 h-2 bg-stone-300 hover:bg-stone-400"}`}
               />
             ))}
           </div>
-          <button onClick={next} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200">
+          <button onClick={next} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200 rounded-full">
             <ChevronRight size={16} />
           </button>
         </div>
@@ -744,6 +715,9 @@ function ContactSection() {
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = "Valid email required.";
     if (!form.phone.trim()) e.phone = "Required.";
 
+    // Note: Removed SMS/Voice validation to comply with TCR and TCPA rules which
+    // forbid making marketing consent a condition of submission.
+
     if (formType === 'seller') {
       if (!form.address.trim()) e.address = "Required.";
       if (!form.city.trim()) e.city = "Required.";
@@ -776,6 +750,7 @@ function ContactSection() {
     }
     setLoading(true);
     try {
+      // FORCE WEBHOOK: The safety switch has been removed.
       const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/rumk9zv94kRQ5xe7zqjO/webhook-trigger/cd4d26aa-594c-4d13-93a5-94f0cfab018c";
 
       await fetch(GHL_WEBHOOK_URL, {
@@ -797,7 +772,7 @@ function ContactSection() {
   };
 
   const inputClass = (field) =>
-    `w-full bg-white border px-4 py-3 text-sm text-slate-800 placeholder-stone-400 focus:outline-none focus:ring-2 transition-all duration-200 ${
+    `w-full bg-white border px-4 py-3 text-sm text-slate-800 placeholder-stone-400 focus:outline-none focus:ring-2 transition-all duration-200 rounded-sm ${
       errors[field] ? "border-red-400 focus:ring-red-200" : "border-stone-200 focus:ring-[#c9a84c]/30 focus:border-[#c9a84c]"
     }`;
 
@@ -828,7 +803,7 @@ function ContactSection() {
                 </div>
               ))}
             </div>
-            <div className="mt-10 p-6 bg-stone-50 border border-stone-200 space-y-3">
+            <div className="mt-10 p-6 bg-stone-50 border border-stone-200 space-y-3 rounded-sm">
               <p className="text-[#0f172a] font-bold text-sm" style={{ fontFamily: "var(--font-display)" }}>Prefer to reach out directly?</p>
               <a href="tel:+18168535467" className="flex items-center gap-3 text-stone-600 hover:text-[#c9a84c] text-sm transition-colors"><Phone size={14} className="text-[#c9a84c]" />(816) 853-5467</a>
               <a href="mailto:mark@solomonhomeservices.com" className="flex items-center gap-3 text-stone-600 hover:text-[#c9a84c] text-sm transition-colors"><Mail size={14} className="text-[#c9a84c]" />mark@solomonhomeservices.com</a>
@@ -838,15 +813,15 @@ function ContactSection() {
 
           <div>
             {submitted ? (
-              <div className="bg-white p-12 text-center border border-stone-100 flex flex-col items-center justify-center min-h-[500px]" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)" }}>
-                <div className="w-16 h-16 flex items-center justify-center mb-6 bg-[#0f172a]/10">
+              <div className="bg-white p-12 text-center border border-stone-100 flex flex-col items-center justify-center min-h-[500px] rounded-sm" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)" }}>
+                <div className="w-16 h-16 flex items-center justify-center mb-6 bg-[#0f172a]/10 rounded-full">
                   <CheckCircle size={32} className="text-[#0f172a]" />
                 </div>
                 <h3 className="text-2xl font-black text-[#0f172a] mb-3" style={{ fontFamily: "var(--font-display)" }}>Message Received.</h3>
                 <p className="text-stone-500 text-sm leading-relaxed max-w-xs">Mark will be in touch within 24 hours. In the meantime, feel free to browse current listings above.</p>
               </div>
             ) : (
-              <div className="bg-white border border-stone-100 overflow-hidden" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)" }}>
+              <div className="bg-white border border-stone-100 overflow-hidden rounded-sm" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)" }}>
                 <div className="flex border-b border-stone-100">
                   <button
                     onClick={() => { setFormType('seller'); setErrors({}); }}
@@ -978,11 +953,11 @@ function ContactSection() {
                   </div>
 
                   {/* CHECKBOX 1: SMS CONSENT */}
-                  <div className="mb-3 p-4 border border-stone-200 bg-stone-50">
+                  <div className="mb-3 p-4 border border-stone-200 bg-stone-50 rounded-sm">
                     <label className="flex items-start gap-3 cursor-pointer group">
                       <div className="relative mt-0.5 shrink-0">
                         <input type="checkbox" name="smsConsent" checked={form.smsConsent} onChange={handleChange} className="sr-only" />
-                        <div className={`w-5 h-5 border-2 flex items-center justify-center transition-all duration-200 ${form.smsConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`}>
+                        <div className={`w-5 h-5 border-2 flex items-center justify-center transition-all duration-200 rounded-sm ${form.smsConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`}>
                           {form.smsConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
                         </div>
                       </div>
@@ -993,11 +968,11 @@ function ContactSection() {
                   </div>
 
                   {/* CHECKBOX 2: VOICE/AI CONSENT */}
-                  <div className="mb-6 p-4 border border-stone-200 bg-stone-50">
+                  <div className="mb-6 p-4 border border-stone-200 bg-stone-50 rounded-sm">
                     <label className="flex items-start gap-3 cursor-pointer group">
                       <div className="relative mt-0.5 shrink-0">
                         <input type="checkbox" name="voiceConsent" checked={form.voiceConsent} onChange={handleChange} className="sr-only" />
-                        <div className={`w-5 h-5 border-2 flex items-center justify-center transition-all duration-200 ${form.voiceConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`}>
+                        <div className={`w-5 h-5 border-2 flex items-center justify-center transition-all duration-200 rounded-sm ${form.voiceConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`}>
                           {form.voiceConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
                         </div>
                       </div>
@@ -1010,7 +985,7 @@ function ContactSection() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 font-bold text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-2 bg-[#c9a84c] text-[#0f172a] hover:bg-[#b8965e] transition-colors duration-300 disabled:opacity-60"
+                    className="w-full py-4 font-bold text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-2 bg-[#c9a84c] text-[#0f172a] hover:bg-[#b8965e] transition-colors duration-300 disabled:opacity-60 rounded-sm"
                   >
                     {loading ? "Sending..." : (formType === 'seller' ? "Get My Free Valuation" : "Let's Get Started")}
                   </button>
