@@ -328,32 +328,31 @@ function IdxSection() {
     <section id="idx-listings" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
-          <div className="max-w-2xl text-left">
-            <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.2em] uppercase block mb-3">Property Portfolio</span>
-            <h2 className="text-4xl md:text-5xl text-[#0f172a] leading-tight font-black" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}>
-              Discover the <i className="text-[#1e293b] font-light">Front Range.</i>
-            </h2>
+          <div>
+            <span className="text-[#c9a84c] text-[10px] tracking-[0.2em] font-bold uppercase block mb-3">Property Portfolio</span>
+            <h2 className="text-4xl md:text-5xl font-black text-[#0f172a] font-display leading-none">Discover the <i className="font-light text-[#c9a84c]">Front Range.</i></h2>
           </div>
           <div className="flex bg-stone-50 p-1 border border-stone-200 rounded-sm">
             <button onClick={() => setActiveTab('search')} className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'search' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}>MLS Search</button>
             <button onClick={() => setActiveTab('featured')} className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'featured' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}>My Listings</button>
           </div>
         </div>
-        <p className="text-xs text-stone-500 italic mb-4 text-right">Note: If no properties appear in "My Listings", inventory is currently sold out. Please use "MLS Search".</p>
-        <div className="w-full h-[600px] bg-stone-50 border border-stone-200 overflow-hidden relative flex items-center justify-center rounded-sm">
+        
+        <div className="w-full h-[600px] bg-stone-50 border border-stone-200 relative flex items-center justify-center rounded-sm overflow-hidden mb-12">
           {!iframeLoaded ? (
-            <div className="text-center p-8 z-20 flex flex-col items-center bg-white border border-stone-200 max-w-lg rounded-sm shadow-sm">
-              <Search size={40} className="text-[#c9a84c] mb-4" />
-              <h3 className="text-2xl font-black text-[#0f172a] mb-3" style={{ fontFamily: "var(--font-display)" }}>Live MLS Connection</h3>
-              <p className="text-stone-500 mb-8 leading-relaxed text-sm">Connect directly to the REcolorado live database to explore current active properties across the Front Range.</p>
-              <button onClick={() => setIframeLoaded(true)} className="px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors flex items-center gap-2 rounded-sm">Load Live Database <ArrowRight size={14} /></button>
-            </div>
+            <button onClick={() => setIframeLoaded(true)} className="px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase rounded-sm hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 flex items-center gap-3">
+              Load Live Database <ArrowRight size={14} />
+            </button>
           ) : (
-            <>
-              <div className={`absolute inset-0 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}><iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe></div>
-              <div className={`absolute inset-0 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}><iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe></div>
-            </>
+            <iframe src={activeTab === 'search' ? "https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" : "https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218"} width="100%" height="100%" frameBorder="0" />
           )}
+        </div>
+
+        {/* RESTORED CTA BUTTON */}
+        <div className="text-center">
+          <a href="#contact" className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group rounded-sm shadow-md">
+            Discuss Your Property Needs <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>
