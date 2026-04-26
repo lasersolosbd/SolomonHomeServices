@@ -233,7 +233,7 @@ function StatsBand() {
   const pillars = ["Precision", "Expert Negotiation", "Unmatched Market Insight"];
   return (
     <section className="bg-[#0f172a] border-y border-white/10 py-7">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/10 text-center">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/10">
         {pillars.map((p, i) => (
           <div key={i} className="flex-1 flex items-center justify-center py-3 md:py-0 first:pt-0 last:pb-0 gap-3">
             <span className="w-1 h-5 bg-[#c9a84c]" />
@@ -246,30 +246,46 @@ function StatsBand() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   VALUE PROPS
+   VALUE PROPS — Bento Box Layout
 ───────────────────────────────────────────────────────────── */
 function ValueProps() {
   return (
-    <section id="strategy" className="py-24 bg-[#f5f1eb]">
+    <section id="strategy" className="py-28 bg-[#f5f1eb]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+        {/* Section header */}
         <div className="mb-14 max-w-xl">
           <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-4">The Approach</span>
-          <h2 className="text-[clamp(42px,5vw,72px)] text-[#0f172a] leading-[0.95] font-black mb-0" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}>
-            A Different Kind<br /><span className="italic font-light text-slate-500">of Strategy.</span>
+          <h2
+            className="text-[clamp(42px,5vw,72px)] text-[#0f172a] leading-[0.95] font-black mb-0"
+            style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}
+          >
+            A Different Kind<br />
+            <span className="italic font-light text-slate-500">of Strategy.</span>
           </h2>
         </div>
+
+        {/* BENTO GRID */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-auto">
+
+          {/* BLOCK 1 */}
           <div className="md:col-span-12 bg-[#0f172a] px-10 py-12 relative overflow-hidden rounded-sm">
             <div className="absolute top-0 left-0 w-40 h-1" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
-            <p className="text-stone-300 text-base leading-relaxed max-w-3xl">
+            <p className="text-stone-400 text-base leading-relaxed max-w-3xl">
               Buying or selling real estate isn't a simple transaction — it's one of the largest financial decisions you'll make. I bring clear objectives, precise execution, and an unwillingness to accept anything less than the best possible outcome for you.
             </p>
           </div>
+
+          {/* BLOCK 2 */}
           <div className="md:col-span-7 bg-[#0f172a] px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[300px] rounded-sm">
             <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full border border-[#c9a84c]/20" />
+            <div className="absolute -right-4 -top-4 w-24 h-24 rounded-full border border-[#c9a84c]/10" />
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Sellers · 01</span>
-              <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,56px)", letterSpacing: "-0.02em" }}>
+              <h3
+                className="text-white font-black leading-none mb-6"
+                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,56px)", letterSpacing: "-0.02em" }}
+              >
                 Tactical<br />Pricing<br />Strategy
               </h3>
             </div>
@@ -277,10 +293,15 @@ function ValueProps() {
               Every listing is priced with precision. We analyze the micro-market, position you competitively, and go to market with a plan designed to attract the strongest offers.
             </p>
           </div>
+
+          {/* BLOCK 3 */}
           <div className="md:col-span-5 bg-[#1a3a2e] px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[300px] rounded-sm">
             <div>
               <span className="text-[#a3c9a8]/80 text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Sellers · 02</span>
-              <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}>
+              <h3
+                className="text-white font-black leading-none mb-6"
+                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}
+              >
                 Maximum<br />Market<br />Exposure
               </h3>
             </div>
@@ -288,35 +309,58 @@ function ValueProps() {
               Your home reaches buyers across the MLS, premium portals, and targeted campaigns — because the right buyer may not be looking where everyone else advertises.
             </p>
           </div>
+
+          {/* BLOCK 4 */}
           <div className="md:col-span-5 bg-stone-900 px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[280px] rounded-sm">
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Buyers · 01</span>
-              <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}>Strategic<br />Acquisitions</h3>
+              <h3
+                className="text-white font-black leading-none mb-6"
+                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}
+              >
+                Strategic<br />Acquisitions
+              </h3>
             </div>
             <p className="text-stone-400 text-sm leading-relaxed">
               We don't just "look at houses." We hunt for the right property, analyzing value, neighborhood trends, and future equity potential to ensure a smart investment.
             </p>
           </div>
+
+          {/* BLOCK 5 */}
           <div className="md:col-span-7 bg-[#0f172a] border border-[#c9a84c]/20 px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[280px] rounded-sm">
-            <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5" style={{ background: "radial-gradient(circle, #c9a84c 0%, transparent 70%)" }} />
+            <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5" style={{
+              background: "radial-gradient(circle, #c9a84c 0%, transparent 70%)"
+            }} />
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Buyers · 02</span>
-              <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,56px)", letterSpacing: "-0.02em" }}>Relocation &amp;<br />PCS Expertise</h3>
+              <h3
+                className="text-white font-black leading-none mb-6"
+                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,56px)", letterSpacing: "-0.02em" }}
+              >
+                Relocation &amp;<br />PCS Expertise
+              </h3>
             </div>
             <p className="text-stone-400 text-sm leading-relaxed max-w-sm">
               Moving across the country or handling a short-notice PCS? I know timelines, VA loan nuances, and how to execute a seamless transition from afar.
             </p>
           </div>
+
         </div>
-        <div className="mt-12">
-          <a href="#contact" className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group rounded-sm">
-            Start Your Strategy <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+
+        <div className="mt-12 text-center md:text-left">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group rounded-sm"
+          >
+            Start Your Strategy
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </a>
         </div>
       </div>
     </section>
   );
 }
+
 /* ─────────────────────────────────────────────────────────────
    IDX LISTINGS SECTION
 ───────────────────────────────────────────────────────────── */
@@ -328,30 +372,69 @@ function IdxSection() {
     <section id="idx-listings" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
-          <div>
-            <span className="text-[#c9a84c] text-[10px] tracking-[0.2em] font-bold uppercase block mb-3">Property Portfolio</span>
-            <h2 className="text-4xl md:text-5xl font-black text-[#0f172a] font-display leading-none">Discover the <i className="font-light text-[#c9a84c]">Front Range.</i></h2>
+          <div className="max-w-2xl text-left">
+            <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.2em] uppercase block mb-3">
+              Property Portfolio
+            </span>
+            <h2 className="text-4xl md:text-5xl text-[#0f172a] leading-tight font-black" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}>
+              Discover the <i className="text-[#1e293b] font-light">Front Range.</i>
+            </h2>
           </div>
+
           <div className="flex bg-stone-50 p-1 border border-stone-200 rounded-sm">
-            <button onClick={() => setActiveTab('search')} className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'search' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}>MLS Search</button>
-            <button onClick={() => setActiveTab('featured')} className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'featured' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}>My Listings</button>
+            <button
+              onClick={() => setActiveTab('search')}
+              className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'search' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}
+            >
+              MLS Search
+            </button>
+            <button
+              onClick={() => setActiveTab('featured')}
+              className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'featured' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}
+            >
+              My Listings
+            </button>
           </div>
         </div>
-        
-        <div className="w-full h-[600px] bg-stone-50 border border-stone-200 relative flex items-center justify-center rounded-sm overflow-hidden mb-12">
+
+        <p className="text-xs text-stone-500 italic mb-4 text-right">
+          Note: If no properties appear in "My Listings", inventory is currently sold out. Please use "MLS Search".
+        </p>
+
+        <div className="w-full h-[600px] bg-stone-50 border border-stone-200 overflow-hidden relative flex items-center justify-center rounded-sm mb-12">
           {!iframeLoaded ? (
-            <button onClick={() => setIframeLoaded(true)} className="px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase rounded-sm hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 flex items-center gap-3">
-              Load Live Database <ArrowRight size={14} />
-            </button>
+            <div className="text-center p-8 z-20 flex flex-col items-center bg-white border border-stone-200 max-w-lg rounded-sm shadow-sm">
+              <Search size={40} className="text-[#c9a84c] mb-4" />
+              <h3 className="text-2xl font-black text-[#0f172a] mb-3" style={{ fontFamily: "var(--font-display)" }}>Live MLS Connection</h3>
+              <p className="text-stone-500 mb-8 leading-relaxed text-sm">
+                Connect directly to the REcolorado live database to explore current active properties across the Front Range.
+              </p>
+              <button
+                onClick={() => setIframeLoaded(true)}
+                className="px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors flex items-center gap-2 rounded-sm"
+              >
+                Load Live Database <ArrowRight size={14} />
+              </button>
+            </div>
           ) : (
-            <iframe src={activeTab === 'search' ? "https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" : "https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218"} width="100%" height="100%" frameBorder="0" />
+            <>
+              <div className={`absolute inset-0 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                <iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
+              </div>
+              <div className={`absolute inset-0 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+                <iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe>
+              </div>
+            </>
           )}
         </div>
 
-        {/* RESTORED CTA BUTTON */}
         <div className="text-center">
-          <a href="#contact" className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group rounded-sm shadow-md">
-            Discuss Your Property Needs <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group rounded-sm shadow-md"
+          >
+            Discuss Your Property Needs
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </a>
         </div>
       </div>
@@ -364,7 +447,6 @@ function IdxSection() {
 function AboutSection() {
   return (
     <section id="about" className="py-24 relative overflow-hidden bg-white border-t border-stone-200">
-      {/* Subtle background texture */}
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("/about-home.jpg")`, backgroundSize: "cover", backgroundPosition: "center" }} />
       
       <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -510,16 +592,10 @@ function TestimonialsSection() {
 /* ─────────────────────────────────────────────────────────────
    AEO FAQ SECTION
 ───────────────────────────────────────────────────────────── */
-const faqItems = [
-  { question: "Why should I work with a military Veteran real estate agent?", answer: "A military Veteran real estate agent brings unmatched discipline, mission-focus, and negotiation precision to your transaction. Mark Solomon's 20+ years of Navy leadership translates directly into clear communication, unwavering client advocacy, and the ability to execute flawlessly under pressure." },
-  { question: "How do you maximize my home's selling price in Colorado?", answer: "Maximizing your sale price starts with precision pricing driven by micro-market data — not broad averages. Mark uses a tactical pricing strategy backed by hyperlocal comparable analysis, positions your listing with maximum exposure, and leverages two decades of negotiation experience to close the strongest offer." },
-  { question: "What areas of the Front Range do you serve?", answer: "Mark Solomon serves the entire Colorado Front Range corridor, including Fort Collins, Loveland, Longmont, Boulder, and the greater Denver metro area. He also specializes in military PCS relocations and out-of-state buyer transactions throughout Northern Colorado." },
-  { question: "What awards and credentials does Mark Solomon hold?", answer: "Mark Solomon is a Business Strategy Advisor and two-time Good Neighbor Award winner (Missouri Association of Realtors in 2017, National Association of Realtors in 2019) for his work co-founding the Veterans Community Project." }
-];
-
 function AEO_FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
+
   return (
     <section id="faq" className="py-24 bg-[#0f172a] relative overflow-hidden text-left">
       <div className="absolute bottom-0 right-0 text-white select-none pointer-events-none leading-none" style={{ fontSize: "clamp(80px, 12vw, 180px)", opacity: 0.03, fontFamily: "var(--font-display)", lineHeight: 1 }}>FAQ</div>
@@ -545,6 +621,7 @@ function AEO_FAQSection() {
     </section>
   );
 }
+
 /* ─────────────────────────────────────────────────────────────
    CONTACT / GHL FORM SECTION
 ───────────────────────────────────────────────────────────── */
@@ -760,5 +837,22 @@ function ContactSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <>
+      <Script id="schema-agent" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema) }} />
+      <Script id="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }} />
+      <HeroSection />
+      <StatsBand />
+      <ValueProps />
+      <IdxSection />
+      <AboutSection />
+      <TestimonialsSection />
+      <AEO_FAQSection />
+      <ContactSection />
+    </>
   );
 }
