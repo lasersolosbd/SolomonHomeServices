@@ -360,65 +360,86 @@ function IdxSection() {
   );
 }
 /* ─────────────────────────────────────────────────────────────
-   ABOUT / BIO SECTION
+   ABOUT MARK SECTION
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
-    <>
-      <div className="bg-white pb-16">
-        <div className="w-full h-px bg-stone-200" />
-        <div className="flex justify-center -mt-6">
-          <a href="#contact" className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 rounded-sm shadow-lg group">
-            Discuss Your Property Needs <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-          </a>
-        </div>
-      </div>
+    <section id="about" className="py-24 relative overflow-hidden bg-white">
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("/about-home.jpg")`, backgroundSize: "cover", backgroundPosition: "center" }} />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          <div className="relative">
+            <div className="rounded-sm overflow-hidden bg-[#0f172a] border border-stone-200 p-8 md:p-10 relative" style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
+              <div className="absolute top-0 left-0 w-24 h-1 rounded-br-sm" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
+              
+              <div className="mb-8 w-32 h-32 md:w-40 md:h-40 rounded-sm overflow-hidden border-2 border-[#c9a84c] shadow-inner relative">
+                <img src="/Mark-headshot.JPG" alt="Commander Mark Solomon" className="w-full h-full object-cover object-center" />
+              </div>
 
-      <section id="about" className="relative bg-stone-50 py-16 border-t border-white">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-5">
-              <div className="relative">
-                <div className="bg-[#0f172a] px-8 py-10 relative overflow-hidden rounded-sm shadow-xl">
-                  <div className="absolute top-0 left-0 w-24 h-1" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
-                  <div className="mb-8 w-32 h-32 md:w-40 md:h-40 overflow-hidden border-2 border-[#c9a84c] rounded-sm"><img src="/Mark-headshot.JPG" alt="Mark Solomon Headshot" className="w-full h-full object-cover object-center" /></div>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {[
-                      { icon: Shield, label: "Iraq Veteran" },
-                      { icon: Award, label: "20+ Yrs REALTOR®" },
-                      { icon: Users, label: "Charity Co-Founder" },
-                    ].map((badge) => (
-                      <div key={badge.label} className="flex items-center gap-2 px-3 py-1.5 border border-white/15 bg-white/5 rounded-sm"><badge.icon size={11} className="text-[#c9a84c]" /><span className="text-stone-300 text-[10px] font-semibold uppercase">{badge.label}</span></div>
-                    ))}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {[
+                  { icon: Shield, label: "Iraq Veteran" },
+                  { icon: Award, label: "20+ Years as a REALTOR®" }, 
+                  { icon: Users, label: "Charity Co-Founder" },
+                ].map((badge) => (
+                  <div key={badge.label} className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 bg-white/5">
+                    <badge.icon size={12} className="text-[#c9a84c]" />
+                    <span className="text-stone-300 text-xs font-medium">{badge.label}</span>
                   </div>
-                  <blockquote className="text-left"><p className="text-xl font-bold text-white leading-snug mb-6" style={{ fontFamily: "var(--font-display)" }}>"The process of selling or buying a home should be precise, streamlined, and — above all — enjoyable."</p></blockquote>
-                  <div className="pt-6 border-t border-white/10 flex justify-between items-center"><p className="text-[#c9a84c] text-xs font-bold tracking-wider">— Mark Solomon</p><img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-10 w-auto opacity-80" /></div>
-                </div>
+                ))}
               </div>
-            </div>
-            <div className="lg:col-span-7 pt-4 text-left">
-              <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-5 text-center lg:text-left">About Mark</span>
-              <h2 className="font-black text-[#0f172a] leading-tight mb-8 text-4xl md:text-5xl text-center lg:text-left" style={{ fontFamily: "var(--font-display)" }}>Masterclass Level of<br /><span className="italic font-light" style={{ color: "#c9a84c" }}>Service.</span></h2>
-              <div className="space-y-6 text-stone-600 text-base leading-relaxed">
-                <p>With over two decades of real estate mastery, Mark has negotiated deals so tight they squeak. He brings precision, relentless advocacy, and a caffeine-fueled passion to every single transaction. When he isn't closing complex deals or teaching others how to dominate the market, he's likely thinking about closing deals — or trying to convince his family that "comparative market analysis" is a perfectly normal dinner table topic.</p>
-                <p>Commander Mark Solomon, United States Navy Reserve, arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.</p>
-                <p>Today, after over two decades of military experience — including a combat deployment to Iraq — he continues his service in the military. His two sons also joined the military. Service isn't just a value in the Solomon household; it's the baseline expectation.</p>
-                <p>In real estate, Mark channels that same standard. Licensed for over 20 years, he's survived enough market cycles to know that "timing the market" usually just means "being ready when everyone else panics." His instincts for pricing and negotiation come from repetition, pattern recognition, and a healthy disrespect for conventional wisdom.</p>
-                <p>His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), a 501(c)(3) charity, Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.</p>
-                <p>He's been married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, requires the exact same negotiation skills he brings to real estate. He credits her entirely for the outcome and acknowledges that she wins every negotiation at home.</p>
-              </div>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] transition-colors duration-300 rounded-sm">Work With Mark <ArrowRight size={13} /></a>
-                <a href="https://www.vcp.org" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-stone-100 text-[#0f172a] text-xs font-bold tracking-[0.2em] uppercase hover:bg-stone-200 transition-colors duration-300 border border-stone-200 rounded-sm">Learn About VCP <Users size={13} /></a>
+
+              <blockquote>
+                <p className="text-2xl font-bold text-white leading-snug mb-6" style={{ fontFamily: "var(--font-display)" }}>
+                  "The process of selling or buying a home should be precise, streamlined, and—above all—enjoyable."
+                </p>
+              </blockquote>
+
+              <div className="flex items-end justify-between gap-6 pt-6 mt-6 border-t border-white/10">
+                <p className="text-[#c9a84c] text-sm font-semibold shrink">
+                  — Mark Solomon, REALTOR®
+                </p>
+                <img src="/nar_membershipmark_white.png" alt="REALTOR® membership mark" className="h-12 w-auto shrink-0 mb-[-6px]" />
               </div>
             </div>
           </div>
+
+          <div>
+            <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.3em] uppercase block mb-3">About Mark</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0f172a] leading-tight mb-5" style={{ fontFamily: "var(--font-display)" }}>
+              Masterclass Level of
+              <span className="block italic font-light" style={{ color: "#c9a84c" }}>
+                Service.
+              </span>
+            </h2>
+            <span className="block w-14 h-0.5 mb-7" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
+
+            <div className="space-y-5 text-stone-600 text-sm leading-relaxed">
+              <p>With over two decades of real estate mastery, Mark has negotiated deals so tight they squeak. He brings precision, relentless advocacy, and a caffeine-fueled passion to every single transaction. When he isn't closing complex deals or teaching others how to dominate the market, he's likely thinking about closing deals—or trying to convince his family that "comparative market analysis" is a perfectly normal dinner table topic.</p>
+              <p>Commander Mark Solomon, United States Navy Reserve, arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.</p>
+              <p>Today, after over two decades of military experience — including a combat deployment to Iraq — he continues his service in the military. His two sons also joined the military. Service isn't just a value in the Solomon household; it's the baseline expectation.</p>
+              <p>In real estate, Mark channels that same standard. Licensed for over 20 years, he's survived enough market cycles to know that "timing the market" usually just means "being ready when everyone else panics." His instincts for pricing and negotiation come from repetition, pattern recognition, and a healthy disrespect for conventional wisdom.</p>
+              <p>His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), a 501(c)(3) charity, Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.</p>
+              <p>He's been married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, requires the exact same negotiation skills he brings to real estate. He credits her entirely for the outcome and acknowledges that she wins every negotiation at home.</p>
+            </div>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-sm bg-[#0f172a] text-white text-sm font-semibold tracking-wider uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-all duration-300 shadow-md">
+                Work With Mark <ArrowRight size={14} />
+              </a>
+              <a href="https://www.vcp.org" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-sm bg-stone-100 text-[#0f172a] text-sm font-semibold tracking-wider uppercase hover:bg-stone-200 transition-all duration-300 border border-stone-200">
+                Learn About VCP <Users size={14} />
+              </a>
+            </div>
+          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
-
 /* ─────────────────────────────────────────────────────────────
    TESTIMONIALS SECTION
 ───────────────────────────────────────────────────────────── */
