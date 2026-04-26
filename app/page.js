@@ -630,236 +630,305 @@ function AEO_FAQSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   CONTACT / GHL FORM SECTION
+   CONTACT / GHL FORM SECTION
 ───────────────────────────────────────────────────────────── */
 function ContactSection() {
-  const [formType, setFormType] = useState('seller');
-  const [form, setForm] = useState({
-    firstName: "", lastName: "", email: "", phone: "",
-    address: "", city: "", state: "", zip: "",
-    timeframe: "", movingTo: "", workingWithAgent: "",
-    rentOrOwn: "", buyTimeframe: "", firstTimeBuyer: "", lastBought: "",
-    message: "", smsConsent: false, voiceConsent: false,
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [formType, setFormType] = useState('seller'); 
+  
+  // Add state for separated address fields + voiceConsent
+  const [form, setForm] = useState({
+    firstName: "", lastName: "", email: "", phone: "",
+    address: "", city: "", state: "", zip: "",
+    timeframe: "", movingTo: "", workingWithAgent: "",
+    rentOrOwn: "", buyTimeframe: "", firstTimeBuyer: "", lastBought: "",
+    message: "", smsConsent: false, voiceConsent: false,
+  });
+  
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  const validate = () => {
-    const e = {};
-    if (!form.firstName.trim()) e.firstName = "Required.";
-    if (!form.lastName.trim()) e.lastName = "Required.";
-    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = "Valid email required.";
-    if (!form.phone.trim()) e.phone = "Required.";
+  const validate = () => {
+    const e = {};
+    if (!form.firstName.trim()) e.firstName = "Required.";
+    if (!form.lastName.trim()) e.lastName = "Required.";
+    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = "Valid email required.";
+    if (!form.phone.trim()) e.phone = "Required.";
+    
+    // Note: Removed SMS/Voice validation to comply with TCR and TCPA rules which 
+    // forbid making marketing consent a condition of submission.
 
-    if (formType === 'seller') {
-      if (!form.address.trim()) e.address = "Required.";
-      if (!form.city.trim()) e.city = "Required.";
-      if (!form.state.trim()) e.state = "Required.";
-      if (!form.zip.trim()) e.zip = "Required.";
-      if (!form.timeframe.trim()) e.timeframe = "Required.";
-      if (!form.movingTo.trim()) e.movingTo = "Required.";
-      if (!form.workingWithAgent) e.workingWithAgent = "Required.";
-    } else {
-      if (!form.rentOrOwn) e.rentOrOwn = "Required.";
-      if (!form.buyTimeframe.trim()) e.buyTimeframe = "Required.";
-      if (!form.firstTimeBuyer) e.firstTimeBuyer = "Required.";
-    }
-    return e;
-  };
+    if (formType === 'seller') {
+      if (!form.address.trim()) e.address = "Required.";
+      if (!form.city.trim()) e.city = "Required.";
+      if (!form.state.trim()) e.state = "Required.";
+      if (!form.zip.trim()) e.zip = "Required.";
+      if (!form.timeframe.trim()) e.timeframe = "Timeframe is required.";
+      if (!form.movingTo.trim()) e.movingTo = "Required.";
+      if (!form.workingWithAgent) e.workingWithAgent = "Required.";
+    } else {
+      if (!form.rentOrOwn) e.rentOrOwn = "Required.";
+      if (!form.buyTimeframe.trim()) e.buyTimeframe = "Required.";
+      if (!form.firstTimeBuyer) e.firstTimeBuyer = "Required.";
+    }
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm((f) => ({ ...f, [name]: type === "checkbox" ? checked : value }));
-    if (errors[name]) setErrors((er) => ({ ...er, [name]: undefined }));
-  };
+    return e;
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
-    setLoading(true);
-    try {
-      const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/rumk9zv94kRQ5xe7zqjO/webhook-trigger/cd4d26aa-594c-4d13-93a5-94f0cfab018c";
-      await fetch(GHL_WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, service_type: formType, source: "Solomon Home Services Website" }),
-      });
-      setSubmitted(true);
-    } catch (err) { console.error("Form error:", err); } finally { setLoading(false); }
-  };
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setForm((f) => ({ ...f, [name]: type === "checkbox" ? checked : value }));
+    if (errors[name]) setErrors((er) => ({ ...er, [name]: undefined }));
+  };
 
-  const inputClass = (field) =>
-    `w-full bg-white border px-4 py-3 text-sm text-slate-800 placeholder-stone-400 focus:outline-none focus:ring-2 transition-all duration-200 rounded-sm ${
-      errors[field] ? "border-red-400 focus:ring-red-200" : "border-stone-200 focus:ring-[#c9a84c]/30 focus:border-[#c9a84c]"
-    }`;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
+    setLoading(true);
+    try {
+      // FORCE WEBHOOK: The safety switch has been removed.
+      const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/rumk9zv94kRQ5xe7zqjO/webhook-trigger/cd4d26aa-594c-4d13-93a5-94f0cfab018c";
+      
+      await fetch(GHL_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          service_type: formType,
+          source: "Solomon Home Services Website",
+        }),
+      });
+      
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Form submission error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-white text-left">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-left">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start text-left">
-          <div className="lg:pt-4 text-left">
-            <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-3">Let's Connect</span>
-            <h2 className="text-4xl md:text-5xl font-black text-[#0f172a] leading-tight mb-5" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}>
-              Start The <span className="italic font-light">Conversation.</span>
-            </h2>
-            <span className="block w-14 h-0.5 mb-7" style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }} />
-            <p className="text-stone-600 text-base leading-relaxed mb-8">
-              No pressure. Just an honest assessment of your home's value or your buying potential in today's market — backed by 20+ years of experience and precise execution.
-            </p>
-            <div className="space-y-4">
-              {["Complimentary CMA for sellers", "Strategic buyer education", "Custom acquisition strategy", "Expert negotiation tactics"].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <CheckCircle size={17} className="text-[#0f172a] shrink-0 mt-0.5" />
-                  <span className="text-stone-600 text-sm">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+  const inputClass = (field) =>
+    `w-full bg-white border rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-stone-400 focus:outline-none focus:ring-2 transition-all duration-200 ${
+      errors[field] ? "border-red-400 focus:ring-red-200" : "border-stone-200 focus:ring-[#c9a84c]/30 focus:border-[#c9a84c]"
+    }`;
 
-          <div className="text-left w-full">
-            {submitted ? (
-              <div className="bg-white p-12 text-center border border-stone-100 flex flex-col items-center justify-center min-h-[500px] rounded-sm" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)" }}>
-                <CheckCircle size={32} className="text-[#0f172a] mb-6" />
-                <h3 className="text-2xl font-black text-[#0f172a] mb-3" style={{ fontFamily: "var(--font-display)" }}>Message Received.</h3>
-                <p className="text-stone-500 text-sm">Mark will be in touch within 24 hours.</p>
-              </div>
-            ) : (
-              <div className="bg-white border border-stone-100 overflow-hidden rounded-sm text-left" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)" }}>
-                <div className="flex border-b border-stone-100">
-                  <button onClick={() => { setFormType('seller'); setErrors({}); }} className={`flex-1 py-4 text-xs font-bold tracking-[0.15em] uppercase transition-colors ${formType === 'seller' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}>I'm Selling</button>
-                  <button onClick={() => { setFormType('buyer'); setErrors({}); }} className={`flex-1 py-4 text-xs font-bold tracking-[0.15em] uppercase transition-colors ${formType === 'buyer' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}>I'm Buying</button>
-                </div>
-                <form onSubmit={handleSubmit} noValidate className="p-8 md:p-10 text-left">
-                  <div className="grid grid-cols-2 gap-4 mb-4 text-left">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">First Name <span className="text-red-500">{errors.firstName || "*"}</span></label>
-                      <input type="text" name="firstName" value={form.firstName} onChange={handleChange} className={inputClass("firstName")} />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Last Name <span className="text-red-500">{errors.lastName || "*"}</span></label>
-                      <input type="text" name="lastName" value={form.lastName} onChange={handleChange} className={inputClass("lastName")} />
-                    </div>
-                  </div>
-                  <div className="mb-4 text-left">
-                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Email <span className="text-red-500">{errors.email || "*"}</span></label>
-                    <input type="email" name="email" value={form.email} onChange={handleChange} className={inputClass("email")} />
-                  </div>
-                  <div className="mb-4 text-left">
-                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Phone <span className="text-red-500">{errors.phone || "*"}</span></label>
-                    <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={inputClass("phone")} />
-                  </div>
-                  
-                  {formType === 'seller' && (
-                    <>
-                      <div className="mb-4 text-left">
-                        <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Street Address <span className="text-red-500">{errors.address || "*"}</span></label>
-                        <input type="text" name="address" value={form.address} onChange={handleChange} className={inputClass("address")} />
-                      </div>
-                      <div className="grid grid-cols-3 gap-4 mb-4">
-                        <div className="col-span-1">
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">City <span className="text-red-500">{errors.city || "*"}</span></label>
-                          <input type="text" name="city" value={form.city} onChange={handleChange} className={inputClass("city")} />
-                        </div>
-                        <div className="col-span-1">
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">State <span className="text-red-500">{errors.state || "*"}</span></label>
-                          <input type="text" name="state" value={form.state} onChange={handleChange} className={inputClass("state")} />
-                        </div>
-                        <div className="col-span-1">
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Zip <span className="text-red-500">{errors.zip || "*"}</span></label>
-                          <input type="text" name="zip" value={form.zip} onChange={handleChange} className={inputClass("zip")} />
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Timeframe <span className="text-red-500">{errors.timeframe || "*"}</span></label>
-                          <input type="text" name="timeframe" value={form.timeframe} onChange={handleChange} placeholder="e.g. ASAP" className={inputClass("timeframe")} />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Moving To <span className="text-red-500">{errors.movingTo || "*"}</span></label>
-                          <input type="text" name="movingTo" value={form.movingTo} onChange={handleChange} placeholder="City, State" className={inputClass("movingTo")} />
-                        </div>
-                      </div>
-                      <div className="mb-4">
-                        <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Working with an Agent? <span className="text-red-500">{errors.workingWithAgent || "*"}</span></label>
-                        <div className="flex gap-4 mt-2">
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="yes" checked={form.workingWithAgent === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="no" checked={form.workingWithAgent === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
-                        </div>
-                      </div>
-                    </>
-                  )}
+  return (
+    <section id="contact" className="py-24 relative overflow-hidden bg-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          
+          <div className="lg:pt-4">
+            <span className="text-[#c9a84c] text-xs font-semibold tracking-[0.3em] uppercase block mb-3">Let's Connect</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0f172a] leading-tight mb-5" style={{ fontFamily: "var(--font-display)" }}>
+              Start The <span className="text-[#1e293b]">Conversation.</span>
+            </h2>
+            <span className="block w-14 h-0.5 mb-7" style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }} />
+            <p className="text-stone-600 text-base leading-relaxed mb-8">
+              No pressure. Just an honest assessment of your home's value or your buying potential in today's market — backed by 20+ years of experience and the kind of precision that comes from a career spent not leaving things to chance.
+            </p>
+            <div className="space-y-4">
+              {["Complimentary Comparative Market Analysis (CMA) for sellers", "Strategic buyer education and clear path home", "Custom selling or acquisition strategy for your timeline", "Expert negotiation to protect your equity and investment"].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <CheckCircle size={18} className="text-[#0f172a] shrink-0 mt-0.5" />
+                  <span className="text-stone-600 text-sm">{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 p-6 bg-stone-50 border border-stone-200 rounded-xl space-y-3">
+              <p className="text-[#0f172a] font-semibold text-sm font-display">Prefer to reach out directly?</p>
+              <a href="tel:+18168535467" className="flex items-center gap-3 text-stone-600 hover:text-[#c9a84c] text-sm transition-colors"><Phone size={15} className="text-[#c9a84c]" />(816) 853-5467</a>
+              <a href="mailto:mark@solomonhomeservices.com" className="flex items-center gap-3 text-stone-600 hover:text-[#c9a84c] text-sm transition-colors"><Mail size={15} className="text-[#c9a84c]" />mark@solomonhomeservices.com</a>
+              <div className="flex items-center gap-3 text-stone-500 text-sm"><MapPin size={15} className="text-[#c9a84c]" />Colorado Front Range</div>
+            </div>
+          </div>
 
-                  {formType === 'buyer' && (
-                    <>
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Current Residence <span className="text-red-500">{errors.rentOrOwn || "*"}</span></label>
-                          <select name="rentOrOwn" value={form.rentOrOwn} onChange={handleChange} className={inputClass("rentOrOwn")}>
-                            <option value="">Select...</option><option value="rent">Rent</option><option value="own">Own</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Move Timeframe <span className="text-red-500">{errors.buyTimeframe || "*"}</span></label>
-                          <input type="text" name="buyTimeframe" value={form.buyTimeframe} onChange={handleChange} placeholder="e.g. ASAP" className={inputClass("buyTimeframe")} />
-                        </div>
-                      </div>
-                      <div className="mb-4">
-                        <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">First time buyer? <span className="text-red-500">{errors.firstTimeBuyer || "*"}</span></label>
-                        <div className="flex gap-4 mt-2">
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="yes" checked={form.firstTimeBuyer === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="no" checked={form.firstTimeBuyer === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
-                        </div>
-                      </div>
-                    </>
-                  )}
+          <div>
+            {submitted ? (
+              <div className="bg-white rounded-2xl p-12 text-center shadow-editorial border border-stone-100 flex flex-col items-center justify-center min-h-[500px]">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-[#0f172a]/10">
+                  <CheckCircle size={32} className="text-[#0f172a]" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0f172a] mb-3 font-display">Message Received.</h3>
+                <p className="text-stone-500 text-sm leading-relaxed max-w-xs">Mark will be in touch within 24 hours. In the meantime, feel free to browse current listings above.</p>
+              </div>
+            ) : (
+              <div className="bg-white rounded-2xl shadow-editorial border border-stone-100 overflow-hidden">
+                <div className="flex border-b border-stone-100">
+                  <button onClick={() => { setFormType('seller'); setErrors({}); }} className={`flex-1 py-4 text-sm font-semibold tracking-wider uppercase transition-colors ${formType === 'seller' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}>I'm Selling</button>
+                  <button onClick={() => { setFormType('buyer'); setErrors({}); }} className={`flex-1 py-4 text-sm font-semibold tracking-wider uppercase transition-colors ${formType === 'buyer' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}>I'm Buying</button>
+                </div>
 
-                  <div className="mb-6 mt-4">
-                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Message <span className="text-stone-400 font-normal normal-case">(optional)</span></label>
-                    <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Please tell me how I can help." className={`${inputClass("message")} resize-none`} />
-                  </div>
+                <form onSubmit={handleSubmit} noValidate className="p-8 md:p-10">
+                  <h3 className="text-xl font-bold text-[#0f172a] mb-6 font-display">
+                    {formType === 'seller' ? "Request a Free Home Valuation" : "Start Your Home Search"}
+                  </h3>
 
-                  <div className="mb-4 p-4 border border-stone-200 bg-stone-50 rounded-sm">
-                    <label className="flex items-start gap-3 cursor-pointer group">
-                      <div className="relative mt-0.5 shrink-0">
-                        <input type="checkbox" name="smsConsent" checked={form.smsConsent} onChange={handleChange} className="sr-only" />
-                        <div className={`w-5 h-5 border-2 flex items-center justify-center transition-all duration-200 rounded-sm ${form.smsConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`}>
-                          {form.smsConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
-                        </div>
-                      </div>
-                      <span className="text-xs text-stone-600 leading-relaxed">
-                        By providing your phone number, you consent to receive marketing text messages from Solomon Home Services. Consent is not a condition of purchase. Message & data rates may apply. Reply STOP to opt out.
-                      </span>
-                    </label>
-                  </div>
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First Name <span className="text-red-500 ml-1">{errors.firstName || "*"}</span></label>
+                      <input type="text" name="firstName" value={form.firstName} onChange={handleChange} className={inputClass("firstName")} />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Last Name <span className="text-red-500 ml-1">{errors.lastName || "*"}</span></label>
+                      <input type="text" name="lastName" value={form.lastName} onChange={handleChange} className={inputClass("lastName")} />
+                    </div>
+                  </div>
 
-                  <button type="submit" disabled={loading} className="w-full py-4 font-bold text-xs tracking-[0.2em] uppercase bg-[#c9a84c] text-[#0f172a] hover:bg-[#b8965e] transition-colors rounded-sm disabled:opacity-60">
-                    {loading ? "Sending..." : "Submit Inquiry"}
-                  </button>
-                </form>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+                  <div className="mb-4">
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Email Address <span className="text-red-500 ml-1">{errors.email || "*"}</span></label>
+                    <input type="email" name="email" value={form.email} onChange={handleChange} className={inputClass("email")} />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Phone Number <span className="text-red-500 ml-1">{errors.phone || "*"}</span></label>
+                    <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={inputClass("phone")} />
+                  </div>
+
+                  {/* SELLER FIELDS - Expanded Address */}
+                  {formType === 'seller' && (
+                    <>
+                      <div className="mb-4">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Street Address <span className="text-red-500 ml-1">{errors.address || "*"}</span></label>
+                        <input type="text" name="address" value={form.address} onChange={handleChange} className={inputClass("address")} />
+                      </div>
+                      
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        <div className="col-span-1">
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">City <span className="text-red-500 ml-1">{errors.city || "*"}</span></label>
+                          <input type="text" name="city" value={form.city} onChange={handleChange} className={inputClass("city")} />
+                        </div>
+                        <div className="col-span-1">
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">State <span className="text-red-500 ml-1">{errors.state || "*"}</span></label>
+                          <input type="text" name="state" value={form.state} onChange={handleChange} className={inputClass("state")} />
+                        </div>
+                        <div className="col-span-1">
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Zip <span className="text-red-500 ml-1">{errors.zip || "*"}</span></label>
+                          <input type="text" name="zip" value={form.zip} onChange={handleChange} className={inputClass("zip")} />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Timeframe <span className="text-red-500 ml-1">{errors.timeframe || "*"}</span></label>
+                           <input type="text" name="timeframe" value={form.timeframe} onChange={handleChange} placeholder="e.g. ASAP, 3 months" className={inputClass("timeframe")} />
+                        </div>
+                        <div>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Moving To <span className="text-red-500 ml-1">{errors.movingTo || "*"}</span></label>
+                           <input type="text" name="movingTo" value={form.movingTo} onChange={handleChange} placeholder="City, State" className={inputClass("movingTo")} />
+                        </div>
+                      </div>
+                      <div className="mb-4">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Are you currently working with an Agent? <span className="text-red-500 ml-1">{errors.workingWithAgent || "*"}</span></label>
+                        <div className="flex gap-4 mt-2">
+                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="yes" checked={form.workingWithAgent === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
+                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="no" checked={form.workingWithAgent === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* BUYER FIELDS */}
+                  {formType === 'buyer' && (
+                    <>
+                      <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Current Residence <span className="text-red-500 ml-1">{errors.rentOrOwn || "*"}</span></label>
+                           <select name="rentOrOwn" value={form.rentOrOwn} onChange={handleChange} className={inputClass("rentOrOwn")}>
+                             <option value="">Select...</option><option value="rent">Rent</option><option value="own">Own</option>
+                           </select>
+                        </div>
+                        <div>
+                           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Move Timeframe <span className="text-red-500 ml-1">{errors.buyTimeframe || "*"}</span></label>
+                           <input type="text" name="buyTimeframe" value={form.buyTimeframe} onChange={handleChange} placeholder="e.g. ASAP, 6 months" className={inputClass("buyTimeframe")} />
+                        </div>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">First time home purchase? <span className="text-red-500 ml-1">{errors.firstTimeBuyer || "*"}</span></label>
+                        <div className="flex gap-4 mt-2">
+                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="yes" checked={form.firstTimeBuyer === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
+                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="no" checked={form.firstTimeBuyer === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
+                        </div>
+                      </div>
+
+                      {form.firstTimeBuyer === "no" && (
+                        <div className="mb-4">
+                          <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Last time you bought/sold? <span className="text-red-500 ml-1">{errors.lastBought || "*"}</span></label>
+                          <select name="lastBought" value={form.lastBought} onChange={handleChange} className={inputClass("lastBought")}>
+                             <option value="">Select...</option>
+                             <option value="0-3">0-3 years ago</option>
+                             <option value="4-6">4-6 years ago</option>
+                             <option value="7+">7+ years ago</option>
+                          </select>
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  <div className="mb-6 mt-4">
+                    <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+                      Message <span className="text-stone-400 font-normal normal-case">(optional)</span>
+                    </label>
+                    <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Please tell me the best way I can be of assistance." className={`${inputClass("message")} resize-none`} />
+                  </div>
+
+                  {/* CHECKBOX 1: SMS CONSENT */}
+                  <div className="mb-3 p-4 rounded-xl border border-stone-200 bg-stone-50">
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <div className="relative mt-0.5 shrink-0">
+                        <input type="checkbox" name="smsConsent" checked={form.smsConsent} onChange={handleChange} className="sr-only" />
+                        <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${form.smsConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`}>
+                          {form.smsConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
+                        </div>
+                      </div>
+                      <span className="text-xs text-stone-600 leading-relaxed">
+                        By providing your phone number, you consent to receive marketing text messages from Solomon Home Services. Consent is not a condition of purchase. Message & data rates may apply. Reply STOP to opt out.
+                      </span>
+                    </label>
+                  </div>
+
+                  {/* CHECKBOX 2: VOICE/AI CONSENT */}
+                  <div className="mb-6 p-4 rounded-xl border border-stone-200 bg-stone-50">
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <div className="relative mt-0.5 shrink-0">
+                        <input type="checkbox" name="voiceConsent" checked={form.voiceConsent} onChange={handleChange} className="sr-only" />
+                        <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${form.voiceConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`}>
+                          {form.voiceConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
+                        </div>
+                      </div>
+                      <span className="text-xs text-stone-600 leading-relaxed">
+                        I consent to receive phone calls from Solomon Home Services, which may include automated, pre-recorded, or AI voice assistant communications. I understand I can opt out of future calls by requesting to be placed on the do-not-call list.
+                      </span>
+                    </label>
+                  </div>
+
+                  <button type="submit" disabled={loading} className="w-full py-4 rounded-lg font-semibold text-sm tracking-wider uppercase flex items-center justify-center gap-2 bg-[#c9a84c] text-[#0f172a] hover:bg-[#b8965e] transition-colors duration-300 disabled:opacity-60">
+                    {loading ? "Sending..." : (formType === 'seller' ? "Get My Free Valuation" : "Let's Get Started")}
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default function HomePage() {
-  return (
-    <>
-      <Script id="schema-agent" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema) }} />
-      <Script id="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }} />
-      <HeroSection />
-      <StatsBand />
-      <ValueProps />
-      <IdxSection />
-      <AboutSection />
-      <TestimonialsSection />
-      <AEO_FAQSection />
-      <ContactSection />
-    </>
-  );
+  return (
+    <>
+      <HeroSection />
+      <StatsBand />
+      <ValueProps />
+      <IdxSection />
+      <AboutSection />
+      <TestimonialsSection />
+      <ContactSection />
+    </>
+  );
 }
