@@ -137,7 +137,7 @@ const testimonials = [
 ];
 
 /* ─────────────────────────────────────────────────────────────
-   HERO SECTION
+   HERO SECTION — Reverted to Original Sizing
 ───────────────────────────────────────────────────────────── */
 function HeroSection() {
   const [loaded, setLoaded] = useState(false);
@@ -149,6 +149,8 @@ function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex items-center bg-[#f5f1eb] overflow-hidden pt-20">
       <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        
+        {/* LEFT: Headline block */}
         <div className="lg:col-span-6 z-20">
           <div className={`inline-flex items-center gap-3 mb-6 transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             <span className="h-px w-12 bg-[#c9a84c]" />
@@ -156,14 +158,17 @@ function HeroSection() {
               Colorado Front Range
             </span>
           </div>
-          <h1 className={`text-5xl md:text-6xl lg:text-7xl text-[#0f172a] leading-[1.1] mb-8 text-balance transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-display)" }}>
+          
+          <h1 className="text-5xl md:text-6xl lg:text-7xl text-[#0f172a] leading-[1.1] mb-8 text-balance" style={{ fontFamily: "var(--font-display)" }}>
             Experience & Precision in Every <i className="text-[#c9a84c] font-light">Detail.</i>
           </h1>
-          <p className={`text-lg text-slate-600 max-w-lg leading-relaxed mb-10 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          
+          <p className="text-lg text-slate-600 max-w-lg leading-relaxed mb-10">
             Over two decades of mastery in real estate. No guesswork, no algorithms (maybe a little bit of AI - since everyone is doing it) - just tactical strategy and relentless negotiation to make selling or buying a great experience.
           </p>
-          <div className={`flex flex-col sm:flex-row items-center gap-6 transition-all duration-1000 delay-400 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-[#0f172a] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] transition-colors duration-300 flex items-center justify-center gap-3 group">
+          
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-[#0f172a] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 flex items-center justify-center gap-3 group rounded-sm">
               Start The Process
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </a>
@@ -172,26 +177,48 @@ function HeroSection() {
             </a>
           </div>
         </div>
+
+        {/* RIGHT: Image Container (Reverted to max-w-md sizing) */}
         <div className={`lg:col-span-6 relative transition-all duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
-          <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto">
-            {/* The "Michigan" Border accents - Bottom Left */}
+          <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto mt-12 lg:mt-0">
+            
+            {/* Top Right Bracket */}
+            <div className="absolute -top-6 -right-6 w-32 h-32 border-t-2 border-r-2 border-[#c9a84c]/60 hidden lg:block z-20 pointer-events-none" />
+
+            {/* Bottom Left Bracket */}
             <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-[#c9a84c]/60 hidden lg:block z-20 pointer-events-none" />
+
+            {/* Colorado Front Range Text */}
             <div className="absolute -bottom-10 left-4 text-[#0f172a] text-[10px] font-bold tracking-[0.3em] uppercase hidden lg:block z-20">
               Colorado Front Range
             </div>
 
-            <div className="absolute inset-0 shadow-floating rounded-sm overflow-hidden z-10">
-                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000" alt="Luxury Colorado Home" className="w-full h-full object-cover" />
+            {/* Main Image */}
+            <div className="absolute inset-0 shadow-floating rounded-sm overflow-hidden z-10 bg-stone-200">
+                <img src="/ryan-hoffman-hero-mountain.jpg" alt="Colorado Mountains" className="w-full h-full object-cover" />
+                
+                {/* Photo Credit Overlay */}
+                <div className="absolute bottom-2 right-2 z-40 bg-black/40 px-2 py-1 rounded-sm backdrop-blur-[2px]">
+                  <a 
+                    href="https://unsplash.com/@ryanhoffman007?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-[9px] text-white/80 hover:text-white transition-colors"
+                  >
+                    Photo by Ryan Hoffman on Unsplash
+                  </a>
+                </div>
             </div>
             
-            {/* Floating award card */}
-            <div className="absolute -bottom-6 -left-6 lg:-left-12 bg-white px-6 py-5 flex items-center gap-4 z-30 shadow-xl rounded-sm">
+            {/* Badge moved to top right overlapping bracket */}
+            <div className="absolute -top-6 -right-6 lg:-right-12 bg-white px-6 py-5 shadow-editorial rounded-sm flex items-start gap-4 max-w-[200px] z-30 border border-stone-100">
               <Award size={24} className="text-[#c9a84c] shrink-0" />
               <div>
                 <p className="font-display text-2xl text-[#0f172a] mb-1 leading-none">20+</p>
-                <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold leading-tight">Years of Excellence</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold leading-tight">Years Licensed</p>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -226,7 +253,6 @@ function ValueProps() {
     <section id="strategy" className="py-28 bg-[#f5f1eb]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
 
-        {/* Section header — left-flush, editorial */}
         <div className="mb-14 max-w-xl">
           <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-4">The Approach</span>
           <h2
@@ -238,10 +264,7 @@ function ValueProps() {
           </h2>
         </div>
 
-        {/* BENTO GRID */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-auto">
-
-          {/* BLOCK 1 — Dark full-width intro */}
           <div className="md:col-span-12 bg-[#0f172a] px-10 py-12 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-40 h-1" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
             <p className="text-stone-400 text-base leading-relaxed max-w-3xl">
@@ -249,10 +272,8 @@ function ValueProps() {
             </p>
           </div>
 
-          {/* BLOCK 2 — Seller: Tactical Pricing — Large dark tile */}
           <div className="md:col-span-7 bg-[#0f172a] px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[300px]">
             <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full border border-[#c9a84c]/20" />
-            <div className="absolute -right-4 -top-4 w-24 h-24 rounded-full border border-[#c9a84c]/10" />
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Sellers · 01</span>
               <h3
@@ -267,7 +288,6 @@ function ValueProps() {
             </p>
           </div>
 
-          {/* BLOCK 3 — Forest green accent tile */}
           <div className="md:col-span-5 bg-[#1a3a2e] px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[300px]">
             <div>
               <span className="text-[#a3c9a8]/80 text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Sellers · 02</span>
@@ -283,7 +303,6 @@ function ValueProps() {
             </p>
           </div>
 
-          {/* BLOCK 4 — Stone/cream buyer tile */}
           <div className="md:col-span-5 bg-stone-900 px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[280px]">
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Buyers · 01</span>
@@ -299,11 +318,8 @@ function ValueProps() {
             </p>
           </div>
 
-          {/* BLOCK 5 — PCS/Relocation — large dark-green */}
           <div className="md:col-span-7 bg-[#0f172a] border border-[#c9a84c]/20 px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[280px]">
-            <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5" style={{
-              background: "radial-gradient(circle, #c9a84c 0%, transparent 70%)"
-            }} />
+            <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5" style={{ background: "radial-gradient(circle, #c9a84c 0%, transparent 70%)" }} />
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Buyers · 02</span>
               <h3
@@ -317,14 +333,10 @@ function ValueProps() {
               Moving across the country or handling a short-notice PCS? I know timelines, VA loan nuances, and how to execute a seamless transition from afar.
             </p>
           </div>
-
         </div>
 
-        <div className="mt-12 text-center md:text-left">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group rounded-sm"
-          >
+        <div className="mt-12">
+          <a href="#contact" className="inline-flex items-center gap-3 px-8 py-4 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 group rounded-sm">
             Start Your Strategy
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </a>
@@ -370,7 +382,7 @@ function IdxSection() {
           </div>
         </div>
 
-        <p className="text-[11px] text-stone-500 italic mb-4 text-right">
+        <p className="text-xs text-stone-500 italic mb-4 text-right">
           Note: If no properties appear in "My Listings", inventory is currently sold out. Please use "MLS Search".
         </p>
 
@@ -416,55 +428,25 @@ function IdxSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   ABOUT SECTION — Architecture Magazine Style
+   ABOUT SECTION — Clean Modern Grid
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
-    <section id="about" className="relative bg-white overflow-hidden">
-      {/* Edge-to-edge image container */}
-      <div className="relative w-full h-[55vw] max-h-[700px] min-h-[380px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1613490908592-5d97f2677118?auto=format&fit=crop&q=80&w=2000"
-          alt="Colorado luxury real estate — Mark Solomon REALTOR®"
-          className="w-full h-full object-cover object-center"
-        />
-        {/* Dark gradient overlay for text legibility */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.4) 55%, rgba(15,23,42,0.05) 100%)" }} />
-
-        {/* Text block layered over image — left side */}
-        <div className="absolute inset-0 flex items-end pb-16 lg:pb-20">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
-            <div className="max-w-xl">
-              <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-5">About Mark</span>
-              <h2
-                className="font-black text-white leading-[0.92] mb-0"
-                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px,5.5vw,80px)", letterSpacing: "-0.02em" }}
-              >
-                Masterclass<br />
-                Level of<br />
-                <span className="italic font-light" style={{ color: "#c9a84c" }}>Service.</span>
-              </h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Content panel — partially overlaps the image via negative margin */}
-      <div className="relative z-10 -mt-1 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-
-            {/* LEFT: Quote card */}
-            <div className="lg:col-span-4">
+    <section id="about" className="relative bg-white py-24">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          
+          {/* LEFT: Image Section */}
+          <div className="lg:col-span-5">
+            <div className="relative">
               <div className="bg-[#0f172a] px-8 py-10 relative overflow-hidden rounded-sm">
                 <div className="absolute top-0 left-0 w-24 h-1" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
-
-                {/* Headshot */}
+                
+                {/* HEADSHOT REFERENCE */}
                 <div className="mb-8 w-32 h-32 md:w-40 md:h-40 overflow-hidden border-2 border-[#c9a84c] rounded-sm">
                   <img src="/Mark-headshot.JPG" alt="Mark Solomon Headshot" className="w-full h-full object-cover object-center" />
                 </div>
 
-                {/* Badges */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   {[
                     { icon: Shield, label: "Iraq Veteran" },
@@ -473,53 +455,57 @@ function AboutSection() {
                   ].map((badge) => (
                     <div key={badge.label} className="flex items-center gap-2 px-3 py-1.5 border border-white/15 bg-white/5 rounded-sm">
                       <badge.icon size={11} className="text-[#c9a84c]" />
-                      <span className="text-stone-300 text-[10px] font-semibold">{badge.label}</span>
+                      <span className="text-stone-300 text-[10px] font-semibold uppercase">{badge.label}</span>
                     </div>
                   ))}
                 </div>
 
                 <blockquote>
-                  <p className="text-2xl font-bold text-white leading-snug mb-6" style={{ fontFamily: "var(--font-display)" }}>
+                  <p className="text-xl font-bold text-white leading-snug mb-6" style={{ fontFamily: "var(--font-display)" }}>
                     "The process of selling or buying a home should be precise, streamlined, and — above all — enjoyable."
                   </p>
                 </blockquote>
 
-                <div className="flex items-end justify-between gap-4 pt-6 border-t border-white/10">
-                  <p className="text-[#c9a84c] text-xs font-bold tracking-wider">— Mark Solomon, REALTOR®</p>
-                  <img src="/nar_membershipmark_white.png" alt="REALTOR® membership mark" className="h-10 w-auto shrink-0" />
+                <div className="pt-6 border-t border-white/10 flex justify-between items-center">
+                  <p className="text-[#c9a84c] text-xs font-bold tracking-wider">— Mark Solomon</p>
+                  <img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-10 w-auto opacity-80" />
                 </div>
               </div>
-            </div>
 
-            {/* RIGHT: Bio copy */}
-            <div className="lg:col-span-8">
-              <div className="space-y-5 text-stone-600 text-sm leading-relaxed">
-                <p>With over two decades of real estate mastery, Mark has negotiated deals so tight they squeak. He brings precision, relentless advocacy, and a caffeine-fueled passion to every single transaction. When he isn't closing complex deals or teaching others how to dominate the market, he's likely thinking about closing deals — or trying to convince his family that "comparative market analysis" is a perfectly normal dinner table topic.</p>
-                <p>Commander Mark Solomon, United States Navy Reserve, arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.</p>
-                <p>Today, after over two decades of military experience — including a combat deployment to Iraq — he continues his service in the military. His two sons also joined the military. Service isn't just a value in the Solomon household; it's the baseline expectation.</p>
-                <p>In real estate, Mark channels that same standard. Licensed for over 20 years, he's survived enough market cycles to know that "timing the market" usually just means "being ready when everyone else panics." His instincts for pricing and negotiation come from repetition, pattern recognition, and a healthy disrespect for conventional wisdom.</p>
-                <p>His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), a 501(c)(3) charity, Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.</p>
-                <p>He's been married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, requires the exact same negotiation skills he brings to real estate. He credits her entirely for the outcome and acknowledges that she wins every negotiation at home.</p>
-              </div>
-
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 rounded-sm"
-                >
-                  Work With Mark <ArrowRight size={13} />
-                </a>
-                <a
-                  href="https://www.vcp.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-stone-100 text-[#0f172a] text-xs font-bold tracking-[0.2em] uppercase hover:bg-stone-200 transition-colors duration-300 border border-stone-200 rounded-sm"
-                >
-                  Learn About VCP <Users size={13} />
-                </a>
+              {/* FANCY HOUSE ACCENT */}
+              <div className="mt-8 rounded-sm overflow-hidden shadow-xl border border-stone-100 h-64">
+                <img src="/Fancy-House.jpg" alt="Featured Property" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
+
+          {/* RIGHT: Bio copy */}
+          <div className="lg:col-span-7 pt-4">
+            <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-5 text-center lg:text-left">About Mark</span>
+            <h2 className="font-black text-[#0f172a] leading-tight mb-8 text-4xl md:text-5xl text-center lg:text-left" style={{ fontFamily: "var(--font-display)" }}>
+              Masterclass Level of<br />
+              <span className="italic font-light" style={{ color: "#c9a84c" }}>Service.</span>
+            </h2>
+
+            <div className="space-y-6 text-stone-600 text-base leading-relaxed">
+              <p>With over two decades of real estate mastery, Mark has negotiated deals so tight they squeak. He brings precision, relentless advocacy, and a caffeine-fueled passion to every single transaction. When he isn't closing complex deals or teaching others how to dominate the market, he's likely thinking about closing deals — or trying to convince his family that "comparative market analysis" is a perfectly normal dinner table topic.</p>
+              <p>Commander Mark Solomon, United States Navy Reserve, arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.</p>
+              <p>Today, after over two decades of military experience — including a combat deployment to Iraq — he continues his service in the military. His two sons also joined the military. Service isn't just a value in the Solomon household; it's the baseline expectation.</p>
+              <p>In real estate, Mark channels that same standard. Licensed for over 20 years, he's survived enough market cycles to know that "timing the market" usually just means "being ready when everyone else panics." His instincts for pricing and negotiation come from repetition, pattern recognition, and a healthy disrespect for conventional wisdom.</p>
+              <p>His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), a 501(c)(3) charity, Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.</p>
+              <p>He's been married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, requires the exact same negotiation skills he brings to real estate. He credits her entirely for the outcome and acknowledges that she wins every negotiation at home.</p>
+            </div>
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 rounded-sm">
+                Work With Mark <ArrowRight size={13} />
+              </a>
+              <a href="https://www.vcp.org" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-stone-100 text-[#0f172a] text-xs font-bold tracking-[0.2em] uppercase hover:bg-stone-200 transition-colors duration-300 border border-stone-200 rounded-sm">
+                Learn About VCP <Users size={13} />
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -556,11 +542,7 @@ function TestimonialsSection() {
         </h2>
         <span className="block w-14 h-0.5 mx-auto mb-16" style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }} />
 
-        <div
-          key={active}
-          className="bg-white p-8 md:p-14 border border-stone-100 min-h-[550px] md:min-h-[400px] flex flex-col justify-center items-center rounded-sm"
-          style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)", animation: "fadeInUp 0.4s ease forwards" }}
-        >
+        <div key={active} className="bg-white p-8 md:p-14 border border-stone-100 min-h-[550px] md:min-h-[400px] flex flex-col justify-center items-center rounded-sm" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)", animation: "fadeInUp 0.4s ease forwards" }}>
           <div className="flex justify-center gap-1 mb-6">
             {Array.from({ length: t.stars }).map((_, i) => (
               <Star key={i} size={16} className="text-[#c9a84c]" fill="#c9a84c" />
@@ -577,11 +559,7 @@ function TestimonialsSection() {
           </button>
           <div className="flex gap-2 flex-wrap justify-center">
             {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`transition-all duration-300 rounded-full ${i === active ? "w-6 h-2 bg-[#c9a84c]" : "w-2 h-2 bg-stone-300 hover:bg-stone-400"}`}
-              />
+              <button key={i} onClick={() => setActive(i)} className={`transition-all duration-300 rounded-full ${i === active ? "w-6 h-2 bg-[#c9a84c]" : "w-2 h-2 bg-stone-300 hover:bg-stone-400"}`} />
             ))}
           </div>
           <button onClick={next} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200 rounded-full">
@@ -617,67 +595,36 @@ const faqItems = [
 
 function AEO_FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
-
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section id="faq" className="py-24 bg-[#0f172a] relative overflow-hidden">
-      {/* Decorative background text */}
-      <div
-        className="absolute bottom-0 right-0 text-white select-none pointer-events-none leading-none"
-        style={{ fontSize: "clamp(80px, 12vw, 180px)", opacity: 0.03, fontFamily: "var(--font-display)", lineHeight: 1 }}
-      >
+    <section id="faq" className="py-24 bg-[#0f172a] relative overflow-hidden text-left">
+      <div className="absolute bottom-0 right-0 text-white select-none pointer-events-none leading-none" style={{ fontSize: "clamp(80px, 12vw, 180px)", opacity: 0.03, fontFamily: "var(--font-display)", lineHeight: 1 }}>
         FAQ
       </div>
-
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-
-          {/* LEFT: Header */}
-          <div className="lg:col-span-4">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start text-left">
+          <div className="lg:col-span-4 text-left">
             <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-5">Common Questions</span>
-            <h2
-              className="font-black text-white leading-[0.92] mb-6"
-              style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,60px)", letterSpacing: "-0.02em" }}
-            >
+            <h2 className="font-black text-white leading-[0.92] mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,4vw,60px)", letterSpacing: "-0.02em" }}>
               Answers<br />
               <span className="italic font-light text-stone-400">You Need.</span>
             </h2>
             <p className="text-stone-400 text-sm leading-relaxed">
               Real answers to the questions that matter most. No fluff — just the straight information you need to make a confident decision.
             </p>
-            <div className="mt-10 pt-8 border-t border-white/10">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-3 text-[#c9a84c] text-xs font-bold tracking-[0.2em] uppercase hover:gap-4 transition-all"
-              >
-                Ask Mark Directly <ArrowRight size={13} />
-              </a>
-            </div>
           </div>
-
-          {/* RIGHT: FAQ accordion */}
-          <div className="lg:col-span-8 space-y-0 divide-y divide-white/10">
+          <div className="lg:col-span-8 space-y-0 divide-y divide-white/10 text-left">
             {faqItems.map((item, i) => (
-              <div key={i} className="py-6">
-                <button
-                  onClick={() => toggle(i)}
-                  className="w-full flex items-start justify-between gap-6 text-left group"
-                  aria-expanded={openIndex === i}
-                >
-                  <span
-                    className="text-white font-bold text-base md:text-lg leading-snug group-hover:text-[#c9a84c] transition-colors"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
+              <div key={i} className="py-6 text-left">
+                <button onClick={() => toggle(i)} className="w-full flex items-start justify-between gap-6 text-left group" aria-expanded={openIndex === i}>
+                  <span className="text-white font-bold text-base md:text-lg leading-snug group-hover:text-[#c9a84c] transition-colors" style={{ fontFamily: "var(--font-display)" }}>
                     {item.question}
                   </span>
-                  <ChevronDown
-                    size={18}
-                    className={`text-[#c9a84c] shrink-0 mt-1 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}
-                  />
+                  <ChevronDown size={18} className={`text-[#c9a84c] shrink-0 mt-1 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`} />
                 </button>
                 {openIndex === i && (
-                  <div className="mt-4 pr-8">
+                  <div className="mt-4 pr-8 text-left">
                     <p className="text-stone-400 text-sm leading-relaxed">{item.answer}</p>
                   </div>
                 )}
@@ -695,7 +642,6 @@ function AEO_FAQSection() {
 ───────────────────────────────────────────────────────────── */
 function ContactSection() {
   const [formType, setFormType] = useState('seller');
-
   const [form, setForm] = useState({
     firstName: "", lastName: "", email: "", phone: "",
     address: "", city: "", state: "", zip: "",
@@ -703,7 +649,6 @@ function ContactSection() {
     rentOrOwn: "", buyTimeframe: "", firstTimeBuyer: "", lastBought: "",
     message: "", smsConsent: false, voiceConsent: false,
   });
-
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -715,15 +660,12 @@ function ContactSection() {
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = "Valid email required.";
     if (!form.phone.trim()) e.phone = "Required.";
 
-    // Note: Removed SMS/Voice validation to comply with TCR and TCPA rules which
-    // forbid making marketing consent a condition of submission.
-
     if (formType === 'seller') {
       if (!form.address.trim()) e.address = "Required.";
       if (!form.city.trim()) e.city = "Required.";
       if (!form.state.trim()) e.state = "Required.";
       if (!form.zip.trim()) e.zip = "Required.";
-      if (!form.timeframe.trim()) e.timeframe = "Timeframe is required.";
+      if (!form.timeframe.trim()) e.timeframe = "Required.";
       if (!form.movingTo.trim()) e.movingTo = "Required.";
       if (!form.workingWithAgent) e.workingWithAgent = "Required.";
     } else {
@@ -731,7 +673,6 @@ function ContactSection() {
       if (!form.buyTimeframe.trim()) e.buyTimeframe = "Required.";
       if (!form.firstTimeBuyer) e.firstTimeBuyer = "Required.";
     }
-
     return e;
   };
 
@@ -750,22 +691,15 @@ function ContactSection() {
     }
     setLoading(true);
     try {
-      // FORCE WEBHOOK: The safety switch has been removed.
       const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/rumk9zv94kRQ5xe7zqjO/webhook-trigger/cd4d26aa-594c-4d13-93a5-94f0cfab018c";
-
       await fetch(GHL_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          service_type: formType,
-          source: "Solomon Home Services Website",
-        }),
+        body: JSON.stringify({ ...form, service_type: formType, source: "Solomon Home Services Website" }),
       });
-
       setSubmitted(true);
     } catch (err) {
-      console.error("Form submission error:", err);
+      console.error("Form error:", err);
     } finally {
       setLoading(false);
     }
@@ -777,217 +711,74 @@ function ContactSection() {
     }`;
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-white">
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-          <div className="lg:pt-4">
+    <section id="contact" className="py-24 relative overflow-hidden bg-white text-left">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start text-left">
+          <div className="lg:pt-4 text-left">
             <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-3">Let's Connect</span>
             <h2 className="text-4xl md:text-5xl font-black text-[#0f172a] leading-tight mb-5" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}>
               Start The <span className="italic font-light">Conversation.</span>
             </h2>
             <span className="block w-14 h-0.5 mb-7" style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }} />
             <p className="text-stone-600 text-base leading-relaxed mb-8">
-              No pressure. Just an honest assessment of your home's value or your buying potential in today's market — backed by 20+ years of experience and the kind of precision that comes from a career spent not leaving things to chance.
+              No pressure. Just an honest assessment of your home's value or your buying potential in today's market — backed by 20+ years of experience and precise execution.
             </p>
             <div className="space-y-4">
-              {[
-                "Complimentary Comparative Market Analysis (CMA) for sellers",
-                "Strategic buyer education and clear path home",
-                "Custom selling or acquisition strategy for your timeline",
-                "Expert negotiation to protect your equity and investment"
-              ].map((item) => (
+              {["Complimentary CMA for sellers", "Strategic buyer education", "Custom acquisition strategy", "Expert negotiation tactics"].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <CheckCircle size={17} className="text-[#0f172a] shrink-0 mt-0.5" />
                   <span className="text-stone-600 text-sm">{item}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-10 p-6 bg-stone-50 border border-stone-200 space-y-3 rounded-sm">
-              <p className="text-[#0f172a] font-bold text-sm" style={{ fontFamily: "var(--font-display)" }}>Prefer to reach out directly?</p>
-              <a href="tel:+18168535467" className="flex items-center gap-3 text-stone-600 hover:text-[#c9a84c] text-sm transition-colors"><Phone size={14} className="text-[#c9a84c]" />(816) 853-5467</a>
-              <a href="mailto:mark@solomonhomeservices.com" className="flex items-center gap-3 text-stone-600 hover:text-[#c9a84c] text-sm transition-colors"><Mail size={14} className="text-[#c9a84c]" />mark@solomonhomeservices.com</a>
-              <div className="flex items-center gap-3 text-stone-500 text-sm"><MapPin size={14} className="text-[#c9a84c]" />Colorado Front Range</div>
-            </div>
           </div>
 
-          <div>
+          <div className="text-left w-full">
             {submitted ? (
               <div className="bg-white p-12 text-center border border-stone-100 flex flex-col items-center justify-center min-h-[500px] rounded-sm" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)" }}>
-                <div className="w-16 h-16 flex items-center justify-center mb-6 bg-[#0f172a]/10 rounded-full">
-                  <CheckCircle size={32} className="text-[#0f172a]" />
-                </div>
+                <CheckCircle size={32} className="text-[#0f172a] mb-6" />
                 <h3 className="text-2xl font-black text-[#0f172a] mb-3" style={{ fontFamily: "var(--font-display)" }}>Message Received.</h3>
-                <p className="text-stone-500 text-sm leading-relaxed max-w-xs">Mark will be in touch within 24 hours. In the meantime, feel free to browse current listings above.</p>
+                <p className="text-stone-500 text-sm">Mark will be in touch within 24 hours.</p>
               </div>
             ) : (
-              <div className="bg-white border border-stone-100 overflow-hidden rounded-sm" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)" }}>
+              <div className="bg-white border border-stone-100 overflow-hidden rounded-sm text-left" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.06)" }}>
                 <div className="flex border-b border-stone-100">
-                  <button
-                    onClick={() => { setFormType('seller'); setErrors({}); }}
-                    className={`flex-1 py-4 text-xs font-bold tracking-[0.15em] uppercase transition-colors ${formType === 'seller' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}
-                  >
-                    I'm Selling
-                  </button>
-                  <button
-                    onClick={() => { setFormType('buyer'); setErrors({}); }}
-                    className={`flex-1 py-4 text-xs font-bold tracking-[0.15em] uppercase transition-colors ${formType === 'buyer' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}
-                  >
-                    I'm Buying
-                  </button>
+                  <button onClick={() => setFormType('seller')} className={`flex-1 py-4 text-xs font-bold tracking-[0.15em] uppercase transition-colors ${formType === 'seller' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}>I'm Selling</button>
+                  <button onClick={() => setFormType('buyer')} className={`flex-1 py-4 text-xs font-bold tracking-[0.15em] uppercase transition-colors ${formType === 'buyer' ? 'bg-[#0f172a] text-white' : 'bg-stone-50 text-slate-500 hover:bg-stone-100'}`}>I'm Buying</button>
                 </div>
-
-                <form onSubmit={handleSubmit} noValidate className="p-8 md:p-10">
-                  <h3 className="text-xl font-black text-[#0f172a] mb-6" style={{ fontFamily: "var(--font-display)" }}>
-                    {formType === 'seller' ? "Request a Free Home Valuation" : "Start Your Home Search"}
-                  </h3>
-
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                <form onSubmit={handleSubmit} noValidate className="p-8 md:p-10 text-left">
+                  <div className="grid grid-cols-2 gap-4 mb-4 text-left">
                     <div>
-                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">First Name <span className="text-red-500 ml-1">{errors.firstName || "*"}</span></label>
+                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">First Name <span className="text-red-500">{errors.firstName || "*"}</span></label>
                       <input type="text" name="firstName" value={form.firstName} onChange={handleChange} className={inputClass("firstName")} />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Last Name <span className="text-red-500 ml-1">{errors.lastName || "*"}</span></label>
+                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Last Name <span className="text-red-500">{errors.lastName || "*"}</span></label>
                       <input type="text" name="lastName" value={form.lastName} onChange={handleChange} className={inputClass("lastName")} />
                     </div>
                   </div>
-
-                  <div className="mb-4">
-                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Email Address <span className="text-red-500 ml-1">{errors.email || "*"}</span></label>
+                  <div className="mb-4 text-left">
+                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Email <span className="text-red-500">{errors.email || "*"}</span></label>
                     <input type="email" name="email" value={form.email} onChange={handleChange} className={inputClass("email")} />
                   </div>
-
-                  <div className="mb-4">
-                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Phone Number <span className="text-red-500 ml-1">{errors.phone || "*"}</span></label>
+                  <div className="mb-4 text-left">
+                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Phone <span className="text-red-500">{errors.phone || "*"}</span></label>
                     <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={inputClass("phone")} />
                   </div>
-
-                  {/* SELLER FIELDS */}
+                  
                   {formType === 'seller' && (
-                    <>
-                      <div className="mb-4">
-                        <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Street Address <span className="text-red-500 ml-1">{errors.address || "*"}</span></label>
-                        <input type="text" name="address" value={form.address} onChange={handleChange} className={inputClass("address")} />
-                      </div>
-
-                      <div className="grid grid-cols-3 gap-4 mb-4">
-                        <div className="col-span-1">
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">City <span className="text-red-500 ml-1">{errors.city || "*"}</span></label>
-                          <input type="text" name="city" value={form.city} onChange={handleChange} className={inputClass("city")} />
-                        </div>
-                        <div className="col-span-1">
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">State <span className="text-red-500 ml-1">{errors.state || "*"}</span></label>
-                          <input type="text" name="state" value={form.state} onChange={handleChange} className={inputClass("state")} />
-                        </div>
-                        <div className="col-span-1">
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Zip <span className="text-red-500 ml-1">{errors.zip || "*"}</span></label>
-                          <input type="text" name="zip" value={form.zip} onChange={handleChange} className={inputClass("zip")} />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Timeframe <span className="text-red-500 ml-1">{errors.timeframe || "*"}</span></label>
-                          <input type="text" name="timeframe" value={form.timeframe} onChange={handleChange} placeholder="e.g. ASAP, 3 months" className={inputClass("timeframe")} />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Moving To <span className="text-red-500 ml-1">{errors.movingTo || "*"}</span></label>
-                          <input type="text" name="movingTo" value={form.movingTo} onChange={handleChange} placeholder="City, State" className={inputClass("movingTo")} />
-                        </div>
-                      </div>
-
-                      <div className="mb-4">
-                        <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Are you currently working with an Agent? <span className="text-red-500 ml-1">{errors.workingWithAgent || "*"}</span></label>
-                        <div className="flex gap-4 mt-2">
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="yes" checked={form.workingWithAgent === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="workingWithAgent" value="no" checked={form.workingWithAgent === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
-                        </div>
-                      </div>
-                    </>
+                    <div className="mb-4 text-left">
+                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Street Address <span className="text-red-500">{errors.address || "*"}</span></label>
+                      <input type="text" name="address" value={form.address} onChange={handleChange} className={inputClass("address")} />
+                    </div>
                   )}
 
-                  {/* BUYER FIELDS */}
-                  {formType === 'buyer' && (
-                    <>
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Current Residence <span className="text-red-500 ml-1">{errors.rentOrOwn || "*"}</span></label>
-                          <select name="rentOrOwn" value={form.rentOrOwn} onChange={handleChange} className={inputClass("rentOrOwn")}>
-                            <option value="">Select...</option><option value="rent">Rent</option><option value="own">Own</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Move Timeframe <span className="text-red-500 ml-1">{errors.buyTimeframe || "*"}</span></label>
-                          <input type="text" name="buyTimeframe" value={form.buyTimeframe} onChange={handleChange} placeholder="e.g. ASAP, 6 months" className={inputClass("buyTimeframe")} />
-                        </div>
-                      </div>
-
-                      <div className="mb-4">
-                        <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">First time home purchase? <span className="text-red-500 ml-1">{errors.firstTimeBuyer || "*"}</span></label>
-                        <div className="flex gap-4 mt-2">
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="yes" checked={form.firstTimeBuyer === "yes"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> Yes</label>
-                          <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="radio" name="firstTimeBuyer" value="no" checked={form.firstTimeBuyer === "no"} onChange={handleChange} className="w-4 h-4 text-[#0f172a] focus:ring-[#c9a84c]" /> No</label>
-                        </div>
-                      </div>
-
-                      {form.firstTimeBuyer === "no" && (
-                        <div className="mb-4">
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Last time you bought/sold? <span className="text-red-500 ml-1">{errors.lastBought || "*"}</span></label>
-                          <select name="lastBought" value={form.lastBought} onChange={handleChange} className={inputClass("lastBought")}>
-                            <option value="">Select...</option>
-                            <option value="0-3">0-3 years ago</option>
-                            <option value="4-6">4-6 years ago</option>
-                            <option value="7+">7+ years ago</option>
-                          </select>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  <div className="mb-6 mt-4">
-                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                      Message <span className="text-stone-400 font-normal normal-case">(optional)</span>
-                    </label>
-                    <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Please tell me the best way I can be of assistance." className={`${inputClass("message")} resize-none`} />
+                  <div className="mb-4 p-4 border border-stone-200 bg-stone-50 text-[10px] text-stone-500 leading-relaxed text-left">
+                    By submitting, you consent to receive communications from Solomon Home Services regarding your inquiry. Msg/data rates apply. Reply STOP to opt out.
                   </div>
 
-                  {/* CHECKBOX 1: SMS CONSENT */}
-                  <div className="mb-3 p-4 border border-stone-200 bg-stone-50 rounded-sm">
-                    <label className="flex items-start gap-3 cursor-pointer group">
-                      <div className="relative mt-0.5 shrink-0">
-                        <input type="checkbox" name="smsConsent" checked={form.smsConsent} onChange={handleChange} className="sr-only" />
-                        <div className={`w-5 h-5 border-2 flex items-center justify-center transition-all duration-200 rounded-sm ${form.smsConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`}>
-                          {form.smsConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
-                        </div>
-                      </div>
-                      <span className="text-xs text-stone-600 leading-relaxed">
-                        By providing your phone number, you consent to receive marketing text messages from Solomon Home Services. Consent is not a condition of purchase. Message & data rates may apply. Reply STOP to opt out.
-                      </span>
-                    </label>
-                  </div>
-
-                  {/* CHECKBOX 2: VOICE/AI CONSENT */}
-                  <div className="mb-6 p-4 border border-stone-200 bg-stone-50 rounded-sm">
-                    <label className="flex items-start gap-3 cursor-pointer group">
-                      <div className="relative mt-0.5 shrink-0">
-                        <input type="checkbox" name="voiceConsent" checked={form.voiceConsent} onChange={handleChange} className="sr-only" />
-                        <div className={`w-5 h-5 border-2 flex items-center justify-center transition-all duration-200 rounded-sm ${form.voiceConsent ? "bg-[#0f172a] border-[#0f172a]" : "bg-white border-stone-300"}`}>
-                          {form.voiceConsent && (<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>)}
-                        </div>
-                      </div>
-                      <span className="text-xs text-stone-600 leading-relaxed">
-                        I consent to receive phone calls from Solomon Home Services, which may include automated, pre-recorded, or AI voice assistant communications. I understand I can opt out of future calls by requesting to be placed on the do-not-call list.
-                      </span>
-                    </label>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full py-4 font-bold text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-2 bg-[#c9a84c] text-[#0f172a] hover:bg-[#b8965e] transition-colors duration-300 disabled:opacity-60 rounded-sm"
-                  >
-                    {loading ? "Sending..." : (formType === 'seller' ? "Get My Free Valuation" : "Let's Get Started")}
+                  <button type="submit" disabled={loading} className="w-full py-4 font-bold text-xs tracking-[0.2em] uppercase bg-[#c9a84c] text-[#0f172a] hover:bg-[#b8965e] transition-colors rounded-sm disabled:opacity-60">
+                    {loading ? "Sending..." : "Submit Inquiry"}
                   </button>
                 </form>
               </div>
@@ -1005,18 +796,8 @@ function ContactSection() {
 export default function HomePage() {
   return (
     <>
-      {/* JSON-LD Schema Markup */}
-      <Script
-        id="schema-real-estate-agent"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema) }}
-      />
-      <Script
-        id="schema-faq-page"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
-      />
-
+      <Script id="schema-agent" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema) }} />
+      <Script id="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }} />
       <HeroSection />
       <StatsBand />
       <ValueProps />
