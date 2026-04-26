@@ -149,6 +149,8 @@ function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex items-center bg-[#f5f1eb] overflow-hidden pt-20">
       <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        
+        {/* LEFT: Headline block */}
         <div className="lg:col-span-6 z-20">
           <div className={`inline-flex items-center gap-3 mb-6 transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             <span className="h-px w-12 bg-[#c9a84c]" />
@@ -156,12 +158,15 @@ function HeroSection() {
               Colorado Front Range
             </span>
           </div>
+          
           <h1 className={`text-5xl md:text-6xl lg:text-7xl text-[#0f172a] leading-[1.1] mb-8 text-balance transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "var(--font-display)" }}>
             Experience & Precision in Every <i className="text-[#c9a84c] font-light">Detail.</i>
           </h1>
+          
           <p className={`text-lg text-slate-600 max-w-lg leading-relaxed mb-10 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
             Over two decades of mastery in real estate. No guesswork, no algorithms (maybe a little bit of AI - since everyone is doing it) - just tactical strategy and relentless negotiation to make selling or buying a great experience.
           </p>
+          
           <div className={`flex flex-col sm:flex-row items-center gap-6 transition-all duration-1000 delay-400 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-[#0f172a] text-white text-sm font-semibold tracking-widest uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 flex items-center justify-center gap-3 group rounded-sm">
               Start The Process
@@ -172,21 +177,40 @@ function HeroSection() {
             </a>
           </div>
         </div>
+
+        {/* RIGHT: Image Container */}
         <div className={`lg:col-span-6 relative transition-all duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
           <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto mt-12 lg:mt-0">
+            
+            {/* Top Right Bracket */}
             <div className="absolute -top-6 -right-6 w-32 h-32 border-t-2 border-r-2 border-[#c9a84c]/60 hidden lg:block z-20 pointer-events-none" />
+
+            {/* Bottom Left Bracket */}
             <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-[#c9a84c]/60 hidden lg:block z-20 pointer-events-none" />
+
+            {/* Colorado Front Range Text */}
             <div className="absolute -bottom-10 left-4 text-[#0f172a] text-[10px] font-bold tracking-[0.3em] uppercase hidden lg:block z-20">
               Colorado Front Range
             </div>
+
+            {/* Main Image */}
             <div className="absolute inset-0 shadow-floating rounded-sm overflow-hidden z-10 bg-stone-200">
                 <img src="/ryan-hoffman-hero-mountain.jpg" alt="Colorado Mountains" className="w-full h-full object-cover" />
+                
+                {/* Photo Credit Overlay */}
                 <div className="absolute bottom-2 right-2 z-40 bg-black/40 px-2 py-1 rounded-sm backdrop-blur-[2px]">
-                  <a href="https://unsplash.com/@ryanhoffman007" target="_blank" rel="noopener noreferrer" className="text-[9px] text-white/80 hover:text-white transition-colors">
+                  <a 
+                    href="https://unsplash.com/@ryanhoffman007?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-[9px] text-white/80 hover:text-white transition-colors"
+                  >
                     Photo by Ryan Hoffman on Unsplash
                   </a>
                 </div>
             </div>
+            
+            {/* Badge moved to top right overlapping bracket */}
             <div className="absolute -top-6 -right-6 lg:-right-12 bg-white px-6 py-5 shadow-editorial rounded-sm flex items-start gap-4 max-w-[200px] z-30 border border-stone-100">
               <Award size={24} className="text-[#c9a84c] shrink-0" />
               <div>
@@ -194,6 +218,7 @@ function HeroSection() {
                 <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold leading-tight">Years Licensed</p>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -208,7 +233,7 @@ function StatsBand() {
   const pillars = ["Precision", "Expert Negotiation", "Unmatched Market Insight"];
   return (
     <section className="bg-[#0f172a] border-y border-white/10 py-7">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/10">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/10 text-center">
         {pillars.map((p, i) => (
           <div key={i} className="flex-1 flex items-center justify-center py-3 md:py-0 first:pt-0 last:pb-0 gap-3">
             <span className="w-1 h-5 bg-[#c9a84c]" />
@@ -225,7 +250,7 @@ function StatsBand() {
 ───────────────────────────────────────────────────────────── */
 function ValueProps() {
   return (
-    <section id="strategy" className="py-20 bg-[#f5f1eb]">
+    <section id="strategy" className="py-24 bg-[#f5f1eb]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="mb-14 max-w-xl">
           <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-4">The Approach</span>
@@ -234,13 +259,13 @@ function ValueProps() {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-auto">
-          <div className="md:col-span-12 bg-[#0f172a] px-10 py-12 relative overflow-hidden">
+          <div className="md:col-span-12 bg-[#0f172a] px-10 py-12 relative overflow-hidden rounded-sm">
             <div className="absolute top-0 left-0 w-40 h-1" style={{ background: "linear-gradient(90deg, #c9a84c, transparent)" }} />
-            <p className="text-stone-400 text-base leading-relaxed max-w-3xl">
+            <p className="text-stone-300 text-base leading-relaxed max-w-3xl">
               Buying or selling real estate isn't a simple transaction — it's one of the largest financial decisions you'll make. I bring clear objectives, precise execution, and an unwillingness to accept anything less than the best possible outcome for you.
             </p>
           </div>
-          <div className="md:col-span-7 bg-[#0f172a] px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[300px]">
+          <div className="md:col-span-7 bg-[#0f172a] px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[300px] rounded-sm">
             <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full border border-[#c9a84c]/20" />
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Sellers · 01</span>
@@ -252,7 +277,7 @@ function ValueProps() {
               Every listing is priced with precision. We analyze the micro-market, position you competitively, and go to market with a plan designed to attract the strongest offers.
             </p>
           </div>
-          <div className="md:col-span-5 bg-[#1a3a2e] px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[300px]">
+          <div className="md:col-span-5 bg-[#1a3a2e] px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[300px] rounded-sm">
             <div>
               <span className="text-[#a3c9a8]/80 text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Sellers · 02</span>
               <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}>
@@ -263,7 +288,7 @@ function ValueProps() {
               Your home reaches buyers across the MLS, premium portals, and targeted campaigns — because the right buyer may not be looking where everyone else advertises.
             </p>
           </div>
-          <div className="md:col-span-5 bg-stone-900 px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[280px]">
+          <div className="md:col-span-5 bg-stone-900 px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[280px] rounded-sm">
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Buyers · 01</span>
               <h3 className="text-white font-black leading-none mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px,3.5vw,48px)", letterSpacing: "-0.02em" }}>Strategic<br />Acquisitions</h3>
@@ -272,7 +297,7 @@ function ValueProps() {
               We don't just "look at houses." We hunt for the right property, analyzing value, neighborhood trends, and future equity potential to ensure a smart investment.
             </p>
           </div>
-          <div className="md:col-span-7 bg-[#0f172a] border border-[#c9a84c]/20 px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[280px]">
+          <div className="md:col-span-7 bg-[#0f172a] border border-[#c9a84c]/20 px-10 py-14 flex flex-col justify-between relative overflow-hidden min-h-[280px] rounded-sm">
             <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5" style={{ background: "radial-gradient(circle, #c9a84c 0%, transparent 70%)" }} />
             <div>
               <span className="text-[#c9a84c] text-[9px] font-bold tracking-[0.3em] uppercase block mb-5">For Buyers · 02</span>
@@ -292,52 +317,8 @@ function ValueProps() {
     </section>
   );
 }
-
 /* ─────────────────────────────────────────────────────────────
-   IDX LISTINGS SECTION
-───────────────────────────────────────────────────────────── */
-function IdxSection() {
-  const [activeTab, setActiveTab] = useState('search');
-  const [iframeLoaded, setIframeLoaded] = useState(false);
-
-  return (
-    <section id="idx-listings" className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
-          <div className="max-w-2xl">
-            <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.2em] uppercase block mb-3">Property Portfolio</span>
-            <h2 className="text-4xl md:text-5xl text-[#0f172a] leading-tight font-black" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}>
-              Discover the <i className="text-[#1e293b] font-light">Front Range.</i>
-            </h2>
-          </div>
-          <div className="flex bg-stone-50 p-1 border border-stone-200 rounded-sm">
-            <button onClick={() => setActiveTab('search')} className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'search' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}>MLS Search</button>
-            <button onClick={() => setActiveTab('featured')} className={`px-6 py-3 text-xs font-bold tracking-wider uppercase transition-all rounded-sm ${activeTab === 'featured' ? 'bg-white shadow-sm text-[#0f172a]' : 'text-slate-500 hover:text-[#0f172a]'}`}>My Listings</button>
-          </div>
-        </div>
-        <p className="text-xs text-stone-500 italic mb-4 text-right">Note: If no properties appear in "My Listings", inventory is currently sold out. Please use "MLS Search".</p>
-        <div className="w-full h-[600px] bg-stone-50 border border-stone-200 overflow-hidden relative flex items-center justify-center rounded-sm">
-          {!iframeLoaded ? (
-            <div className="text-center p-8 z-20 flex flex-col items-center bg-white border border-stone-200 max-w-lg rounded-sm shadow-sm">
-              <Search size={40} className="text-[#c9a84c] mb-4" />
-              <h3 className="text-2xl font-black text-[#0f172a] mb-3" style={{ fontFamily: "var(--font-display)" }}>Live MLS Connection</h3>
-              <p className="text-stone-500 mb-8 leading-relaxed text-sm">Connect directly to the REcolorado live database to explore current active properties across the Front Range.</p>
-              <button onClick={() => setIframeLoaded(true)} className="px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors flex items-center gap-2 rounded-sm">Load Live Database <ArrowRight size={14} /></button>
-            </div>
-          ) : (
-            <>
-              <div className={`absolute inset-0 ${activeTab === 'search' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}><iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=3b013217" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe></div>
-              <div className={`absolute inset-0 ${activeTab === 'featured' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}><iframe loading="lazy" src="https://matrix.recolorado.com/Matrix/public/IDX.aspx?idx=223b3218" width="100%" height="100%" frameBorder="0" marginWidth="0" marginHeight="0"></iframe></div>
-            </>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────
-   ABOUT SECTION
+   ABOUT / BIO SECTION
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
@@ -368,12 +349,12 @@ function AboutSection() {
                       <div key={badge.label} className="flex items-center gap-2 px-3 py-1.5 border border-white/15 bg-white/5 rounded-sm"><badge.icon size={11} className="text-[#c9a84c]" /><span className="text-stone-300 text-[10px] font-semibold uppercase">{badge.label}</span></div>
                     ))}
                   </div>
-                  <blockquote><p className="text-xl font-bold text-white leading-snug mb-6" style={{ fontFamily: "var(--font-display)" }}>"The process of selling or buying a home should be precise, streamlined, and — above all — enjoyable."</p></blockquote>
+                  <blockquote className="text-left"><p className="text-xl font-bold text-white leading-snug mb-6" style={{ fontFamily: "var(--font-display)" }}>"The process of selling or buying a home should be precise, streamlined, and — above all — enjoyable."</p></blockquote>
                   <div className="pt-6 border-t border-white/10 flex justify-between items-center"><p className="text-[#c9a84c] text-xs font-bold tracking-wider">— Mark Solomon</p><img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-10 w-auto opacity-80" /></div>
                 </div>
               </div>
             </div>
-            <div className="lg:col-span-7 pt-4">
+            <div className="lg:col-span-7 pt-4 text-left">
               <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-5 text-center lg:text-left">About Mark</span>
               <h2 className="font-black text-[#0f172a] leading-tight mb-8 text-4xl md:text-5xl text-center lg:text-left" style={{ fontFamily: "var(--font-display)" }}>Masterclass Level of<br /><span className="italic font-light" style={{ color: "#c9a84c" }}>Service.</span></h2>
               <div className="space-y-6 text-stone-600 text-base leading-relaxed">
@@ -385,7 +366,7 @@ function AboutSection() {
                 <p>He's been married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, requires the exact same negotiation skills he brings to real estate. He credits her entirely for the outcome and acknowledges that she wins every negotiation at home.</p>
               </div>
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] hover:text-[#0f172a] transition-colors duration-300 rounded-sm">Work With Mark <ArrowRight size={13} /></a>
+                <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f172a] text-white text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#c9a84c] transition-colors duration-300 rounded-sm">Work With Mark <ArrowRight size={13} /></a>
                 <a href="https://www.vcp.org" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-stone-100 text-[#0f172a] text-xs font-bold tracking-[0.2em] uppercase hover:bg-stone-200 transition-colors duration-300 border border-stone-200 rounded-sm">Learn About VCP <Users size={13} /></a>
               </div>
             </div>
@@ -424,9 +405,9 @@ function TestimonialsSection() {
           <p className="text-stone-700 text-lg md:text-xl leading-relaxed italic" style={{ fontFamily: "var(--font-display)" }}>"{t.text}"</p>
         </div>
         <div className="flex items-center justify-center gap-6 mt-8">
-          <button onClick={prev} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200 rounded-full"><ChevronLeft size={16} /></button>
-          <div className="flex gap-2 flex-wrap justify-center">{testimonials.map((_, i) => (<button key={i} onClick={() => setActive(i)} className={`transition-all duration-300 rounded-full ${i === active ? "w-6 h-2 bg-[#c9a84c]" : "w-2 h-2 bg-stone-300 hover:bg-stone-400"}`} />))}</div>
-          <button onClick={next} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200 rounded-full"><ChevronRight size={16} /></button>
+          <button onClick={prev} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] transition-colors duration-200 rounded-full"><ChevronLeft size={16} /></button>
+          <div className="flex gap-2 flex-wrap justify-center">{testimonials.map((_, i) => (<button key={i} onClick={() => setActive(i)} className={`transition-all duration-300 rounded-full ${i === active ? "w-6 h-1.5 bg-[#c9a84c]" : "w-1.5 h-1.5 bg-stone-300 hover:bg-stone-400"}`} />))}</div>
+          <button onClick={next} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] transition-colors duration-200 rounded-full"><ChevronRight size={16} /></button>
         </div>
       </div>
     </section>
@@ -547,9 +528,6 @@ function ContactSection() {
   );
 }
 
-/* ─────────────────────────────────────────────────────────────
-   PAGE ROOT
-───────────────────────────────────────────────────────────── */
 export default function HomePage() {
   return (
     <>
@@ -565,4 +543,4 @@ export default function HomePage() {
       <ContactSection />
     </>
   );
-}
+} // End of file
