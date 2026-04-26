@@ -363,7 +363,7 @@ function IdxSection() {
 ───────────────────────────────────────────────────────────── */
 function AboutSection() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-white">
+    <section id="about" className="py-24 relative overflow-hidden bg-white border-t border-stone-200">
       {/* Subtle background texture */}
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("/about-home.jpg")`, backgroundSize: "cover", backgroundPosition: "center" }} />
       
