@@ -421,7 +421,7 @@ function AboutSection() {
               <p>Commander Mark Solomon, United States Navy Reserve, arrived in the United States as an immigrant with something most people spend a lifetime trying to earn: a genuine appreciation for what this country offers. He became a U.S. citizen in 1995 and hasn't wasted a day since.</p>
               <p>Today, after over two decades of military experience — including a combat deployment to Iraq — he continues his service in the military. His two sons also joined the military. Service isn't just a value in the Solomon household; it's the baseline expectation.</p>
               <p>In real estate, Mark channels that same standard. Licensed for over 20 years, he's survived enough market cycles to know that "timing the market" usually just means "being ready when everyone else panics." His instincts for pricing and negotiation come from repetition, pattern recognition, and a healthy disrespect for conventional wisdom.</p>
-              <p>His work extends well beyond the closing table. As a co-founder of Veterans Community Project (VCP.org), a 501(c)(3) charity, Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.</p>
+              <p>His work extends well beyond the closing table. As a co-founder of Veterans Community Project (<a href="https://www.vcp.org" target="_blank" rel="noopener noreferrer" className="text-[#c9a84c] font-semibold hover:underline">VCP.org</a>), a 501(c)(3) charity, Mark helped raise over $1.5 million to house homeless Veterans across six cities and five states — because the people who defended this country's neighborhoods deserve to live in one.</p>
               <p>He's been married to his wife, Chasity, for over 23 years — a partnership that, by all available evidence, requires the exact same negotiation skills he brings to real estate. He credits her entirely for the outcome and acknowledges that she wins every negotiation at home.</p>
             </div>
 
@@ -439,43 +439,73 @@ function AboutSection() {
     </section>
   );
 }
+
 /* ─────────────────────────────────────────────────────────────
    TESTIMONIALS SECTION
 ───────────────────────────────────────────────────────────── */
 function TestimonialsSection() {
   const [active, setActive] = useState(0);
   const total = testimonials.length;
+
   const prev = () => setActive((a) => (a - 1 + total) % total);
   const next = () => setActive((a) => (a + 1) % total);
+
   useEffect(() => {
     const interval = setInterval(next, 9000);
     return () => clearInterval(interval);
   }, []);
+
   const t = testimonials[active];
 
   return (
-    <section id="reviews" className="py-24 bg-white relative overflow-hidden">
-      <div className="absolute top-8 left-8 text-stone-100 select-none pointer-events-none" style={{ fontFamily: "var(--font-display)", fontSize: "20rem", lineHeight: 1 }}>"</div>
+    <section id="reviews" className="py-24 bg-white relative overflow-hidden border-t border-stone-200">
+      <div className="absolute top-8 left-8 text-stone-100 select-none pointer-events-none" style={{ fontFamily: "var(--font-display)", fontSize: "20rem", lineHeight: 1 }}>
+        "
+      </div>
+
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <span className="text-[#c9a84c] text-[10px] font-bold tracking-[0.35em] uppercase block mb-3">Client Stories</span>
-        <h2 className="text-4xl md:text-5xl font-black text-[#0f172a] mb-4" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}>Results That Speak.</h2>
+        <h2 className="text-4xl md:text-5xl font-black text-[#0f172a] mb-4" style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}>
+          Results That Speak.
+        </h2>
         <span className="block w-14 h-0.5 mx-auto mb-16" style={{ background: "linear-gradient(90deg, #c9a84c, #d4a574)" }} />
-        <div key={active} className="bg-[#fcfaf7] p-8 md:p-14 border border-stone-100 min-h-[400px] flex flex-col justify-center items-center rounded-sm shadow-sm" style={{ animation: "fadeInUp 0.4s ease forwards" }}>
+
+        <div
+          key={active}
+          className="bg-[#fcfaf7] p-8 md:p-14 border border-stone-100 min-h-[400px] flex flex-col justify-center items-center rounded-sm shadow-sm"
+          style={{ animation: "fadeInUp 0.4s ease forwards" }}
+        >
           <div className="flex justify-center gap-1 mb-6">
-            {Array.from({ length: t.stars }).map((_, i) => (<Star key={i} size={16} className="text-[#c9a84c]" fill="#c9a84c" />))}
+            {Array.from({ length: t.stars }).map((_, i) => (
+              <Star key={i} size={16} className="text-[#c9a84c]" fill="#c9a84c" />
+            ))}
           </div>
-          <p className="text-stone-700 text-lg md:text-xl leading-relaxed italic" style={{ fontFamily: "var(--font-display)" }}>"{t.text}"</p>
+          <p className="text-stone-700 text-lg md:text-xl leading-relaxed italic" style={{ fontFamily: "var(--font-display)" }}>
+            "{t.text}"
+          </p>
         </div>
+
         <div className="flex items-center justify-center gap-6 mt-8">
-          <button onClick={prev} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] transition-colors duration-200 rounded-full"><ChevronLeft size={16} /></button>
-          <div className="flex gap-2 flex-wrap justify-center">{testimonials.map((_, i) => (<button key={i} onClick={() => setActive(i)} className={`transition-all duration-300 rounded-full ${i === active ? "w-6 h-1.5 bg-[#c9a84c]" : "w-1.5 h-1.5 bg-stone-300 hover:bg-stone-400"}`} />))}</div>
-          <button onClick={next} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] transition-colors duration-200 rounded-full"><ChevronRight size={16} /></button>
+          <button onClick={prev} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200 rounded-full">
+            <ChevronLeft size={16} />
+          </button>
+          <div className="flex gap-2 flex-wrap justify-center">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`transition-all duration-300 rounded-full ${i === active ? "w-6 h-2 bg-[#c9a84c]" : "w-2 h-2 bg-stone-300 hover:bg-stone-400"}`}
+              />
+            ))}
+          </div>
+          <button onClick={next} className="w-10 h-10 border border-stone-200 bg-white flex items-center justify-center hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors duration-200 rounded-full">
+            <ChevronRight size={16} />
+          </button>
         </div>
       </div>
     </section>
   );
 }
-
 /* ─────────────────────────────────────────────────────────────
    AEO FAQ SECTION
 ───────────────────────────────────────────────────────────── */
