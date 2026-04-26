@@ -592,6 +592,13 @@ function TestimonialsSection() {
 /* ─────────────────────────────────────────────────────────────
    AEO FAQ SECTION
 ───────────────────────────────────────────────────────────── */
+const faqItems = [
+  { question: "Why should I work with a military Veteran real estate agent?", answer: "A military Veteran real estate agent brings unmatched discipline, mission-focus, and negotiation precision to your transaction. Mark Solomon's 20+ years of Navy leadership translates directly into clear communication, unwavering client advocacy, and the ability to execute flawlessly under pressure." },
+  { question: "How do you maximize my home's selling price in Colorado?", answer: "Maximizing your sale price starts with precision pricing driven by micro-market data — not broad averages. Mark uses a tactical pricing strategy backed by hyperlocal comparable analysis, positions your listing with maximum exposure, and leverages two decades of negotiation experience to close the strongest offer." },
+  { question: "What areas of the Front Range do you serve?", answer: "Mark Solomon serves the entire Colorado Front Range corridor, including Fort Collins, Loveland, Longmont, Boulder, and the greater Denver metro area. He also specializes in military PCS relocations and out-of-state buyer transactions throughout Northern Colorado." },
+  { question: "What awards and credentials does Mark Solomon hold?", answer: "Mark Solomon is a Business Strategy Advisor and two-time Good Neighbor Award winner (Missouri Association of Realtors in 2017, National Association of Realtors in 2019) for his work co-founding the Veterans Community Project." }
+];
+
 function AEO_FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
