@@ -102,9 +102,15 @@ export default function Footer() {
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-stone-600 mb-8">
             
-            {/* REALTOR AND EQUAL HOUSING LOGOS - STACKED */}
+            {/* LOGOS SECTION */}
             <div className="flex flex-col items-center md:items-start gap-4">
-              <img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-8 object-contain opacity-80" />
+              {/* Realtor R + Text */}
+              <div className="flex items-center gap-3">
+                <img src="/nar_membershipmark_white.png" alt="REALTOR® Logo" className="h-8 object-contain opacity-80" />
+                <span>Member of the National Association of REALTORS®</span>
+              </div>
+              
+              {/* Equal Housing + Text */}
               <div className="flex items-center gap-3">
                 <img src="/equal-housing-opportunity-logo.png" alt="Equal Housing Opportunity" className="h-8 object-contain invert mix-blend-screen opacity-70" />
                 <span>Equal Housing Opportunity</span>
